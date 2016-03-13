@@ -5,6 +5,7 @@
   "dependencies": {
     "express": "4.13.4",
     "phaser": "https://github.com/photonstorm/phaser.git",
+    "shatter": "git+https://github.com/cdgugler/shatter.js.git#2a7985c5128b02a161e73514ff2412e96a619bf7",
     "socket.io": "^1.4.5"
   },
   "main": "server.js",
