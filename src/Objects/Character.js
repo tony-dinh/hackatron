@@ -48,7 +48,6 @@ class Character extends GameObject {
         emitter.setAlpha(1, 0.4, 800);
         emitter.setScale(0.2, 0.05, 0.2, 0.05, 2000, Phaser.Easing.Quintic.Out);
         emitter.start(false, 250, 1);
-
         this.sprite.emitter = emitter;
 
         // this.aura = this.game.add.sprite(this.position.x, this.position.y, 'gfx/buffs/aura-1');
@@ -88,8 +87,7 @@ class Character extends GameObject {
     }
 
     updatePos() {
-        if (this.frozen) { return; }
-        if (!this.isAlive) { return; }
+        if (!this.isAlive || this.frozen) { return; }
 
         this.inputDown = this.inputDown || (this.sprite.downKey && this.sprite.downKey.isDown);
         this.inputUp = this.inputUp || (this.sprite.upKey && this.sprite.upKey.isDown);
@@ -109,15 +107,15 @@ class Character extends GameObject {
         }
 
         //console.log(this.name + ' ' + this.sprite.x + ',' + this.sprite.y);
-
+        var emitterOffset = 15;
         if (this.inputUp) {
             this.sprite.animations.play('walkUp', 3, false);
             this.sprite.body.velocity.y = -this.speed;
             this.direction = 'walkUp';
             this.dirty = true;
             if (this.sprite.emitter) {
-                this.sprite.emitter.x = this.sprite.x + 15;
-                this.sprite.emitter.y = this.sprite.y + 35;
+                this.sprite.emitter.x = this.sprite.x;
+                this.sprite.emitter.y = this.sprite.y + emitterOffset;
             }
         } else if (this.inputDown) {
             this.sprite.animations.play('walkDown', 3, false);
@@ -125,8 +123,8 @@ class Character extends GameObject {
             this.direction = 'walkDown';
             this.dirty = true;
             if (this.sprite.emitter) {
-                this.sprite.emitter.x = this.sprite.x + 15;
-                this.sprite.emitter.y = this.sprite.y + -5;
+                this.sprite.emitter.x = this.sprite.x;
+                this.sprite.emitter.y = this.sprite.y - emitterOffset;
             }
         } else if (this.inputLeft) {
             this.sprite.animations.play('walkLeft', 3, false);
@@ -134,8 +132,8 @@ class Character extends GameObject {
             this.direction = 'walkLeft';
             this.dirty = true;
             if (this.sprite.emitter) {
-                this.sprite.emitter.x = this.sprite.x + 30;
-                this.sprite.emitter.y = this.sprite.y + 15;
+                this.sprite.emitter.x = this.sprite.x + emitterOffset;
+                this.sprite.emitter.y = this.sprite.y;
             }
         } else if (this.inputRight) {
             this.sprite.animations.play('walkRight', 3, false);
@@ -143,13 +141,25 @@ class Character extends GameObject {
             this.direction = 'walkRight';
             this.dirty = true;
             if (this.sprite.emitter) {
-                this.sprite.emitter.x = this.sprite.x;
-                this.sprite.emitter.y = this.sprite.y + 15;
+                this.sprite.emitter.x = this.sprite.x - emitterOffset;
+                this.sprite.emitter.y = this.sprite.y;
             }
         } else {
             if (this.sprite.emitter) {
                 this.sprite.emitter.on = false;
             }
+        }
+
+        // Check if player has gone beyond the right edge
+        // And send him to the beginning
+        if (this.sprite.x >=  Hackatron.TILE_WIDTH * 16) {
+            this.sprite.x = 5;
+        }
+
+        // Check if player has gone beyond the left edge
+        // And send him to the end
+        if (this.sprite.x < 0) {
+            this.sprite.x =  (Hackatron.TILE_WIDTH - 1) * 16;
         }
     }
 }

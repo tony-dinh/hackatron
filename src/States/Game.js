@@ -10,10 +10,6 @@ Hackatron.Game = function(game) {
     this.players = null;
 };
 
-var PLAYER_SPEED = 200;
-var UPDATE_INTERVAL = 100;
-var POWERUP_SPAWN_INTERVAL = 5000;
-
 var updateTimeout;
 
 Hackatron.Game.prototype = {
@@ -31,7 +27,7 @@ Hackatron.Game.prototype = {
 
         for(var i = 0; i < this.map.collideTiles.length; i++) {
             var tile = this.map.collideTiles[i];
-            if (tile.x === params.x * 16 && tile.y === params.y * 16) {
+            if (tile.tilePosition.x === params.x && tile.tilePosition.y === params.y) {
                 return tile;
             }
         }
@@ -41,12 +37,12 @@ Hackatron.Game.prototype = {
 
     getValidPosition: function() {
         var position = null;
-        var currentPositon = 0;
-        var totalPositions = 32 * 32;
+        var currentPosition = 0;
+        var totalPositions = Hackatron.TILE_WIDTH * Hackatron.TILE_HEIGHT;
 
-        while (!position && currentPositon < totalPositions) {
-            var x = this.game.rnd.integerInRange(1, 32);
-            var y = this.game.rnd.integerInRange(1, 32);
+        while (!position && currentPosition < totalPositions) {
+            var x = this.game.rnd.integerInRange(1, Hackatron.TILE_WIDTH - 1);
+            var y = this.game.rnd.integerInRange(1, Hackatron.TILE_HEIGHT - 1);
             // mapData goes top to down and left to right
             var tile = this.getTileAt({x: x, y: y});
 
@@ -82,6 +78,17 @@ Hackatron.Game.prototype = {
     create: function() {
         Hackatron.game = this;
 
+        this.game.plugins.cameraShake = this.game.plugins.add(Phaser.Plugin.CameraShake);
+
+        this.game.plugins.cameraShake.setup({
+            shakeRange: 40,
+            shakeCount: 35,
+            shakeInterval: 15,
+            randomShake: true,
+            randomizeInterval: true,
+            shakeAxis: 'xy'
+        });
+
         this.players = {};
         this.socket = io.connect();
         this.events = [];
@@ -101,28 +108,24 @@ Hackatron.Game.prototype = {
 
         this.initEvents();
 
+        this.game.stage.disableVisibilityChange = true;
 
         window.UI_state.screenKey = 'ingame';
         window.UI_controller.setState(window.UI_state);
-
-        this.game.world.resize(10000, 10000);
-        this.game.world.setBounds(0, 0, 10000, 10000);
-
-        this.game.camera.follow(this.player.character.sprite, Phaser.Camera.FOLLOW_LOCKON);
-        //this.player.character.sprite.unlock();
     },
 
     initEvents: function() {
         var self = this;
 
-        setInterval(this.broadcastEvents.bind(this), 100);
+        this.eventsInterval = setInterval(this.broadcastEvents.bind(this), 100);
 
         var lastUpdateInfo = null;
 
         // Send player position every 50ms
-        setInterval(function() {
+        this.updatePosInterval = setInterval(function() {
             self.player.character.updatePos();
 
+            if (!self.player.character.sprite.body) { return;}
             if (!self.player.character.dirty) { return; }
 
             var info = {
@@ -179,16 +182,13 @@ Hackatron.Game.prototype = {
     runEnemySystem: function() {
         // Create enemy for the host
         if (!this.enemy) {
-            var position = this.getValidPosition();
+            var worldPosition = this.getValidPosition();
 
             this.enemy = new Enemy();
             this.enemy.init({
                 game: this.game,
-                speed: PLAYER_SPEED,
-                position: {
-                    x: position.x * 16,
-                    y: position.y * 16
-                },
+                speed: DEFAULT_PLAYER_SPEED,
+                worldPosition: worldPosition,
                 keys: {
                     up: Phaser.Keyboard.W,
                     down: Phaser.Keyboard.S,
@@ -200,17 +200,14 @@ Hackatron.Game.prototype = {
     },
 
     initPlayer: function() {
-        var position = this.getValidPosition();
+        var worldPosition = this.getValidPosition();
 
         var playerParams = {
             id: Utils.generateId(),
             game: this.game,
             name: Hackatron.playerName,
-            speed: PLAYER_SPEED,
-            position: {
-                x: position.x * 16,
-                y: position.y * 16
-            },
+            speed: DEFAULT_PLAYER_SPEED,
+            worldPosition: worldPosition,
             keys: {
                 up: Phaser.Keyboard.UP,
                 down: Phaser.Keyboard.DOWN,
@@ -243,6 +240,19 @@ Hackatron.Game.prototype = {
         countdown.start();
     },
 
+    initGameover: function() {
+        this.game.plugins.cameraShake.shake();
+
+        var gameover = new Gameover();
+        gameover.init(this.game);
+        gameover.start();
+
+        this.newGameKey = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+        this.newGameKey.onDown.add(function() {
+            this.game.state.start('Menu');
+        }, this);
+    },
+
     initSFX: function() {
         this.musicKey = this.input.keyboard.addKey(Phaser.Keyboard.M);
         // var fx = this.game.add.audio('sfx');
@@ -256,7 +266,7 @@ Hackatron.Game.prototype = {
         var self = this;
 
         this.powerups = [];
-        for (var i = 0; i <= 32; i++) {
+        for (var i = 0; i <= Hackatron.TILE_HEIGHT; i++) {
             this.powerups.push([]);
         }
 
@@ -274,7 +284,7 @@ Hackatron.Game.prototype = {
 
     runPowerUpSystem: function() {
         var self = this;
-        setInterval(function() {
+        self.powerupInterval = setInterval(function() {
             var powerupHandlers = Object.keys(Powerup.handlers);
             var randomHandler = powerupHandlers[this.game.rnd.integerInRange(0, powerupHandlers.length-1)];
             var powerup = new Powerup();
@@ -352,7 +362,7 @@ Hackatron.Game.prototype = {
             this.player.character.inputDown = false;
 
             //  400 is the speed it will move towards the mouse
-            //this.game.physics.arcade.moveToPointer(this.player.character.sprite, PLAYER_SPEED);
+            //this.game.physics.arcade.moveToPointer(this.player.character.sprite, DEFAULT_PLAYER_SPEED);
 
             // top = -1.25
             // bottom = 1
@@ -364,22 +374,22 @@ Hackatron.Game.prototype = {
             // right
             if (Math.abs(angle) > 0 && Math.abs(angle) <= 45) {
                 this.player.character.inputRight = true;
-                //this.player.character.sprite.body.velocity.x = PLAYER_SPEED;
+                //this.player.character.sprite.body.velocity.x = DEFAULT_PLAYER_SPEED;
             }
             // left
             if (Math.abs(angle) > 135 && Math.abs(angle) <= 180) {
                 this.player.character.inputLeft = true;
-                //this.player.character.sprite.body.velocity.x = -PLAYER_SPEED;
+                //this.player.character.sprite.body.velocity.x = -DEFAULT_PLAYER_SPEED;
             }
             // up
             if (Math.abs(angle) > 45 && Math.abs(angle) <= 135 && angle < 0) {
                 this.player.character.inputUp = true;
-                //this.player.character.sprite.body.velocity.y = -PLAYER_SPEED;
+                //this.player.character.sprite.body.velocity.y = -DEFAULT_PLAYER_SPEED;
             }
             // down
             if (Math.abs(angle) > 45 && Math.abs(angle) <= 135 && angle > 0) {
                 this.player.character.inputDown = true;
-                //this.player.character.sprite.body.velocity.y = PLAYER_SPEED;
+                //this.player.character.sprite.body.velocity.y = DEFAULT_PLAYER_SPEED;
             }
 
             //  if it's overlapping the mouse, don't move any more
@@ -411,26 +421,20 @@ Hackatron.Game.prototype = {
             self.addEvent({key: 'playerKilled', info: {
                 player: {id: self.player.id}
             }});
+            if (self.player.id === self.hostId) {
+                // console.log("the id is: " + self.player.id);
+                self.addEvent({key: 'findNewHost'});
+            }
 
             if (self.ai) {
                 self.ai.stopPathFinding();
             }
+
+            self.initGameover();
         };
 
-        var block = self.player.character.triggerAttack(self.blocks);
-
-        if (block !== null) {
-            this.addEvent({key: 'blockSpawned', info: {
-                x: block.x,
-                y: block.y
-            }})
-
-            self.blocks.push(block);
-        }
-
         var SLIDE_SPEED = self.player.character.speed/4;
-        var REPOSITION_DELAY = 200;
-        var repositionTimeout = null;
+        var SLIDE_DISTANCE = 5;
 
         var closestInRangeOf = (params) => {
             var dir = params.range > 0 ? 1 : -1; // are we going backwards?
@@ -450,8 +454,6 @@ Hackatron.Game.prototype = {
         };
 
         var getNearestOpening = (params) => {
-            clearTimeout(repositionTimeout);
-
             var align;
             var dir;
             var index;
@@ -463,11 +465,15 @@ Hackatron.Game.prototype = {
             if (direction === 'walkUp') { align = 'x'; dir = -1; }
             if (direction === 'walkDown') { align = 'x'; dir = +1; }
 
-            var seekPosition = {x: position.x, y: position.y};
-            seekPosition[align === 'x' ? 'y' : 'x'] += dir; // get the beside row/column
+            var seekPositionLeft = {x: Math.floor(position.x), y: Math.floor(position.y)};
+            seekPositionLeft[align === 'x' ? 'y' : 'x'] += dir; // get the beside row/column
+            seekPositionLeft[align === 'y' ? 'y' : 'x'] -= 1; // get the beside row/column
+            var seekPositionRight = {x: Math.floor(position.x), y: Math.floor(position.y)};
+            seekPositionRight[align === 'x' ? 'y' : 'x'] += dir; // get the beside row/column
+            seekPositionRight[align === 'y' ? 'y' : 'x'] += 1; // get the beside row/column
 
-            var closestLeft = closestInRangeOf({position: seekPosition, align: align, range: -5});
-            var closestRight = closestInRangeOf({position: seekPosition, align: align, range: 5});
+            var closestLeft = closestInRangeOf({position: seekPositionLeft, align: align, range: -SLIDE_DISTANCE});
+            var closestRight = closestInRangeOf({position: seekPositionRight, align: align, range: SLIDE_DISTANCE});
 
             // must be all blocked
             if (!closestLeft && !closestRight) {
@@ -500,8 +506,6 @@ Hackatron.Game.prototype = {
                 return;
             }
 
-            //var goToPosition = null;
-
             if (diff.left < diff.right) {
                 // going left or up
                 self.player.character.sprite.body.velocity[diff.align] = -SLIDE_SPEED; // the -SLIDE_SPEED / 5 * diff.left part lets us base the speed we move with how far it is
@@ -512,13 +516,10 @@ Hackatron.Game.prototype = {
                 //goToPosition = closest * 16 - 8;
             } else {
                 // He's probably stuck because a few pixels are touching
-                // Lets him him out
-                self.player.character.sprite[diff.align] = position[diff.align] * 16;
+                // Lets round his position so he's in alignment
+                self.player.character.sprite.body.velocity.setTo(0, 0);
+                self.player.character.position[diff.align] = position[diff.align];
             }
-
-            //if (goToPosition) {
-                //repositionTimeout = setTimeout(() => { self.player.character.sprite.body.velocity.y = 0; self.player.character.sprite.y = goToPosition; }, REPOSITION_DELAY);
-            //}
         };
 
         this.map.collideTiles.forEach((tile) => {
@@ -547,7 +548,9 @@ Hackatron.Game.prototype = {
             }
         });
 
-        self.game.world.bringToTop(self.player.character.sprite);
+        if (self.player) {
+            self.game.world.bringToTop(self.player.character.sprite);
+        }
     },
 
     fitToWindow: function() {
@@ -557,16 +560,47 @@ Hackatron.Game.prototype = {
         document.getElementById('game').style['height'] = Hackatron.getHeightRatioScale() * 100 + '%';
         //window.onresize();
     },
+    shutdown: function() {
+        if (this.powerupInterval) {
+            clearInterval(this.powerupInterval);
+        }
+        if (this.updatePosInterval) {
+            clearInterval(this.updatePosInterval);
+        }
+        if (this.eventsInterval) {
+            clearInterval(this.eventsInterval);
+        }
+        this.player = null;
+        this.enemy = null;
+        this.hostId = null;
+        this.events = [];
+    },
 
     render: function() {
         this.fitToWindow();
+        //this.enableCollisionDebugging();
+
+        if (this.player && this.enemy) {
+            var distance = this.game.physics.arcade.distanceBetween(this.player.character.sprite, this.enemy.character.sprite);
+            var DANGER_DISTANCE = 300;
+
+            if (distance > DANGER_DISTANCE) {
+                alpha = 0;
+            } else {
+                alpha = (DANGER_DISTANCE - distance) / DANGER_DISTANCE;
+                if (this.tweenRed) {
+                    this.tweenRed.stop();
+                }
+
+                this.map.tilemap.layers[2].alpha = alpha;
+                //this.tweenRed = this.game.add.tween(this.map.tilemap.layers[2]).to({alpha: alpha}, 50, 'Linear', true, 0, 1);
+            }
+        }
     },
 
     enableCollisionDebugging: function() {
         this.game.debug.bodyInfo(this.player.character.sprite, 32, 32);
-
         this.game.debug.body(this.player.character.sprite);
-        //this.game.debug.body(this.map.layer);
     },
 
     pelletHelper: function(mapArray){
@@ -597,13 +631,16 @@ Hackatron.Game.prototype = {
             return this.players[playerId];
         }
 
+        return null;
+    },
+    createPlayer: function(playerId) {
         var player = new Player();
 
         player.init({
             id: playerId,
             name: playerId.substring(0, 2),
             game: this.game,
-            speed: PLAYER_SPEED
+            speed: DEFAULT_PLAYER_SPEED
         });
 
         this.players[playerId] = player;
@@ -668,9 +705,11 @@ Hackatron.Game.prototype = {
                 }
 
                 updateTimeout = setTimeout(function() {
-                    player.character.position = position;
-                    player.character.sprite.body.velocity.x = 0;
-                    player.character.sprite.body.velocity.y = 0;
+                    if (player.character.sprite.body) {
+                        player.character.position = position;
+                        player.character.sprite.body.velocity.x = 0;
+                        player.character.sprite.body.velocity.y = 0;
+                    }
                 }, 200);
             }
         } else if (event.key === 'updateEnemy') {
@@ -715,6 +754,11 @@ Hackatron.Game.prototype = {
             }
 
             var player = self.getPlayerById(event.info.player.id);
+
+            if (!player) {
+                self.createPlayer(event.info.player.id);
+            }
+
             player.name = event.info.player.name;
             player.character.position = event.info.player.position;
 
@@ -735,7 +779,7 @@ Hackatron.Game.prototype = {
 
                 self.enemy.init({
                     game: self.game,
-                    speed: PLAYER_SPEED,
+                    speed: DEFAULT_PLAYER_SPEED,
                     position: event.info.enemy.position
                 });
 
@@ -752,11 +796,13 @@ Hackatron.Game.prototype = {
 
         // Method for handling received deaths of other clients
         } else if (event.key === 'playerKilled') {
-            var player = self.getPlayerById(event.info.player.id);
-            self.enemy.addPoints(player.points);
-            player.kill();
+            var player = self.players[event.info.player.id];
+            // self.enemy.addPoints(player.points);
+            if (player) {
+                player.kill();
+            }
         // Method for handling player leaves
-        } else if (event.key === 'removePlayer') {
+      } else if (event.key === 'playerLeave') {
             if (self.players[event.info.player.id]) {
                 var player = self.players[event.info.player.id];
                 player.kill();
@@ -809,7 +855,7 @@ Hackatron.Game.prototype = {
 
             // If this player is the new host, lets set them up
             if (self.hostId === self.player.id) {
-                console.log('Hey now the host, lets do this!');
+                console.log('Hey now the host, lets do this!\n' + self.hostId);
                 self.runEnemySystem();
                 //self.runAiSystem();
                 self.runPowerUpSystem();
@@ -829,7 +875,7 @@ Hackatron.Game.prototype = {
         ['updatePlayer',
          'updateEnemy',
          'newPlayer',
-         'removePlayer',
+         'playerLeave',
          'welcomePlayer',
          'playerKilled',
          'powerupSpawned',

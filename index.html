@@ -34,6 +34,7 @@
   <script src="vendor/phaser-arcade-physics.js"></script>
   <script src="vendor/phaser-tiled.js"></script>
   <script src="vendor/phaser-debug.js"></script>
+  <script src="vendor/phaser-camera-shake.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>
 
   <script src="src/Core/Utils.js"></script>
@@ -45,6 +46,7 @@
   <script src="src/Objects/Powerup.js"></script>
   <script src="src/Objects/Character.js"></script>
   <script src="src/Objects/Countdown.js"></script>
+  <script src="src/Objects/Gameover.js"></script>
   <script src="src/Objects/Ghost.js"></script>
   <script src="src/Objects/Pellet.js"></script>
   <script src="src/Objects/Tron.js"></script>
@@ -71,6 +73,8 @@
       Hackatron.GAME_HEIGHT = 512; // Game originally designed for 256px
       Hackatron.UI_WIDTH = 900; // UI originally designed for 900px
       Hackatron.UI_HEIGHT = 900; // UI originally designed for 900px
+      Hackatron.TILE_WIDTH = 32;
+      Hackatron.TILE_HEIGHT = 32;
 
       var gameContainer = document.getElementById('game');
       var uiContainer = document.getElementById('ui');
@@ -131,6 +135,11 @@
           //     tilesetKey: 'general',
           //     floorTile: 1081
           // };
+
+          // Game Constants
+          DEFAULT_PLAYER_SPEED = 200;
+          POWERUP_SPAWN_INTERVAL = 5000;
+          UPDATE_INTERVAL = 100;
 
           Hackatron.loader.state.add('Preload', Hackatron.Preload);
           Hackatron.loader.state.add('Menu', Hackatron.Menu);
