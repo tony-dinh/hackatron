@@ -1,10 +1,22 @@
+* { box-sizing: border-box; }
+
 body {
-  background-color: #333;
+  background-color: #000;
+  margin: 0;
+  padding: 0;
 }
 
-#hackatron {
-}
 p {
   text-align: center;
   color: white;
+}
+
+#ui {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+#game {
+    margin: auto;
 }
