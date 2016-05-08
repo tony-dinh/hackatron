@@ -4,8 +4,9 @@ Hackatron.Menu = function(game) {
 
 Hackatron.Menu.prototype = {
     fitToWindow: function() {
-        this.game.canvas.style['width'] = '100%';
-        this.game.canvas.style['height'] = '100%';
+        this.game.canvas.style['width'] = '90%';
+        this.game.canvas.style['height'] = '90%';
+        this.game.canvas.style['transform'] = 'perspective(900px) rotateX(15deg) rotate(-3deg)';
         document.getElementById('game').style['width'] = Hackatron.getWidthRatioScale() * 100 + '%';
         document.getElementById('game').style['height'] = Hackatron.getHeightRatioScale() * 100 + '%';
         window.onresize();
@@ -33,6 +34,7 @@ Hackatron.Menu.prototype = {
 
         this.game.music = this.game.add.audio('audio/bg-0002', 1, true);
         this.game.music.play('', 0, 1, true);
+        this.game.music.mute = true;
     },
 
     update: function() {

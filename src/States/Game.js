@@ -7,6 +7,7 @@ Hackatron.Game = function(game) {
     this.hostId = null;
     this.player = null;
     this.blocks = [];
+    this.fireballs = [];
     this.players = null;
 };
 
@@ -38,11 +39,11 @@ Hackatron.Game.prototype = {
     getValidPosition: function() {
         var position = null;
         var currentPosition = 0;
-        var totalPositions = Hackatron.TILE_WIDTH * Hackatron.TILE_HEIGHT;
+        var totalPositions = Hackatron.TILE_COUNT_HORIZONTAL * Hackatron.TILE_COUNT_VERTICAL * 2;
 
         while (!position && currentPosition < totalPositions) {
-            var x = this.game.rnd.integerInRange(1, Hackatron.TILE_WIDTH - 1);
-            var y = this.game.rnd.integerInRange(1, Hackatron.TILE_HEIGHT - 1);
+            var x = this.game.rnd.integerInRange(1, Hackatron.TILE_COUNT_HORIZONTAL - 1);
+            var y = this.game.rnd.integerInRange(1, Hackatron.TILE_COUNT_VERTICAL - 1);
             // mapData goes top to down and left to right
             var tile = this.getTileAt({x: x, y: y});
 
@@ -54,7 +55,7 @@ Hackatron.Game.prototype = {
             totalPositions++;
         }
 
-        // We tried once for each tile on the map, with no success
+        // We tried once for each tile on the map, twice, with no success
         // Lets just put them at 1,1
         if (!position) {
             position = {x: 1, y: 1};
@@ -65,7 +66,7 @@ Hackatron.Game.prototype = {
         return position;
     },
 
-    resizeGame: function (width, height) {
+    resizeGame: function(width, height) {
         this.game.width = width;
         this.game.height = height;
 
@@ -115,23 +116,21 @@ Hackatron.Game.prototype = {
     },
 
     initEvents: function() {
-        var self = this;
-
         this.eventsInterval = setInterval(this.broadcastEvents.bind(this), 100);
 
         var lastUpdateInfo = null;
 
         // Send player position every 50ms
-        this.updatePosInterval = setInterval(function() {
-            self.player.character.updatePos();
+        this.updatePosInterval = setInterval(() => {
+            this.player.character.updatePos();
 
-            if (!self.player.character.sprite.body) { return;}
-            if (!self.player.character.dirty) { return; }
+            if (!this.player.character.sprite.body) { return;}
+            if (!this.player.character.dirty) { return; }
 
             var info = {
-                id: self.player.id,
-                position: self.player.character.position,
-                direction: self.player.character.direction
+                id: this.player.id,
+                position: this.player.character.position,
+                direction: this.player.character.direction
             };
 
             // Don't send an event if its the same as last time
@@ -140,27 +139,27 @@ Hackatron.Game.prototype = {
                 return;
             }
 
-            self.addEvent({key: 'updatePlayer', info: info});
+            this.fireEvent({key: 'updatePlayer', info: info});
 
             lastUpdateInfo = info;
         }, UPDATE_INTERVAL);
 
         // If this is the host
         // Send enemy position every 50ms
-        setInterval(function() {
-            if (self.enemy && self.player.id === self.hostId) {
-                //self.enemy.character.updatePos();
+        this.enemyInterval = setInterval(() => {
+            if (this.enemy && this.player.id === this.hostId) {
+                //this.enemy.character.updatePos();
 
-                if (!self.enemy.character.dirty) { return; }
+                if (!this.enemy.character.dirty) { return; }
 
-                self.enemy.character.dirty = false;
+                this.enemy.character.dirty = false;
 
                 var info = {
-                    position: self.enemy.character.position,
-                    direction: self.enemy.character.direction
+                    position: this.enemy.character.position,
+                    direction: this.enemy.character.direction
                 };
 
-                self.addEvent({key: 'updateEnemy', info: info});
+                this.fireEvent({key: 'updateEnemy', info: info});
             }
         }, UPDATE_INTERVAL);
     },
@@ -172,6 +171,12 @@ Hackatron.Game.prototype = {
     initHotkeys: function() {
         this.fullscreenKey = this.game.input.keyboard.addKey(Phaser.Keyboard.F);
         this.fullscreenKey.onDown.add(this.toggleFullscreen, this);
+        this.aiKey = this.game.input.keyboard.addKey(Phaser.Keyboard.I);
+        this.aiKey.onDown.add(this.toggleAI, this);
+    },
+
+    toggleAI: function() {
+        this.ai.enabled = !this.ai.enabled;
     },
 
     runAiSystem: function() {
@@ -205,7 +210,7 @@ Hackatron.Game.prototype = {
         var playerParams = {
             id: Utils.generateId(),
             game: this.game,
-            name: Hackatron.playerName,
+            name: this.getRandomName(),
             speed: DEFAULT_PLAYER_SPEED,
             worldPosition: worldPosition,
             keys: {
@@ -241,16 +246,45 @@ Hackatron.Game.prototype = {
     },
 
     initGameover: function() {
+        this.isGameOver = true;
+
         this.game.plugins.cameraShake.shake();
 
         var gameover = new Gameover();
         gameover.init(this.game);
         gameover.start();
 
+        setTimeout(function() {
+            window.location.reload();
+        }, 2000);
+        //this.shutdown();
+    },
+
+    initDeathScreen: function() {
+        this.game.plugins.cameraShake.shake();
+
+        this.enemy.character.worldPosition = this.getValidPosition();
+        this.enemy.character.frozen = true;
+
+        var death = new Gameover();
+        death.init(this.game);
+        death.start();
+
         this.newGameKey = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
-        this.newGameKey.onDown.add(function() {
-            this.game.state.start('Menu');
-        }, this);
+        this.newGameKey.onDown.add(() => {
+            // Remove death screen
+
+            this.newGameKey.onDown.remove();
+        });
+
+        setTimeout(() => {
+            death.sprite.destroy();
+            this.player.character.revive();
+
+            setTimeout(() => {
+                this.enemy.character.frozen = false;
+            }, 1000);
+        }, 2000);
     },
 
     initSFX: function() {
@@ -263,81 +297,42 @@ Hackatron.Game.prototype = {
     },
 
     initPowerUps: function() {
-        var self = this;
-
         this.powerups = [];
-        for (var i = 0; i <= Hackatron.TILE_HEIGHT; i++) {
+        for (var i = 0; i <= Hackatron.TILE_COUNT_VERTICAL; i++) {
             this.powerups.push([]);
         }
 
-        setInterval(function() {
-            self.powerups.forEach(function(_, row) {
-                self.powerups[row].forEach(function(_, column) {
-                    var powerup = self.powerups[row][column];
+        this.powerupCheckInterval = setInterval(() => {
+            this.powerups.forEach((_, row) => {
+                this.powerups[row].forEach((_, column) => {
+                    var powerup = this.powerups[row][column];
                     if (powerup && powerup.handler.ended) {
-                        self.powerups[row][column] = null;
+                        this.powerups[row][column] = null;
                     }
                 });
             });
-        }.bind(this), 1000);
+        }, 1000);
     },
 
     runPowerUpSystem: function() {
-        var self = this;
-        self.powerupInterval = setInterval(function() {
+        var run = () => {
             var powerupHandlers = Object.keys(Powerup.handlers);
             var randomHandler = powerupHandlers[this.game.rnd.integerInRange(0, powerupHandlers.length-1)];
             var powerup = new Powerup();
             powerup.init({key: randomHandler, game: this.game, map: this.map, player: this.player});
-            powerup.handler.on('started', () => { self.addEvent({key: 'foundPowerup', info: {state: powerup.handler.state, player: {id: self.player.id}}}); });
-            powerup.handler.on('destroyed', (params) => { params.positions.forEach((position) => { self.powerups[position.x][position.y] = null; }); });
+            powerup.handler.on('started', () => { this.fireEvent({key: 'foundPowerup', info: {state: powerup.handler.state, player: {id: this.player.id}}}); });
+            powerup.handler.on('destroyed', (params) => { params.positions.forEach((position) => { this.powerups[position.x][position.y] = null; }); });
 
             this.powerups[powerup.handler.state.position.x][powerup.handler.state.position.y] = powerup;
 
-            this.addEvent({key: 'powerupSpawned', info: {handler: {key: randomHandler, state: powerup.handler.state}}});
-        }.bind(this), POWERUP_SPAWN_INTERVAL);
+            this.fireEvent({key: 'powerupSpawned', info: {handler: {key: randomHandler, state: powerup.handler.state}}});
+        };
+
+        this.powerupInterval = setInterval(run, POWERUP_SPAWN_INTERVAL);
+
+        run();
     },
-
-    // TODO: causing some errors, not sure why
-    createExplodingParticles: function(sprite, cb) {
-        var self = this;
-
-        // create a Phaser.Group for all the particles of the explosion
-        self.explodingGroup = self.game.add.group();
-        self.explodingGroup.enableBody = true;
-        self.explodingGroup.physicsBodyType = Phaser.Physics.ARCADE;
-        var colors = ['#77DD77', '#B39EB5', '#C23B22', '#FFB347', '#FDFD96', '#836953', '#779ECB', '#FFD1DC'];
-
-        // create a black square as gfx for the particles
-        var explodingRect = self.game.make.bitmapData(5, 5);
-        explodingRect.ctx.fillStyle = colors[self.game.rnd.integerInRange(0, colors.length-1)];
-        explodingRect.ctx.fillRect(0, 0, 5, 5);
-
-        var explodingSprite = new Phaser.Sprite(self.game, sprite.x, sprite.y, explodingRect);
-        self.explodingGroup.add(explodingSprite);
-
-        explodingSprite = new Phaser.Sprite(self.game, sprite.x, sprite.y, explodingRect);
-        self.explodingGroup.add(explodingSprite);
-
-        // setup the animation for the particles. make them "jump" by setting a negative velocity
-        // and set timeout to make the blink before being finally destroyed
-        self.explodingGroup.forEach(function (sprite) {
-            sprite.body.gravity.y = 35;
-            sprite.body.velocity.setTo(self.game.rnd.integerInRange(-20, 20), self.game.rnd.integerInRange(-35, -50));
-
-            setTimeout(function () {
-                sprite.visible = false;
-                setTimeout(function () {
-                    sprite.visible = true;
-                    setTimeout(function () {
-                        sprite.destroy();
-                        cb && cb();
-                    }, 100);
-                }, 100);
-            }, 10);
-        });
-    },
-    addEvent: function(event) {
+    fireEvent: function(event) {
         this.events.push(event);
     },
     broadcastEvents: function() {
@@ -349,8 +344,6 @@ Hackatron.Game.prototype = {
         this.events = [];
     },
     update: function() {
-        var self = this;
-
         if (this.musicKey.isDown) {
             this.game.music.mute = !this.game.music.mute;
         }
@@ -374,22 +367,18 @@ Hackatron.Game.prototype = {
             // right
             if (Math.abs(angle) > 0 && Math.abs(angle) <= 45) {
                 this.player.character.inputRight = true;
-                //this.player.character.sprite.body.velocity.x = DEFAULT_PLAYER_SPEED;
             }
             // left
             if (Math.abs(angle) > 135 && Math.abs(angle) <= 180) {
                 this.player.character.inputLeft = true;
-                //this.player.character.sprite.body.velocity.x = -DEFAULT_PLAYER_SPEED;
             }
             // up
             if (Math.abs(angle) > 45 && Math.abs(angle) <= 135 && angle < 0) {
                 this.player.character.inputUp = true;
-                //this.player.character.sprite.body.velocity.y = -DEFAULT_PLAYER_SPEED;
             }
             // down
             if (Math.abs(angle) > 45 && Math.abs(angle) <= 135 && angle > 0) {
                 this.player.character.inputDown = true;
-                //this.player.character.sprite.body.velocity.y = DEFAULT_PLAYER_SPEED;
             }
 
             //  if it's overlapping the mouse, don't move any more
@@ -403,37 +392,22 @@ Hackatron.Game.prototype = {
             this.player.character.inputLeft = false;
             this.player.character.inputUp = false;
             this.player.character.inputDown = false;
-            // this.player.character.sprite.body.velocity.x = 0;
-            // this.player.character.sprite.body.velocity.y = 0;
         }
 
-        var collideEnemyHandler = function() {
-            // Scope: this = Phaser.Game
-            if (self.player.character.invincible) { return; }
+        var collideEnemyHandler = () => {
+            if (!this.player.character.isAlive) { return; }
+            if (this.player.character.invincible) { return; }
 
-            //self.game.fx.play('monsterRoar');
-            self.player.kill();
+            this.player.kill();
 
-            if (self.enemy) {
-                self.enemy.character.addPoints(self.player.character.points);
-            }
-
-            self.addEvent({key: 'playerKilled', info: {
-                player: {id: self.player.id}
+            this.fireEvent({key: 'playerKilled', info: {
+                player: {id: this.player.id}
             }});
-            if (self.player.id === self.hostId) {
-                // console.log("the id is: " + self.player.id);
-                self.addEvent({key: 'findNewHost'});
-            }
 
-            if (self.ai) {
-                self.ai.stopPathFinding();
-            }
-
-            self.initGameover();
+            this.initDeathScreen();
         };
 
-        var SLIDE_SPEED = self.player.character.speed/4;
+        var SLIDE_SPEED = this.player.character.speed/4;
         var SLIDE_DISTANCE = 5;
 
         var closestInRangeOf = (params) => {
@@ -487,7 +461,7 @@ Hackatron.Game.prototype = {
         };
 
         var collideWallHandler = () => {
-            if (!self.player.character.direction) {
+            if (!this.player.character.direction) {
                 return;
             }
             // Find nearest opening and go that way
@@ -498,8 +472,8 @@ Hackatron.Game.prototype = {
             //   check from my position to mapWidth for the closest opening
             // If closest is left, set velocity x = -500
             // If closest is right, set velocity x = 500
-            var position = self.player.character.worldPosition;
-            var direction = self.player.character.direction;
+            var position = this.player.character.worldPosition;
+            var direction = this.player.character.direction;
             var diff = getNearestOpening({position: position, direction: direction});
 
             if (!diff) {
@@ -508,68 +482,114 @@ Hackatron.Game.prototype = {
 
             if (diff.left < diff.right) {
                 // going left or up
-                self.player.character.sprite.body.velocity[diff.align] = -SLIDE_SPEED; // the -SLIDE_SPEED / 5 * diff.left part lets us base the speed we move with how far it is
+                this.player.character.sprite.body.velocity[diff.align] = -SLIDE_SPEED; // the -SLIDE_SPEED / 5 * diff.left part lets us base the speed we move with how far it is
                 //goToPosition = closest * 16 + 8;
             } else if (diff.right < diff.left) {
                 // going right or down
-                self.player.character.sprite.body.velocity[diff.align] = SLIDE_SPEED;
+                this.player.character.sprite.body.velocity[diff.align] = SLIDE_SPEED;
                 //goToPosition = closest * 16 - 8;
             } else {
                 // He's probably stuck because a few pixels are touching
                 // Lets round his position so he's in alignment
-                self.player.character.sprite.body.velocity.setTo(0, 0);
-                self.player.character.position[diff.align] = position[diff.align];
+                //this.player.character.sprite.body.velocity.setTo(0, 0);
+                this.player.character.position[diff.align] = position[diff.align];
             }
         };
 
-        this.map.collideTiles.forEach((tile) => {
-            // TODO: Throttle collideWallHandler
-            this.game.physics.arcade.collide(this.player.character.sprite, tile, collideWallHandler); // tile is an object of Phaser.Sprite
-        });
-
-        if (self.enemy) {
-            self.game.physics.arcade.collide(self.enemy.character.sprite, self.map.tilemap.layer);
-            self.game.physics.arcade.overlap(self.enemy.character.sprite, self.player.character.sprite, collideEnemyHandler);
+        if (this.player.character.collisionEnabled) {
+            this.map.collideTiles.forEach((tile) => {
+                // TODO: Throttle collideWallHandler
+                this.game.physics.arcade.collide(this.player.character.sprite, tile, collideWallHandler); // tile is an object of Phaser.Sprite
+            });
         }
 
-        self.powerups.forEach(function(row) {
-            row.forEach(function(powerup) {
+
+        if (this.enemy) {
+            // this.game.physics.arcade.collide(this.enemy.character.sprite, this.map.tilemap.layer);
+
+            // this.map.collideTiles.forEach((tile) => {
+            //     this.game.physics.arcade.collide(this.enemy.character.sprite, tile);
+            // });
+
+            if (this.player.character.collisionEnabled) {
+                this.game.physics.arcade.overlap(this.enemy.character.sprite, this.player.character.sprite, collideEnemyHandler);
+            }
+
+        }
+
+        this.powerups.forEach((row) => {
+            row.forEach((powerup) => {
                 if (powerup) {
                     powerup.handler.update();
                 }
             });
         });
 
-        self.blocks.forEach((block) => {
+        var collideFireballHandler = (index) => {
+            // We don't want to destroy fireballs on contact
+            this.player.character.dirty = true;
+            // TODO: dedect pts here
+        };
+
+        var collideBlockHandler = () => {
+            this.player.character.dirty = true;
+        };
+
+        this.blocks.forEach((block) => {
             //console.log(block);
-            self.game.physics.arcade.collide(self.player.character.sprite, block);
+            if (this.player.character.collisionEnabled) {
+                this.game.physics.arcade.collide(this.player.character.sprite, block, collideBlockHandler);
+            }
+
             if (this.enemy) {
-                self.game.physics.arcade.collide(self.enemy.character.sprite, block);
+                this.game.physics.arcade.collide(this.enemy.character.sprite, block);
             }
         });
 
-        if (self.player) {
-            self.game.world.bringToTop(self.player.character.sprite);
+        this.fireballs.forEach((fireball, index) => {
+            if (fireball.owner !== this.player.id) {
+                var playerBlocked = this.player.character.sprite.body.blocked;
+                if (!(playerBlocked.right && playerBlocked.left) &&
+                    !(playerBlocked.up && playerBlocked.down)) {
+                        this.game.physics.arcade.collide(this.player.character.sprite, fireball, function() {
+                            collideFireballHandler(index);
+                        });
+                }
+            }
+            if (this.enemy) {
+                var enemyBlocked = this.enemy.character.sprite.body.blocked;
+                if (!(enemyBlocked.right && enemyBlocked.left) &&
+                    !(enemyBlocked.up && enemyBlocked.down)) {
+                        this.game.physics.arcade.collide(this.enemy.character.sprite, fireball);
+                }
+            }
+        });
+
+        if (this.player) {
+            this.game.world.bringToTop(this.player.character.sprite);
         }
     },
 
     fitToWindow: function() {
-        this.game.canvas.style['width'] = '100%';
-        this.game.canvas.style['height'] = '100%';
+        this.game.canvas.style['margin'] = 'auto';
+
+        if (this.isGameOver) {
+        } else {
+            this.game.canvas.style['width'] = '90%';
+            this.game.canvas.style['height'] = '90%';
+            this.game.canvas.style['transform'] = 'perspective(900px) rotateX(15deg) rotate(-3deg)';
+        }
+
         document.getElementById('game').style['width'] = Hackatron.getWidthRatioScale() * 100 + '%';
         document.getElementById('game').style['height'] = Hackatron.getHeightRatioScale() * 100 + '%';
-        //window.onresize();
     },
     shutdown: function() {
-        if (this.powerupInterval) {
-            clearInterval(this.powerupInterval);
-        }
-        if (this.updatePosInterval) {
-            clearInterval(this.updatePosInterval);
-        }
-        if (this.eventsInterval) {
-            clearInterval(this.eventsInterval);
-        }
+        this.socket.removeAllListeners('events');
+        this.powerupInterval && clearInterval(this.powerupInterval);
+        this.updatePosInterval && clearInterval(this.updatePosInterval);
+        this.eventsInterval && clearInterval(this.eventsInterval);
+        this.enemyInterval && clearInterval(this.enemyInterval);
+        this.powerupCheckInterval && clearInterval(this.powerupCheckInterval);
         this.player = null;
         this.enemy = null;
         this.hostId = null;
@@ -603,26 +623,6 @@ Hackatron.Game.prototype = {
         this.game.debug.body(this.player.character.sprite);
     },
 
-    pelletHelper: function(mapArray){
-//        var pelletArr = [];
-        var x = 0;
-        var y = 0;
-        var pos = 1;
-        for (pos = 1; pos < mapArray.length ; pos++) {
-            if (pos % 32 === 0) {
-                x = 0;
-                y++;
-            }
-            else {
-                x++;
-            }
-            if (mapArray[pos] === 0) {
-                var pellet = this.add.sprite(x*16+2, y*16+2, 'gfx/effects/pellet');
-                pellet.scale.x = 0.005;
-                pellet.scale.y = 0.005;
-            }
-        }
-    },
     getPlayerById: function(playerId) {
         if (playerId == this.player.id) {
             return this.player;
@@ -633,12 +633,18 @@ Hackatron.Game.prototype = {
 
         return null;
     },
+
+    getRandomName: function() {
+        var names = ['riffongrief', 'Blood', 'Midnight', 'Puritytempest', 'Jester', 'Goldmagus', 'Lightning', 'Madguard', 'Lionshadow', 'Tempest', 'Eternity', 'Faunaguard', 'Lordbeast', 'Darklord', 'Veil', 'Tombmourner', 'Hateghost', 'Spirittotem', 'Cometzealot', 'Wind', 'Paradox', 'Tombsinner', 'Darkgod', 'Reaper', 'Firereaper', 'Shadowhowl', 'Spiritlord', 'Gust', 'Song', 'Lord', 'Gunner', 'Dawn', 'King', 'King', 'Knightkiller', 'Rubyguard', 'Whitemidnight', 'Flame', 'Roseice', 'Mourner', 'Lordicon', 'Pandemonium', 'Fellkiller', 'Rascalfinder', 'Claw', 'Ragechaos', 'Ragnarok', 'Demonheart', 'Talonknight', 'Bane', 'Windseeker', 'Warsaber', 'Lionslayer', 'Veil', 'Darkbeast', 'Honorreaper', 'Lancequake', 'Victory', 'Warlockmage', 'Nemesis', 'Queen', 'Bloodbattler', 'Jericho', 'Roguegriffon', 'Wanderlust', 'Mageslayer', 'Cursefinder', 'Legend', 'Beastclaw', 'Shadow', 'Faunaknight', 'Grave', 'Demonfinder', 'Fauna', 'Cult', 'Noblewarlock', 'Faunachanter', 'Battler', 'Talonreaper', 'Steeliron'];
+
+        return names[Math.floor(Math.random() * names.length)]
+    },
+
     createPlayer: function(playerId) {
         var player = new Player();
 
         player.init({
             id: playerId,
-            name: playerId.substring(0, 2),
             game: this.game,
             speed: DEFAULT_PLAYER_SPEED
         });
@@ -652,12 +658,54 @@ Hackatron.Game.prototype = {
         return player;
     },
 
+    welcomePlayer: function(playerId) {
+        // Add players
+        var players = [];
+        for(playerId in this.players) {
+            var player = this.players[playerId];
+
+            players.push({
+                id: player.id,
+                name: player.name,
+                position: player.character.position
+            });
+        }
+
+        // Add the host
+        players.push({
+            id: this.player.id,
+            name: this.player.name,
+            position: this.player.character.position
+        });
+
+        // Add powerups
+        var powerups = [];
+        for(row in this.powerups) {
+            for(column in this.powerups[row]) {
+                var powerup = this.powerups[row][column];
+
+                if (!powerup) { continue; }
+
+                powerups.push({handler: {key: powerup.handler.key, state: powerup.handler.state}});
+            }
+        }
+
+        // Compile the game data
+        var gameData = {
+            player: {id: playerId},
+            enemy: {position: this.enemy.character.position},
+            powerups: powerups,
+            players: players
+        };
+
+        this.fireEvent({key: 'welcomePlayer', info: gameData});
+    },
+
 // ============================================================================
 //                          Socket Event Handlers
 // ============================================================================
     parseEvent: function(event) {
-        var self = this;
-        //console.log('Receiving.. ' + event.key + ' ' + JSON.stringify(event.info));
+        console.log('Got event: ' + event.key, event.info);
 
         // Method for updating board local client game state using info
         // broadcasted to all players. The info variable contains the
@@ -666,230 +714,215 @@ Hackatron.Game.prototype = {
         if (event.key === 'updatePlayer') {
             var id = event.info.id;
             var position = event.info.position;
+            var direction = event.info.direction;
 
             // Don't update ourself (bug?)
-            if (event.info.id === self.player.id) { return; }
+            if (event.info.id === this.player.id) { return; }
 
-            var player = self.getPlayerById(id);
+            var player = this.getPlayerById(id);
+
+            if (!player) { return; }
 
             // disable animations for now - lag?
             if (player.character.sprite.body) {
-                clearTimeout(updateTimeout);
-
-                switch(event.info.direction) {
-                    case 'walkUp':
-                        player.character.inputUp = true;
-                        player.character.updatePos();
-                        break;
-
-                    case 'walkDown':
-                        player.character.inputDown = true;
-                        player.character.updatePos();
-                        break;
-
-                    case 'walkLeft':
-                        player.character.inputLeft = true;
-                        player.character.updatePos();
-                        break;
-
-                    case 'walkRight':
-                        player.character.inputRight = true;
-                        player.character.updatePos();
-                        break;
-                   default:
-                        player.character.inputRight = false;
-                        player.character.inputLeft = false;
-                        player.character.inputUp = false;
-                        player.character.inputDown = false;
-                        break;
-                }
-
-                updateTimeout = setTimeout(function() {
-                    if (player.character.sprite.body) {
-                        player.character.position = position;
-                        player.character.sprite.body.velocity.x = 0;
-                        player.character.sprite.body.velocity.y = 0;
-                    }
-                }, 200);
+                player.character.sprite.animations.play(direction, 3, false);
+                player.character.position = position;
             }
         } else if (event.key === 'updateEnemy') {
-            if (self.player.id !== self.hostId) {
-                if (self.enemy) {
-                    self.enemy.character.position = event.info.position;
+            if (this.player.id !== this.hostId) {
+                if (this.enemy) {
+                    this.enemy.character.position = event.info.position;
                 }
             }
         // When new player joins, host shall send them data about the 'position'
         } else if (event.key === 'newPlayer') {
-            if (self.player.id === self.hostId) {
-                var players = [];
-                for(playerId in self.players) {
-                    var player = self.players[playerId];
+            // If we're this player, we don't need to do anything
+            if (this.player.id === event.info.player.id) { return; }
 
-                    players.push({
-                        id: player.id,
-                        name: player.name,
-                        position: player.character.position
-                    });
-                }
-
-                var powerups = [];
-                for(row in self.powerups) {
-                    for(column in self.powerups[row]) {
-                        var powerup = self.powerups[row][column];
-
-                        if (!powerup) { continue; }
-
-                        powerups.push({handler: {key: powerup.handler.key, state: powerup.handler.state}});
-                    }
-                }
-
-                var gameData = {
-                    player: {id: event.info.player.id},
-                    enemy: {position: self.enemy.character.position},
-                    powerups: powerups,
-                    players: players
-                };
-
-                self.addEvent({key: 'welcomePlayer', info: gameData});
+            if (this.player.id === this.hostId) {
+                this.welcomePlayer(event.info.player.id);
             }
 
-            var player = self.getPlayerById(event.info.player.id);
+            var player = this.getPlayerById(event.info.player.id);
 
             if (!player) {
-                self.createPlayer(event.info.player.id);
+                player = this.createPlayer(event.info.player.id);
             }
 
             player.name = event.info.player.name;
             player.character.position = event.info.player.position;
 
-            console.log(event.info.player.id + ' has joined the game!');
+            console.log('New player ' + event.info.player.id + ' has joined the game!');
         // Set up game state as a new player receiving game data from host
         } else if (event.key === 'welcomePlayer') {
-            if (self.player.id === event.info.player.id) {
+            if (this.player.id === event.info.player.id) {
                 // Setup players
-                event.info.players.forEach(function() {
-                    var player = self.getPlayerById(event.info.player.id);
-                    player.name = event.info.player.name;
-                    if (event.info.player.position)
-                    player.character.position = event.info.player.position;
+                event.info.players.forEach((playerInfo) => {
+                    var player = this.createPlayer(playerInfo.id);
+                    player.name = playerInfo.name;
+                    if (playerInfo.position) {
+                        player.character.position = playerInfo.position;
+                    }
+
+                    this.players[player.id] = player;
                 });
 
                 // Setup enemy
-                self.enemy = new Enemy();
+                this.enemy = new Enemy();
 
-                self.enemy.init({
-                    game: self.game,
+                this.enemy.init({
+                    game: this.game,
                     speed: DEFAULT_PLAYER_SPEED,
                     position: event.info.enemy.position
                 });
 
                 // Setup powerups
-                event.info.powerups.forEach(function(powerupInfo) {
+                event.info.powerups.forEach((powerupInfo) => {
                     var powerup = new Powerup();
-                    powerup.init({key: powerupInfo.handler.key, game: self.game, map: self.map, player: self.player, state: powerupInfo.handler.state});
-                    powerup.handler.on('destroyed', (params) => { params.positions.forEach((position) => { self.powerups[position.x][position.y] = null; }); });
+                    powerup.init({key: powerupInfo.handler.key, game: this.game, map: this.map, player: this.player, state: powerupInfo.handler.state});
+                    powerup.handler.on('destroyed', (params) => { params.positions.forEach((position) => { this.powerups[position.x][position.y] = null; }); });
 
-                    self.powerups[powerup.handler.state.position.x][powerup.handler.state.position.y] = powerup;
+                    this.powerups[powerup.handler.state.position.x][powerup.handler.state.position.y] = powerup;
                 });
             }
-
-
         // Method for handling received deaths of other clients
         } else if (event.key === 'playerKilled') {
-            var player = self.players[event.info.player.id];
-            // self.enemy.addPoints(player.points);
+            var player = this.players[event.info.player.id];
+            // this.enemy.addPoints(player.points);
             if (player) {
                 player.kill();
             }
         // Method for handling player leaves
       } else if (event.key === 'playerLeave') {
-            if (self.players[event.info.player.id]) {
-                var player = self.players[event.info.player.id];
+            if (this.players[event.info.player.id]) {
+                var player = this.players[event.info.player.id];
                 player.kill();
 
-                delete self.players[event.info.player.id];
+                delete this.players[event.info.player.id];
             }
         // Method for handling spawned power ups by the host
         } else if (event.key === 'powerupSpawned') {
             // TODO: we already do this above, refactor it out
             var powerup = new Powerup();
-            powerup.init({key: event.info.handler.key, game: self.game, map: self.map, player: self.player, state: event.info.handler.state});
-            powerup.handler.on('started', () => { self.addEvent({key: 'foundPowerup', info: {player: {id: self.player.id}, state: powerup.handler.state}}); });
-            powerup.handler.on('destroyed', (params) => { params.positions.forEach((position) => { self.powerups[position.x][position.y] = null; }); });
+            powerup.init({key: event.info.handler.key, game: this.game, map: this.map, player: this.player, state: event.info.handler.state});
+            powerup.handler.on('started', () => { this.fireEvent({key: 'foundPowerup', info: {player: {id: this.player.id}, state: powerup.handler.state}}); });
+            powerup.handler.on('destroyed', (params) => { params.positions.forEach((position) => { this.powerups[position.x][position.y] = null; }); });
 
-            self.powerups[powerup.handler.state.position.x][powerup.handler.state.position.y] = powerup;
+            this.powerups[powerup.handler.state.position.x][powerup.handler.state.position.y] = powerup;
         // Method for handling spawned blocks by other players
         } else if (event.key === 'foundPowerup') {
             // TODO: we already do this above, refactor it out
-            var powerup = self.powerups[event.info.state.position.x][event.info.state.position.y];
+            var powerup = this.powerups[event.info.state.position.x][event.info.state.position.y];
 
             if (powerup) {
-                self.powerups[event.info.state.position.x][event.info.state.position.y] = null;
-                powerup.player = self.getPlayerById(event.info.player.id);
+                this.powerups[event.info.state.position.x][event.info.state.position.y] = null;
+                powerup.handler.player = this.getPlayerById(event.info.player.id);
                 powerup.handler.start();
             }
         // Method for handling spawned blocks by other players
         } else if (event.key === 'blockSpawned') {
-            var block = self.game.add.sprite(event.info.x, event.info.y, 'gfx/blocks/glitch');
+            var block = this.game.add.sprite(event.info.x, event.info.y, 'gfx/blocks/glitch');
             // block.key.copyRect('powerups', getRect(5, 4), 0, 0);
-            self.game.physics.arcade.enable(block, Phaser.Physics.ARCADE);
+            this.game.physics.arcade.enable(block, Phaser.Physics.ARCADE);
             block.animations.add('glitch', [0,1,2], 12, true, true);
             block.animations.play('glitch');
-            block.scale.x = 1.25;
-            block.scale.y = 1.25;
+            block.scale.x = 1;
+            block.scale.y = 1;
             block.body.immovable = true;
 
             // Make block fade in 2.0 seconds
-            self.game.add.tween(block).to({ alpha: 0 }, 2000, 'Linear', true, 0, -1);
+            var BLOCK_DURATION = 2000;
+            this.game.add.tween(block).to({ alpha: 0 },  BLOCK_DURATION, 'Linear', true, 0, -1);
 
-            self.blocks.push(block);
-            setTimeout(function() {
-                self.blocks = self.blocks.filter(function(b) {
+            this.blocks.push(block);
+            setTimeout(() => {
+                Hackatron.game.blocks = Hackatron.game.blocks.filter((b) => {
                     return (b !== block);
                 });
 
                 block.destroy();
-            }, 2000);
+            },  BLOCK_DURATION);
+        } else if (event.key === 'fireballFired') {
+            var fireball = this.game.add.sprite(event.info.x, event.info.y, 'gfx/buffs');
+            fireball.owner = event.info.id;
+            fireball.anchor.setTo(0.5);
+            fireball.animations.add('fireball', ['42'], 1, true, true);
+            fireball.animations.play('fireball');
+
+            this.game.physics.arcade.enable(fireball, Phaser.Physics.ARCADE);
+            fireball.body.collideWorldBounds = false;
+            fireball.body.mass = .9;
+            fireball.scale.x = 0.5;
+            fireball.scale.y = 0.5;
+            Hackatron.game.fireballs.push(fireball);
+            var FIREBALL_SPEED = event.info.speed;
+            switch (event.info.direction) {
+            case "walkUp":
+                fireball.body.velocity.y = -FIREBALL_SPEED;
+                fireball.angle = -90;
+                break;
+            case "walkDown":
+                fireball.body.velocity.y = FIREBALL_SPEED;
+                fireball.angle = 90;
+
+                break;
+            case "walkLeft":
+                fireball.body.velocity.x = -FIREBALL_SPEED;
+                fireball.angle = 180;
+                break;
+            case "walkRight":
+                fireball.body.velocity.x = FIREBALL_SPEED;
+                break;
+            default:
+                break;
+            }
+            // fade out in 200ms
+            var FIRE_BALL_DURATION = 200;
+            var tween = this.game.add.tween(fireball).to( { alpha: 0 }, FIRE_BALL_DURATION, 'Linear', true);
+            tween.onComplete.add(function() {
+                tween.stop();
+            });
+
+            setTimeout(function() {
+                if (fireball) {
+                    Hackatron.game.fireballs = Hackatron.game.fireballs.filter(function(fb) {
+                        return (fb !== fireball);
+                    });
+                    fireball.destroy();
+                }
+            }, FIRE_BALL_DURATION);
         } else if (event.key === 'setHost') {
-            self.hostId = event.info.player.id;
+            // Check if we already know this is the host,
+            // And if it's this player, we don't need to set ourselves up again
+            if (this.hostId === event.info.player.id) { return; }
+
+            this.hostId = event.info.player.id;
 
             // If this player is the new host, lets set them up
-            if (self.hostId === self.player.id) {
-                console.log('Hey now the host, lets do this!\n' + self.hostId);
-                self.runEnemySystem();
-                //self.runAiSystem();
-                self.runPowerUpSystem();
+            if (this.hostId === this.player.id) {
+                console.log('Hey now the host, lets do this!\n' + this.hostId);
+
+                this.runEnemySystem();
+
+                setTimeout(() => {
+                    this.runAiSystem();
+                    this.runPowerUpSystem();
+                }, 3000);
             }
         }
     },
     registerToEvents: function () {
-        var self = this;
-
         // Method for receiving multiple events at once
         // {events: [{key: 'eventName', info: {...data here...}]}
-        self.socket.on('events', function(data) {
-            data.events.forEach(function(event) { self.parseEvent(event); });
-        });
-
-        // Route all the events to the event parser
-        ['updatePlayer',
-         'updateEnemy',
-         'newPlayer',
-         'playerLeave',
-         'welcomePlayer',
-         'playerKilled',
-         'powerupSpawned',
-         'blockSpawned',
-         'foundPowerup',
-         'setHost'].forEach(function(key) {
-            self.socket.on(key, function(info) { self.parseEvent({key: key, info: info}); });
+        this.socket.on('events', (data) => {
+            data.events.forEach((event) => { this.parseEvent(event); });
         });
     },
 
     // Method to broadcast to  other clients (if there are any) that you have
     // joined the game
     joinGame: function () {
-        this.addEvent({key: 'newPlayer', info: {
+        this.fireEvent({key: 'newPlayer', info: {
             player: {
                 id: this.player.id,
                 name: this.player.name,

@@ -12,29 +12,62 @@ Player.prototype.init = function(params) {
     this.id = params.id;
     this.game = params.game;
     this.name = params.name;
-
-    if (params.keys) {
-        this.setupKeys(params.keys);
-    }
+    this.keys = params.keys;
+    this.points = 0;
+    this.setupKeys();
 };
 
 // Method for registering hardware keys to a given sprite
-Player.prototype.setupKeys = function(keys) {
-    this.character.sprite.upKey = this.game.input.keyboard.addKey(keys.up);
-    this.character.sprite.downKey = this.game.input.keyboard.addKey(keys.down);
-    this.character.sprite.leftKey = this.game.input.keyboard.addKey(keys.left);
-    this.character.sprite.rightKey = this.game.input.keyboard.addKey(keys.right);
+Player.prototype.setupKeys = function() {
+    if (!this.keys) { return; }
+
+    if (this.keys.up) { this.character.sprite.upKey = this.game.input.keyboard.addKey(this.keys.up); }
+    if (this.keys.down) { this.character.sprite.downKey = this.game.input.keyboard.addKey(this.keys.down); }
+    if (this.keys.left) { this.character.sprite.leftKey = this.game.input.keyboard.addKey(this.keys.left); }
+    if (this.keys.right) { this.character.sprite.rightKey = this.game.input.keyboard.addKey(this.keys.right); }
 
     // register attack key if it exists
-    if (keys.att) {
-        var attackKey = this.character.sprite.attKey = this.game.input.keyboard.addKey(keys.att);
-        attackKey.onDown.add(this.character.triggerAttack, this.character);
+    if (this.keys.att) {
+        this.character.sprite.attKey = this.game.input.keyboard.addKey(this.keys.att);
+        this.character.sprite.attKey.onDown.add(this.character.triggerAttack, this.character);
     }
 };
 
+Player.prototype.removePoints = function() {
+    this.points -= points;
+
+    if (this.points < 0) {
+        this.points = 0;
+    }
+};
+
+Player.prototype.addPoints = function(points) {
+    this.points += points;
+};
+
+Player.prototype.hide = function() {
+    this.character.sprite.alpha = 0;
+};
+
+Player.prototype.show = function() {
+    this.character.sprite.alpha = 1;
+};
+
 Player.prototype.kill = function() {
-    this.nameText.destroy();
     this.character.kill();
+};
+
+Player.prototype.destroy = function() {
+    this.nameText.destroy();
+
+    if (this.keys) {
+        this.keys.up && this.game.input.keyboard.removeKey(this.keys.up);
+        this.keys.down && this.game.input.keyboard.removeKey(this.keys.down);
+        this.keys.left && this.game.input.keyboard.removeKey(this.keys.left);
+        this.keys.right && this.game.input.keyboard.removeKey(this.keys.right);
+
+        this.keys.att && this.game.input.keyboard.removeKey(this.keys.att);
+    }
 };
 
 Object.defineProperty(Player.prototype, 'name', {
@@ -49,14 +82,13 @@ Object.defineProperty(Player.prototype, 'name', {
         var style = {
             font: '15px Arial',
             fill: '#ffffff',
-            align: 'center',
-            backgroundColor: '#000000'
+            align: 'center'
         };
 
         this._name = name;
 
         this.nameText = this.game.add.text(0, 0, name, style);
-        this.nameText.anchor.set(1.5, 1.5);
+        this.nameText.anchor.set(0.5, -1);
 
         this.character.sprite.addChild(this.nameText);
     }

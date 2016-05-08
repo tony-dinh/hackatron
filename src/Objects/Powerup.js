@@ -4,15 +4,16 @@ class Powerup extends GameObject {
     static get handlers() {
         return {
             'Saiyan': SaiyanHandler,
-            'Ghost': GhostHandler,
-            'Invincible': InvincibleHandler,
-            'Reverse': ReverseHandler,
-            'Rage': RageHandler,
-            'Teleport': TeleportHandler,
-            'Portal': PortalHandler,
-            'Freeze': FreezeHandler,
-            'BlockUp': BlockUpHandler,
-            'SpeedBoost': SpeedBoostHandler
+            //'Ghost': GhostHandler,
+            // 'Invincible': InvincibleHandler,
+            //'Reverse': ReverseHandler,
+            // 'Rage': RageHandler,
+            // 'Teleport': TeleportHandler,
+            // 'Portal': PortalHandler,
+            // 'Freeze': FreezeHandler,
+            // 'BlockUp': BlockUpHandler,
+            // 'SpeedBoost': SpeedBoostHandler
+            // TODO: Mode that leaves a train of blocks behind you
         }
     }
 
@@ -71,7 +72,7 @@ class PowerupHandler {
             this.sprite.scale.y = 0.8;
         } else if (this.spriteMode === 'tilemap') {
             this.sprite = this.game.add.sprite(this.state.position.x * 16, this.state.position.y * 16, this.game.add.bitmapData(16, 16));
-            this.sprite.key.copyRect(this.spriteTilemap, this._getRect(this.spritePosition.row, this.spritePosition.column), 0, 0);
+            this.sprite.key.copyRect(this.spriteTilemap, this._getRect(this.spritePosition.column, this.spritePosition.row), 0, 0);
             this.sprite.scale.x = 1.2;
             this.sprite.scale.y = 1.2;
         }
@@ -93,6 +94,7 @@ class PowerupHandler {
     }
 
     update() {
+        // TODO: this is going to be slow, creating new functions/bindings each frame
         this.game.physics.arcade.overlap(this.player.character.sprite, this.sprite, this.start.bind(this), null, this.game);
 
         this.onUpdated();
@@ -104,6 +106,21 @@ class PowerupHandler {
         this.claimed = true;
         this.destroy();
 
+        // If there's no player assigned, then this powerup was not claimed by a different player
+        // So it must be us who touched it
+        if (!this.player) {
+            this.player = Hackatron.game.player; // TODO: shouldn't use global hackatron
+        }
+
+        // We only want to show the powerup text if it's the current player who got it
+        if (this.player.id === Hackatron.game.player.id) {
+            var text = this.name;
+            var style = { font: '35px "Press Start 2P"', fill: '#ffffff', align: 'center', textTransform: 'uppercase' };
+            this.impactText = this.game.add.text(this.game.world.centerX, this.game.world.centerY, text, style);
+            this.impactText.anchor.set(0.5);
+            this.game.add.tween(this.impactText).to({alpha: 0}, 1000, 'Linear', true, 0);
+        }
+
         this.onStarted();
         this.emit('started');
 
@@ -114,6 +131,10 @@ class PowerupHandler {
 
     stop() {
         this.finished = true;
+
+        if (this.player.id === Hackatron.game.player.id) {
+            this.impactText.destroy();
+        }
 
         this.onStopped();
         this.emit('stopped');
@@ -143,25 +164,49 @@ class PowerupHandler {
 // Handlers
 
 class SaiyanHandler extends PowerupHandler {
+
     constructor(params) {
         super(params);
-        this.name = 'Saiyan mode';
+        this.name = 'Super Saiyan!';
         this.spriteMode = 'key';
         this.spriteKey = 'gfx/buffs/saiyan';
+        this.durationTime = 10000;
         this.spriteLoop = [0,1,2,3,4,5,6];
     }
 
     onStarted() {
+        this.player.character.invincible = true;
+        this.oldSkinKey = this.player.character.characterKey;
+        this.player.character.changeSkin("super-saiyan");
+        if (this.player.character.speed < DEFAULT_PLAYER_SPEED*Math.pow(1.5,3)) {
+            this.player.character.speed *= 1.5;
+        }
+
+        window.IngameState.show = false;
+        window.UI_IngameController.setState(window.IngameState);
     }
 
     onStopped() {
+        this.player.character.invincible = false;
+        this.player.character.changeSkin(this.oldSkinKey);
+        this.player.character.characterKey = this.oldSkinKey;
+        this.oldSkinKey = undefined;
+        var updatedSpeed = this.player.character.speed / 1.5;
+        if (updatedSpeed < DEFAULT_PLAYER_SPEED) {
+            this.player.character.speed = DEFAULT_PLAYER_SPEED;
+        } else {
+            this.player.character.speed = updatedSpeed;
+        }
+
+        window.IngameState.show = true;
+        window.UI_IngameController.setState(window.IngameState);
     }
 }
 
 class SpeedBoostHandler extends PowerupHandler {
     constructor(params) {
         super(params);
-        this.name = 'Speed mode';
+        this.name = 'Madness!';
         this.spriteMode = 'key';
         this.spriteKey = 'gfx/buffs/speed-boost';
         this.spriteLoop = [0,1,2,3,4,5];
@@ -187,10 +232,18 @@ class SpeedBoostHandler extends PowerupHandler {
 class GhostHandler extends PowerupHandler {
     constructor(params) {
         super(params);
-        this.name = 'Ghost mode';
+        this.name = 'G-G-Ghost!';
         this.spriteMode = 'tilemap';
         this.spriteTilemap = 'gfx/buffs/general';
-        this.spritePosition = {row: 1, column: 2};
+        this.spritePosition = {column: 5, row: 5};
+    }
+
+    onStarted() {
+        this.player.character.collisionEnabled = false;
+    }
+
+    onStopped() {
+        this.player.character.collisionEnabled = true;
     }
 }
 
@@ -201,7 +254,7 @@ class BlockUpHandler extends PowerupHandler {
         this.name = 'Block up';
         this.spriteMode = 'tilemap';
         this.spriteTilemap = 'gfx/buffs/general';
-        this.spritePosition = {row: 5, column: 3};
+        this.spritePosition = {column: 5, row: 3};
     }
 
     onStarted() {
@@ -213,10 +266,10 @@ class BlockUpHandler extends PowerupHandler {
 class InvincibleHandler extends PowerupHandler {
     constructor(params) {
         super(params);
-        this.name = 'Invincible mode';
+        this.name = 'Invincible!';
         this.spriteMode = 'tilemap';
         this.spriteTilemap = 'gfx/buffs/general';
-        this.spritePosition = {row: 1, column: 2};
+        this.spritePosition = {column: 1, row: 2};
     }
 
     onStarted() {
@@ -227,28 +280,40 @@ class InvincibleHandler extends PowerupHandler {
     onStopped() {
         this.tween.stop();
         this.tween = this.game.add.tween(this.player.character.sprite).to({alpha: 1}, 0, 'Linear', true, 0);
+        this.player.character.invincible = false;
     }
 }
-
 
 class RageHandler extends PowerupHandler {
     constructor(params) {
         super(params);
-        this.name = 'Rage mode';
+        this.name = 'Rage!';
         this.spriteMode = 'tilemap';
         this.spriteTilemap = 'gfx/buffs/general';
-        this.spritePosition = {row: 1, column: 1};
+        this.spritePosition = {column: 17, row: 3};
     }
 
     onStarted() {
         this.player.character.sprite.scale.x = 1.5;
         this.player.character.sprite.scale.y = 1.5;
+
+        // Allows stacking of max of 3 speed boosts
+        if (this.player.character.speed < DEFAULT_PLAYER_SPEED*Math.pow(1.5,3)) {
+            this.player.character.speed *= 1.5;
+        }
     }
 
     onStopped() {
         // set back original
         this.player.character.sprite.scale.x = 0.8;
         this.player.character.sprite.scale.y = 0.8;
+
+        var updatedSpeed = this.player.character.speed / 1.5;
+        if (updatedSpeed < DEFAULT_PLAYER_SPEED) {
+            this.player.character.speed = DEFAULT_PLAYER_SPEED;
+        } else {
+            this.player.character.speed = updatedSpeed;
+        }
     }
 }
 
@@ -256,10 +321,10 @@ class RageHandler extends PowerupHandler {
 class ReverseHandler extends PowerupHandler {
     constructor(params) {
         super(params);
-        this.name = 'ReverseHandler mode';
+        this.name = 'Confused!';
         this.spriteMode = 'tilemap';
         this.spriteTilemap = 'gfx/buffs/general';
-        this.spritePosition = {row: 2, column: 2};
+        this.spritePosition = {column: 2, row: 2};
     }
 
     onStarted() {
@@ -275,10 +340,10 @@ class ReverseHandler extends PowerupHandler {
 class TeleportHandler extends PowerupHandler {
     constructor(params) {
         super(params);
-        this.name = 'Teleport';
+        this.name = 'Blackhole!';
         this.spriteMode = 'tilemap';
         this.spriteTilemap = 'gfx/buffs/general';
-        this.spritePosition = {row: 1, column: 7};
+        this.spritePosition = {column: 1, row: 7};
     }
 
     onStarted() {
@@ -290,19 +355,20 @@ class TeleportHandler extends PowerupHandler {
 class FreezeHandler extends PowerupHandler {
     constructor(params) {
         super(params);
-        this.name = 'Freeze';
+        this.name = 'Freeze!';
         this.spriteMode = 'tilemap';
         this.spriteTilemap = 'gfx/buffs/general';
-        this.spritePosition = {row: 10, column: 3};
+        this.spritePosition = {column: 16, row: 4};
     }
 
-    // onStarted() {
-    //     this.player.character.speed = 0;
-    // }
+    onStarted() {
+        this.player.character.sprite.body.velocity.setTo(0, 0);
+        this.player.character.frozen = true;
+    }
 
-    // onStopped() {
-    //     this.player.character.speed = 1;
-    // }
+    onStopped() {
+        this.player.character.frozen = false;
+    }
 }
 
 
@@ -361,9 +427,9 @@ class PortalHandler extends PowerupHandler {
 
     start(type) {
         if (type === 'entry') {
-            this.player.character.teleport(this.exitPortal);
+            this.player.character.teleport(this.state.exitPortalPosition);
         } else if (type === 'exit') {
-            this.player.character.teleport(this.entryPortal);
+            this.player.character.teleport(this.state.entryPortalPosition);
         }
 
         this.onStarted();

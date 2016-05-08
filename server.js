@@ -26,8 +26,6 @@ var setHost = function(client) {
 
 var findNewHost = function() {
     if (clients.length > 0) {
-        console.log("clinets inside the find new host");
-        console.log(clients);
         var i = getRandomInt(0, clients.length-1);
         var client = clients[i];
 
@@ -75,6 +73,21 @@ var monitorHost = function() {
 
 setTimeout(monitorHost, 100);
 
+var Hackatron = function() {
+    this.events = [];
+};
+
+Hackatron.prototype = {
+    fireEvent: function(socket, event) {
+        socket.emit('events', {events: [event]});
+    },
+    fireAllPlayers: function(event) {
+        io.sockets.emit('events', {events: [event]});
+    }
+};
+
+var hackatron = new Hackatron();
+
 var parseEvent = function(socket, event) {
     if (event.key === 'newPlayer') {
         console.log('Handshaking...');
@@ -87,12 +100,11 @@ var parseEvent = function(socket, event) {
             console.log('New host: ' + host.player.id);
         }
 
-        socket.emit('setHost', {player: host.player});
+        hackatron.fireEvent(socket, {key: 'setHost', info: {player: host.player}});
     } else if (event.key === 'findNewHost') {
 
-        console.log("finding new host....");
+        console.log("Finding new host....");
         var client = findClientBySocket(socket);
-        console.log(client);
         removeClient(client);
         host = null;
         findNewHost();
@@ -122,8 +134,6 @@ io.sockets.on('connection', function(socket) {
 
         removeClient(client);
 
-        console.log('player left', client.player.id);
-
         // If this client was the host,
         // and there's at least one more client connected,
         // lets choose a new random host,
@@ -133,7 +143,11 @@ io.sockets.on('connection', function(socket) {
             findNewHost();
         }
 
-        io.sockets.emit('playerLeave', {player: client.player});
+        if (clients.length === 0) {
+            host = null;
+        }
+
+        hackatron.fireAllPlayers({key: 'playerLeave', info: {player: client.player}});
     });
 });
 
