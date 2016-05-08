@@ -74,10 +74,10 @@ class Character extends GameObject {
         // this.characterKey + '/walkDown/0003'
         // ]
 
-        this.sprite.animations.add('walkUp', Phaser.Animation.generateFrameNames(this.characterKey + '/walkUp-', 1, 3, '', 4), 3, false, false);
-        this.sprite.animations.add('walkDown', Phaser.Animation.generateFrameNames(this.characterKey + '/walkDown-', 1, 3, '', 4), 3, false, false);
-        this.sprite.animations.add('walkLeft', Phaser.Animation.generateFrameNames(this.characterKey + '/walkLeft-', 1, 3, '', 4), 3, false, false);
-        this.sprite.animations.add('walkRight', Phaser.Animation.generateFrameNames(this.characterKey + '/walkRight-', 1, 3, '', 4), 3, false, false);
+        this.sprite.animations.add('walkUp', Phaser.Animation.generateFrameNames('characters/' + this.characterKey + '/walkUp-', 1, 3, '', 4), 3, false, false);
+        this.sprite.animations.add('walkDown', Phaser.Animation.generateFrameNames('characters/' + this.characterKey + '/walkDown-', 1, 3, '', 4), 3, false, false);
+        this.sprite.animations.add('walkLeft', Phaser.Animation.generateFrameNames('characters/' + this.characterKey + '/walkLeft-', 1, 3, '', 4), 3, false, false);
+        this.sprite.animations.add('walkRight', Phaser.Animation.generateFrameNames('characters/' + this.characterKey + '/walkRight-', 1, 3, '', 4), 3, false, false);
     }
 
     resetPath() {
@@ -222,14 +222,26 @@ class Character extends GameObject {
 
         // Check if player has gone beyond the right edge
         // And send him to the beginning
-        if (this.sprite.x >=  Hackatron.TILE_COUNT_HORIZONTAL * 16) {
+        if (this.sprite.x >= Hackatron.TILE_COUNT_HORIZONTAL * 16) {
             this.sprite.x = 5;
         }
 
         // Check if player has gone beyond the left edge
         // And send him to the end
         if (this.sprite.x < 0) {
-            this.sprite.x =  (Hackatron.TILE_COUNT_HORIZONTAL - 1) * 16;
+            this.sprite.x = (Hackatron.TILE_COUNT_HORIZONTAL - 1) * 16;
+        }
+
+        // Check if player has gone beyond the bottom edge
+        // And send him to the beginning
+        if (this.sprite.y >= Hackatron.TILE_COUNT_HORIZONTAL * 16) {
+            this.sprite.y = 5;
+        }
+
+        // Check if player has gone beyond the top edge
+        // And send him to the end
+        if (this.sprite.y < 0) {
+            this.sprite.y = (Hackatron.TILE_COUNT_HORIZONTAL - 1) * 16;
         }
     }
 }

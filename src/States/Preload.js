@@ -43,10 +43,9 @@ Hackatron.Preload.prototype = {
         this.load.image('gfx/overlays/gameover', assetsPath + 'gfx/overlays/gameover.png');
 
         // Buffs
-        this.load.image('gfx/buffs/general', assetsPath + 'gfx/buffs/general.png');
-        this.load.spritesheet('gfx/buffs/aura-1', assetsPath + 'gfx/buffs/aura-1.png', 1, 2, 3, 4, 5, 6);
-        this.load.spritesheet('gfx/buffs/speed-boost', assetsPath + 'gfx/buffs/speed-boost.png', 32, 32, 6);
-        this.load.spritesheet('gfx/buffs/saiyan', assetsPath + 'gfx/buffs/saiyan.png', 32, 32, 7);
+        this.load.image('gfx/buffs/icons', assetsPath + 'gfx/buffs/icons.png');
+        this.load.spritesheet('gfx/buffs/speed-boost-icon', assetsPath + 'gfx/buffs/speed-boost-icon.png', 32, 32, 6);
+        this.load.spritesheet('gfx/buffs/super-saiyan-icon', assetsPath + 'gfx/buffs/super-saiyan-icon.png', 32, 32, 7);
 
         // Blocks
         this.load.spritesheet('gfx/blocks/glitch', assetsPath + 'gfx/blocks/glitch.png', 32, 32, 3);
@@ -58,10 +57,8 @@ Hackatron.Preload.prototype = {
         // this.load.tilemap('mapData', assetsPath + 'gfx/maps/' + Hackatron.mapConfig.mapDataFilename + '/map2.json', null, Phaser.Tilemap.TILED_JSON);
 
         // Characters
-        this.load.atlasJSONHash('gfx/characters', assetsPath + 'gfx/characters/characters.png', assetsPath + 'gfx/characters/characters.json');
+        this.load.atlasJSONHash('gfx/characters', assetsPath + 'gfx/characters.png', assetsPath + 'gfx/characters.json');
         this.load.atlasJSONHash('gfx/buffs', assetsPath + 'gfx/buffs.png', assetsPath + 'gfx/buffs.json');
-
-        this.load.spritesheet('gfx/characters/super-saiyan', assetsPath + 'gfx/characters/super-saiyan.png', 32, 32, 12);
 
         // Audio
         this.load.audio('audio/bg-0002', [assetsPath + 'audio/bg-0002.mp3']);

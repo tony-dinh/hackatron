@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>4.1.0</string>
         <key>fileName</key>
-        <string>/Users/ericmuyser/Games/Alcyone/assets/gfx/characters/characters.tps</string>
+        <string>/Users/ericmuyser/Games/Alcyone/assets/gfx/characters.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">

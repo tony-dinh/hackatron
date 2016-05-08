@@ -1,206 +1,14 @@
 {"frames": {
 
-"ghost/walkDown-0001":
+"characters/ghost/walkDown-0001":
 {
-	"frame": {"x":1,"y":137,"w":30,"h":32},
+	"frame": {"x":68,"y":35,"w":30,"h":32},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":32},
 	"sourceSize": {"w":30,"h":32}
 },
-"ghost/walkDown-0002":
-{
-	"frame": {"x":1,"y":1,"w":32,"h":32},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
-	"sourceSize": {"w":32,"h":32}
-},
-"ghost/walkDown-0003":
-{
-	"frame": {"x":1,"y":205,"w":29,"h":32},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":32},
-	"sourceSize": {"w":29,"h":32}
-},
-"ghost/walkLeft-0001":
-{
-	"frame": {"x":32,"y":205,"w":29,"h":32},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":32},
-	"sourceSize": {"w":29,"h":32}
-},
-"ghost/walkLeft-0002":
-{
-	"frame": {"x":1,"y":239,"w":29,"h":32},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":32},
-	"sourceSize": {"w":29,"h":32}
-},
-"ghost/walkLeft-0003":
-{
-	"frame": {"x":32,"y":239,"w":29,"h":32},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":32},
-	"sourceSize": {"w":29,"h":32}
-},
-"ghost/walkRight-0001":
-{
-	"frame": {"x":34,"y":69,"w":27,"h":32},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":32},
-	"sourceSize": {"w":27,"h":32}
-},
-"ghost/walkRight-0002":
-{
-	"frame": {"x":35,"y":1,"w":26,"h":32},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":26,"h":32},
-	"sourceSize": {"w":26,"h":32}
-},
-"ghost/walkRight-0003":
-{
-	"frame": {"x":34,"y":103,"w":27,"h":32},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":32},
-	"sourceSize": {"w":27,"h":32}
-},
-"ghost/walkUp-0001":
-{
-	"frame": {"x":1,"y":273,"w":29,"h":32},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":32},
-	"sourceSize": {"w":29,"h":32}
-},
-"ghost/walkUp-0002":
-{
-	"frame": {"x":1,"y":69,"w":31,"h":32},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":31,"h":32},
-	"sourceSize": {"w":31,"h":32}
-},
-"ghost/walkUp-0003":
-{
-	"frame": {"x":32,"y":273,"w":29,"h":32},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":32},
-	"sourceSize": {"w":29,"h":32}
-},
-"super-saiyan/walkDown-0001":
-{
-	"frame": {"x":1,"y":307,"w":29,"h":32},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":3,"y":0,"w":29,"h":32},
-	"sourceSize": {"w":32,"h":32}
-},
-"super-saiyan/walkDown-0002":
-{
-	"frame": {"x":32,"y":307,"w":29,"h":32},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":3,"y":0,"w":29,"h":32},
-	"sourceSize": {"w":32,"h":32}
-},
-"super-saiyan/walkDown-0003":
-{
-	"frame": {"x":1,"y":341,"w":29,"h":32},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":3,"y":0,"w":29,"h":32},
-	"sourceSize": {"w":32,"h":32}
-},
-"super-saiyan/walkLeft-0001":
-{
-	"frame": {"x":1,"y":477,"w":27,"h":32},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":1,"y":0,"w":27,"h":32},
-	"sourceSize": {"w":32,"h":32}
-},
-"super-saiyan/walkLeft-0002":
-{
-	"frame": {"x":30,"y":477,"w":27,"h":32},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":1,"y":0,"w":27,"h":32},
-	"sourceSize": {"w":32,"h":32}
-},
-"super-saiyan/walkLeft-0003":
-{
-	"frame": {"x":1,"y":511,"w":27,"h":32},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":1,"y":0,"w":27,"h":32},
-	"sourceSize": {"w":32,"h":32}
-},
-"super-saiyan/walkRight-0001":
-{
-	"frame": {"x":30,"y":511,"w":27,"h":32},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":4,"y":0,"w":27,"h":32},
-	"sourceSize": {"w":32,"h":32}
-},
-"super-saiyan/walkRight-0002":
-{
-	"frame": {"x":1,"y":545,"w":27,"h":32},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":4,"y":0,"w":27,"h":32},
-	"sourceSize": {"w":32,"h":32}
-},
-"super-saiyan/walkRight-0003":
-{
-	"frame": {"x":1,"y":579,"w":27,"h":32},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":4,"y":0,"w":27,"h":32},
-	"sourceSize": {"w":32,"h":32}
-},
-"super-saiyan/walkUp-0001":
-{
-	"frame": {"x":33,"y":137,"w":28,"h":32},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":2,"y":0,"w":28,"h":32},
-	"sourceSize": {"w":32,"h":32}
-},
-"super-saiyan/walkUp-0002":
-{
-	"frame": {"x":33,"y":171,"w":28,"h":32},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":2,"y":0,"w":28,"h":32},
-	"sourceSize": {"w":32,"h":32}
-},
-"super-saiyan/walkUp-0003":
-{
-	"frame": {"x":32,"y":443,"w":28,"h":32},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":2,"y":0,"w":28,"h":32},
-	"sourceSize": {"w":32,"h":32}
-},
-"tron/walkDown-0001":
-{
-	"frame": {"x":1,"y":171,"w":30,"h":32},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":32},
-	"sourceSize": {"w":30,"h":32}
-},
-"tron/walkDown-0002":
+"characters/ghost/walkDown-0002":
 {
 	"frame": {"x":1,"y":35,"w":32,"h":32},
 	"rotated": false,
@@ -208,81 +16,281 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
 	"sourceSize": {"w":32,"h":32}
 },
-"tron/walkDown-0003":
+"characters/ghost/walkDown-0003":
 {
-	"frame": {"x":32,"y":341,"w":29,"h":32},
+	"frame": {"x":100,"y":35,"w":29,"h":32},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":32},
 	"sourceSize": {"w":29,"h":32}
 },
-"tron/walkLeft-0001":
+"characters/ghost/walkLeft-0001":
 {
-	"frame": {"x":1,"y":375,"w":29,"h":32},
+	"frame": {"x":100,"y":69,"w":29,"h":32},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":32},
 	"sourceSize": {"w":29,"h":32}
 },
-"tron/walkLeft-0002":
+"characters/ghost/walkLeft-0002":
 {
-	"frame": {"x":32,"y":375,"w":29,"h":32},
+	"frame": {"x":131,"y":35,"w":29,"h":32},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":32},
 	"sourceSize": {"w":29,"h":32}
 },
-"tron/walkLeft-0003":
+"characters/ghost/walkLeft-0003":
 {
-	"frame": {"x":1,"y":409,"w":29,"h":32},
+	"frame": {"x":131,"y":69,"w":29,"h":32},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":32},
 	"sourceSize": {"w":29,"h":32}
 },
-"tron/walkRight-0001":
+"characters/ghost/walkRight-0001":
 {
-	"frame": {"x":30,"y":545,"w":27,"h":32},
+	"frame": {"x":377,"y":69,"w":27,"h":32},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":32},
 	"sourceSize": {"w":27,"h":32}
 },
-"tron/walkRight-0002":
+"characters/ghost/walkRight-0002":
 {
-	"frame": {"x":35,"y":35,"w":26,"h":32},
+	"frame": {"x":465,"y":35,"w":26,"h":32},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":26,"h":32},
 	"sourceSize": {"w":26,"h":32}
 },
-"tron/walkRight-0003":
+"characters/ghost/walkRight-0003":
 {
-	"frame": {"x":30,"y":579,"w":27,"h":32},
+	"frame": {"x":378,"y":35,"w":27,"h":32},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":32},
 	"sourceSize": {"w":27,"h":32}
 },
-"tron/walkUp-0001":
+"characters/ghost/walkUp-0001":
 {
-	"frame": {"x":32,"y":409,"w":29,"h":32},
+	"frame": {"x":162,"y":35,"w":29,"h":32},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":32},
 	"sourceSize": {"w":29,"h":32}
 },
-"tron/walkUp-0002":
+"characters/ghost/walkUp-0002":
 {
-	"frame": {"x":1,"y":103,"w":31,"h":32},
+	"frame": {"x":35,"y":35,"w":31,"h":32},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":31,"h":32},
 	"sourceSize": {"w":31,"h":32}
 },
-"tron/walkUp-0003":
+"characters/ghost/walkUp-0003":
 {
-	"frame": {"x":1,"y":443,"w":29,"h":32},
+	"frame": {"x":162,"y":69,"w":29,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":32},
+	"sourceSize": {"w":29,"h":32}
+},
+"characters/super-saiyan":
+{
+	"frame": {"x":1,"y":1,"w":379,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":0,"w":379,"h":32},
+	"sourceSize": {"w":384,"h":32}
+},
+"characters/super-saiyan/walkDown-0001":
+{
+	"frame": {"x":193,"y":35,"w":29,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":0,"w":29,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+"characters/super-saiyan/walkDown-0002":
+{
+	"frame": {"x":193,"y":69,"w":29,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":0,"w":29,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+"characters/super-saiyan/walkDown-0003":
+{
+	"frame": {"x":224,"y":35,"w":29,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":0,"w":29,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+"characters/super-saiyan/walkLeft-0001":
+{
+	"frame": {"x":406,"y":69,"w":27,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":27,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+"characters/super-saiyan/walkLeft-0002":
+{
+	"frame": {"x":382,"y":1,"w":27,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":27,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+"characters/super-saiyan/walkLeft-0003":
+{
+	"frame": {"x":407,"y":35,"w":27,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":27,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+"characters/super-saiyan/walkRight-0001":
+{
+	"frame": {"x":435,"y":69,"w":27,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":0,"w":27,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+"characters/super-saiyan/walkRight-0002":
+{
+	"frame": {"x":411,"y":1,"w":27,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":0,"w":27,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+"characters/super-saiyan/walkRight-0003":
+{
+	"frame": {"x":436,"y":35,"w":27,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":0,"w":27,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+"characters/super-saiyan/walkUp-0001":
+{
+	"frame": {"x":317,"y":69,"w":28,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":0,"w":28,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+"characters/super-saiyan/walkUp-0002":
+{
+	"frame": {"x":347,"y":69,"w":28,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":0,"w":28,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+"characters/super-saiyan/walkUp-0003":
+{
+	"frame": {"x":348,"y":35,"w":28,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":0,"w":28,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+"characters/tron/walkDown-0001":
+{
+	"frame": {"x":68,"y":69,"w":30,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":32},
+	"sourceSize": {"w":30,"h":32}
+},
+"characters/tron/walkDown-0002":
+{
+	"frame": {"x":1,"y":69,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+"characters/tron/walkDown-0003":
+{
+	"frame": {"x":224,"y":69,"w":29,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":32},
+	"sourceSize": {"w":29,"h":32}
+},
+"characters/tron/walkLeft-0001":
+{
+	"frame": {"x":255,"y":35,"w":29,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":32},
+	"sourceSize": {"w":29,"h":32}
+},
+"characters/tron/walkLeft-0002":
+{
+	"frame": {"x":255,"y":69,"w":29,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":32},
+	"sourceSize": {"w":29,"h":32}
+},
+"characters/tron/walkLeft-0003":
+{
+	"frame": {"x":286,"y":35,"w":29,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":32},
+	"sourceSize": {"w":29,"h":32}
+},
+"characters/tron/walkRight-0001":
+{
+	"frame": {"x":464,"y":69,"w":27,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":32},
+	"sourceSize": {"w":27,"h":32}
+},
+"characters/tron/walkRight-0002":
+{
+	"frame": {"x":469,"y":1,"w":26,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":26,"h":32},
+	"sourceSize": {"w":26,"h":32}
+},
+"characters/tron/walkRight-0003":
+{
+	"frame": {"x":440,"y":1,"w":27,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":32},
+	"sourceSize": {"w":27,"h":32}
+},
+"characters/tron/walkUp-0001":
+{
+	"frame": {"x":286,"y":69,"w":29,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":32},
+	"sourceSize": {"w":29,"h":32}
+},
+"characters/tron/walkUp-0002":
+{
+	"frame": {"x":35,"y":69,"w":31,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":31,"h":32},
+	"sourceSize": {"w":31,"h":32}
+},
+"characters/tron/walkUp-0003":
+{
+	"frame": {"x":317,"y":35,"w":29,"h":32},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":32},
@@ -293,8 +301,8 @@
 	"version": "1.0",
 	"image": "characters.png",
 	"format": "INDEXED",
-	"size": {"w":62,"h":612},
+	"size": {"w":496,"h":102},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:04bdb2c064ecfe0538fce6e0bed9d274:75573c3c5497383c6fd8f0da74a877ba:a5fe7db4b869eb0f3e0b2940b9577ea8$"
+	"smartupdate": "$TexturePacker:SmartUpdate:e5e35baa6c9aefb9e58f634b0ec0e872:3717ede8a33497a443592b468c5c4363:a5fe7db4b869eb0f3e0b2940b9577ea8$"
 }
 }

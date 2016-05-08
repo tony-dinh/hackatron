@@ -19,9 +19,9 @@ class GameObject {
 
     _initSprite() {
         if (this.characterKey) {
-            this.sprite = this.game.add.sprite(this.position.x, this.position.y, 'gfx/characters', this.characterKey + '/' + this.defaultFrameKey);
+            this.sprite = this.game.add.sprite(this.position.x, this.position.y, 'gfx/characters', 'characters/' + this.characterKey + '/' + this.defaultFrameKey);
         } else {
-            this.sprite = this.game.add.sprite(this.position.x, this.position.y, this.characterKey);
+            this.sprite = this.game.add.sprite(this.position.x, this.position.y, this.spriteKey);
         }
         this.sprite.scale.x = 0.8;
         this.sprite.scale.y = 0.8;
