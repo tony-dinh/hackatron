@@ -11,8 +11,6 @@ window.UI = React.createClass({
     return (
       <div style={styles.container}>
         {this.state.screenKey === 'start' && <StartScreen />}
-        {this.state.screenKey === 'hostGame' && <HostScreen />}
-        {this.state.screenKey === 'joinGame' && <JoinScreen />}
         {this.state.screenKey === 'ingame' && <IngameScreen />}
       </div>
     );

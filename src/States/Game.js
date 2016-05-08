@@ -1,6 +1,3 @@
-Hackatron = {
-    skipIntro: true
-};
 
 Hackatron.Game = function(game) {
     this.enemy = null;
