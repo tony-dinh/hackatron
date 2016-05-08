@@ -3,157 +3,128 @@
 <!--[if IE 7]>         <html class="lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html> <!--<![endif]-->
-<head>
-  <title>Hackatron</title>
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
-  <script src="/socket.io/socket.io.js"></script>
+  <head>
+    <title>Hackatron</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <script src="/socket.io/socket.io.js"></script>
 
-  <script type="text/javascript">
-      WebFontConfig = {
-          google: { families: ['Orbitron:400,900:latin', 'Montserrat:400,700:latin', 'Press Start 2P:400:latin'] }
-      };
-      (function() {
-          var wf = document.createElement('script');
-          wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-          wf.type = 'text/javascript';
-          wf.async = 'true';
-          var s = document.getElementsByTagName('script')[0];
-          s.parentNode.insertBefore(wf, s);
-      })();
-  </script>
-</head>
-<body>
-  <div id="game"></div>
-  <div id="ui"></div>
+    <script type="text/javascript">
+        WebFontConfig = {
+            google: { families: ['Orbitron:400,900:latin', 'Montserrat:400,700:latin', 'Press Start 2P:400:latin'] }
+        };
+        (function() {
+            var wf = document.createElement('script');
+            wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })();
+    </script>
+  </head>
+  <body>
+    <div id="game"></div>
+    <div id="ui"></div>
 
-  <script src="vendor/react.js"></script>
-  <script src="vendor/react-dom.js"></script>
+    <script src="vendor/react.js"></script>
+    <script src="vendor/react-dom.js"></script>
 
-  <script src="vendor/easystar-0.1.7.min.js"></script>
-  <script src="vendor/pixi.js"></script>
-  <script src="vendor/phaser-arcade-physics.js"></script>
-  <script src="vendor/phaser-tiled.js"></script>
-  <script src="vendor/phaser-debug.js"></script>
-  <script src="vendor/phaser-camera-shake.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>
+    <script src="vendor/easystar-0.1.7.min.js"></script>
+    <script src="vendor/pixi.js"></script>
+    <script src="vendor/phaser-arcade-physics.js"></script>
+    <script src="vendor/phaser-tiled.js"></script>
+    <script src="vendor/phaser-debug.js"></script>
+    <script src="vendor/phaser-camera-shake.js"></script>
+    <script src="vendor/babel-browser.js"></script>
 
-  <script src="src/Core/Utils.js"></script>
-  <script src="src/Core/GameObject.js"></script>
-  <script src="src/Core/GamePlugin.js"></script>
-  <script src="src/Core/AI.js"></script>
+    <script src="src/Core/Utils.js"></script>
+    <script src="src/Core/GameObject.js"></script>
+    <script src="src/Core/GamePlugin.js"></script>
+    <script src="src/Core/AI.js"></script>
 
-  <script src="src/Objects/Map2D.js"></script>
-  <script src="src/Objects/Powerup.js"></script>
-  <script src="src/Objects/Character.js"></script>
-  <script src="src/Objects/Countdown.js"></script>
-  <script src="src/Objects/Gameover.js"></script>
-  <script src="src/Objects/Ghost.js"></script>
-  <script src="src/Objects/Pellet.js"></script>
-  <script src="src/Objects/Tron.js"></script>
-  <script src="src/Objects/Player.js"></script>
-  <script src="src/Objects/Enemy.js"></script>
+    <script src="src/Objects/Map2D.js"></script>
+    <script src="src/Objects/Powerup.js"></script>
+    <script src="src/Objects/Character.js"></script>
+    <script src="src/Objects/Countdown.js"></script>
+    <script src="src/Objects/Gameover.js"></script>
+    <script src="src/Objects/Ghost.js"></script>
+    <script src="src/Objects/Pellet.js"></script>
+    <script src="src/Objects/Tron.js"></script>
+    <script src="src/Objects/Player.js"></script>
+    <script src="src/Objects/Enemy.js"></script>
 
-  <script src="src/States/Game.js"></script>
-  <script src='src/States/Lobby.js'></script>
-  <script src="src/States/Menu.js"></script>
-  <script src='src/States/Preload.js'></script>
-  <script src='src/States/Boot.js'></script>
+    <script src="src/States/Game.js"></script>
+    <script src='src/States/Lobby.js'></script>
+    <script src="src/States/Menu.js"></script>
+    <script src='src/States/Preload.js'></script>
+    <script src='src/States/Boot.js'></script>
 
 
-  <script src="src/UI/UI.js" type="text/babel"></script>
-  <script src="src/UI/Screens/StartScreen.js" type="text/babel"></script>
-  <script src="src/UI/Screens/HostScreen.js" type="text/babel"></script>
-  <script src="src/UI/Screens/JoinScreen.js" type="text/babel"></script>
-  <script src="src/UI/Screens/IngameScreen.js" type="text/babel"></script>
+    <script src="src/UI/UI.js" type="text/babel"></script>
+    <script src="src/UI/Screens/StartScreen.js" type="text/babel"></script>
+    <script src="src/UI/Screens/HostScreen.js" type="text/babel"></script>
+    <script src="src/UI/Screens/JoinScreen.js" type="text/babel"></script>
+    <script src="src/UI/Screens/IngameScreen.js" type="text/babel"></script>
 
-  <script type="text/babel">
-      ReactDOM.render(<UI />, document.getElementById('ui'));
-  </script>
+    <script type="text/babel">
+        ReactDOM.render(<UI />, document.getElementById('ui'));
+    </script>
 
-  <script type="text/javascript">
-      Hackatron.GAME_WIDTH = 512; // Game originally designed for 256px
-      Hackatron.GAME_HEIGHT = 512; // Game originally designed for 256px
-      Hackatron.UI_WIDTH = 900; // UI originally designed for 900px
-      Hackatron.UI_HEIGHT = 900; // UI originally designed for 900px
-      Hackatron.TILE_COUNT_HORIZONTAL = 32;
-      Hackatron.TILE_COUNT_VERTICAL = 32;
+    <script type="text/javascript">
+        Hackatron.GAME_WIDTH = 512; // Game originally designed for 256px
+        Hackatron.GAME_HEIGHT = 512; // Game originally designed for 256px
+        Hackatron.UI_WIDTH = 900; // UI originally designed for 900px
+        Hackatron.UI_HEIGHT = 900; // UI originally designed for 900px
+        Hackatron.TILE_COUNT_HORIZONTAL = 32;
+        Hackatron.TILE_COUNT_VERTICAL = 32;
 
-      var gameContainer = document.getElementById('game');
-      var uiContainer = document.getElementById('ui');
+        var gameContainer = document.getElementById('game');
+        var uiContainer = document.getElementById('ui');
 
-      Hackatron.getWidthGameScale = function() {
-        return (window.innerWidth / Hackatron.GAME_WIDTH).toFixed(2);
-      };
+        Hackatron.getWidthGameScale = function() {
+          return (window.innerWidth / Hackatron.GAME_WIDTH).toFixed(2);
+        };
 
-      Hackatron.getHeightGameScale = function() {
-        return (window.innerHeight / Hackatron.GAME_HEIGHT).toFixed(2);
-      };
+        Hackatron.getHeightGameScale = function() {
+          return (window.innerHeight / Hackatron.GAME_HEIGHT).toFixed(2);
+        };
 
-      Hackatron.getWidthRatioScale = function() {
-        return window.innerHeight > window.innerWidth ? 1 : (window.innerHeight / window.innerWidth).toFixed(2);
-      };
+        Hackatron.getWidthRatioScale = function() {
+          return window.innerHeight > window.innerWidth ? 1 : (window.innerHeight / window.innerWidth).toFixed(2);
+        };
 
-      Hackatron.getHeightRatioScale = function() {
-        return window.innerHeight > window.innerWidth ? (window.innerWidth / window.innerHeight).toFixed(2) : 1;
-      };
+        Hackatron.getHeightRatioScale = function() {
+          return window.innerHeight > window.innerWidth ? (window.innerWidth / window.innerHeight).toFixed(2) : 1;
+        };
 
-      // Resize UI
-      window.onresize = function() {
-        var smallest = window.innerHeight > window.innerWidth ? gameContainer.offsetWidth / Hackatron.UI_WIDTH : gameContainer.offsetHeight / Hackatron.UI_HEIGHT;
-        uiContainer.style.left = (100 - parseInt(gameContainer.style.width)) / 2 + '%';
-        uiContainer.style.zoom = smallest;
-        uiContainer.style['transform'] = 'perspective(1000px) rotateX(10deg) rotate(-2deg)';
-      };
+        // Resize UI
+        window.onresize = function() {
+          var smallest = window.innerHeight > window.innerWidth ? gameContainer.offsetWidth / Hackatron.UI_WIDTH : gameContainer.offsetHeight / Hackatron.UI_HEIGHT;
+          uiContainer.style.left = (100 - parseInt(gameContainer.style.width)) / 2 + '%';
+          uiContainer.style.zoom = smallest;
+          uiContainer.style['transform'] = 'perspective(1000px) rotateX(10deg) rotate(-2deg)';
+        };
 
-      // Load Game
-      window.onload = function () {
-          Hackatron.debug = window.location.href.indexOf('localhost') !== -1;
-          Hackatron.loader = new Phaser.Game(Hackatron.GAME_WIDTH, Hackatron.GAME_HEIGHT, Phaser.AUTO, gameContainer);
-          // None of these work now
-          // Zelda
-          // Hackatron.mapConfig = {
-          //   mapDataFilename: 'zelda',
-          //   mapTilesFilename: 'zelda',
-          //   tilesetKey: 'general',
-          //   floorTile: 2041
-          // };
-          // Diablo
-          // Hackatron.mapConfig = {
-          //   mapDataFilename: 'diablo',
-          //   mapTilesFilename: 'diablo',
-          //   tilesetKey: 'general',
-          //   floorTile: -1
-          // };
-          //Tron
-          // Hackatron.mapConfig = {
-          //     mapDataFilename: 'tron',
-          //     mapTilesFilename: 'tron',
-          //     tilesetKey: 'general',
-          //     floorTile: 1081
-          // };
-          //Tron
-          // Hackatron.mapConfig = {
-          //     mapDataFilename: 'tron',
-          //     mapTilesFilename: 'tron',
-          //     tilesetKey: 'general',
-          //     floorTile: 1081
-          // };
+        // Load Game
+        window.onload = function () {
+            Hackatron.debug = window.location.href.indexOf('localhost') !== -1;
+            Hackatron.loader = new Phaser.Game(Hackatron.GAME_WIDTH, Hackatron.GAME_HEIGHT, Phaser.AUTO, gameContainer);
 
-          // Game Constants
-          DEFAULT_PLAYER_SPEED = 200;
-          POWERUP_SPAWN_INTERVAL = 5000;
-          UPDATE_INTERVAL = 100;
+            // Game Constants
+            DEFAULT_PLAYER_SPEED = 200;
+            POWERUP_SPAWN_INTERVAL = 5000;
+            UPDATE_INTERVAL = 100;
 
-          Hackatron.loader.state.add('Boot', Hackatron.Boot);
-          Hackatron.loader.state.add('Preload', Hackatron.Preload);
-          Hackatron.loader.state.add('Menu', Hackatron.Menu);
-          Hackatron.loader.state.add('Lobby', Hackatron.Lobby);
-          Hackatron.loader.state.add('Game', Hackatron.Game);
+            Hackatron.loader.state.add('Boot', Hackatron.Boot);
+            Hackatron.loader.state.add('Preload', Hackatron.Preload);
+            Hackatron.loader.state.add('Menu', Hackatron.Menu);
+            Hackatron.loader.state.add('Lobby', Hackatron.Lobby);
+            Hackatron.loader.state.add('Game', Hackatron.Game);
 
-          Hackatron.loader.state.start('Boot');
+            Hackatron.loader.state.start('Boot');
 
-          window.onresize();
-      };
-  </script>
-</body>
+            window.onresize();
+        };
+    </script>
+  </body>
 </html>
