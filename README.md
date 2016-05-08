@@ -7,7 +7,7 @@
 ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
 ```
 ## Overview
-Hackatron is a multiplayer game developed as a submission for nwHacks 2016. 
+Hackatron is a multiplayer game developed as a submission for nwHacks 2016.
 
 This repository is forked from our [original submission](https://github.com/nwHacks2016/hackatron), which was developed alongside:
 
@@ -49,3 +49,10 @@ Within 24 hours, our team was able to familiarize ourselves with the following w
 5. How to deploy a project to heroku
 6. **How to stay awake for 24+ hours**
 
+### Point System
+
+* All players start with 1000 points
+* When a players dies, the player loses 100 points, distributed to other players
+* When the player dies with 0 points, he becomes a spectator
+* When a player touches a player, they both lose 5 points
+* When a player touches a block, he loses 10 points
