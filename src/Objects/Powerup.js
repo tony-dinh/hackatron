@@ -252,7 +252,7 @@ class GhostHandler extends PowerupHandler {
 class BlockUpHandler extends PowerupHandler {
     constructor(params) {
         super(params);
-        this.name = 'Power!';
+        this.name = 'Power!!';
         this.spriteMode = 'key';
         this.spriteKey = 'gfx/buffs';
         this.spriteLoop = ['buffs/icons/0034'];
@@ -268,7 +268,7 @@ class BlockUpHandler extends PowerupHandler {
 class InvincibleHandler extends PowerupHandler {
     constructor(params) {
         super(params);
-        this.name = 'Invincible!';
+        this.name = 'Unstoppable!!';
         this.spriteMode = 'key';
         this.spriteKey = 'gfx/buffs';
         this.spriteLoop = ['buffs/icons/0002'];
@@ -290,7 +290,7 @@ class InvincibleHandler extends PowerupHandler {
 class RageHandler extends PowerupHandler {
     constructor(params) {
         super(params);
-        this.name = 'Rage!';
+        this.name = 'Rage!!';
         this.spriteMode = 'key';
         this.spriteKey = 'gfx/buffs';
         this.spriteLoop = ['buffs/icons/0119'];

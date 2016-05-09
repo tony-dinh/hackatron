@@ -9,6 +9,7 @@ Hackatron.Menu.prototype = {
         this.game.canvas.style['transform'] = 'perspective(900px) rotateX(15deg) rotate(-3deg)';
         document.getElementById('game').style['width'] = Hackatron.getWidthRatioScale() * 100 + '%';
         document.getElementById('game').style['height'] = Hackatron.getHeightRatioScale() * 100 + '%';
+        document.getElementById('ui').style['transform'] = 'perspective(1000px) rotateX(10deg) rotate(-2deg)';
         window.onresize();
     },
 

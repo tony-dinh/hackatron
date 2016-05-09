@@ -340,55 +340,55 @@ Hackatron.Game.prototype = {
         this.socket.emit('events', JSON.stringify({events: this.events}));
         this.events = [];
     },
+    moveToPointer: function() {
+        // Use path finder
+
+    },
+    followMouse: function() {
+        // top = -1.25
+        // bottom = 1
+        // left = 2.5
+        // right = 0
+        // http://phaser.io/examples/v2/arcade-physics/angle-to-pointer
+        var angle = this.game.physics.arcade.angleToPointer(this.player.character.sprite) * (180/Math.PI);
+
+        // right
+        if (Math.abs(angle) > 0 && Math.abs(angle) <= 45) {
+            this.player.character.inputRight = true;
+        }
+        // left
+        if (Math.abs(angle) > 135 && Math.abs(angle) <= 180) {
+            this.player.character.inputLeft = true;
+        }
+        // up
+        if (Math.abs(angle) > 45 && Math.abs(angle) <= 135 && angle < 0) {
+            this.player.character.inputUp = true;
+        }
+        // down
+        if (Math.abs(angle) > 45 && Math.abs(angle) <= 135 && angle > 0) {
+            this.player.character.inputDown = true;
+        }
+
+        //  if it's overlapping the mouse, don't move any more
+        // if (Phaser.Rectangle.contains(this.player.character.sprite.body, this.game.input.x, this.game.input.y)) {
+        //     this.player.character.sprite.body.velocity.x = 0;
+        //     this.player.character.sprite.body.velocity.y = 0;
+        // }
+    },
     update: function() {
         if (this.musicKey.isDown) {
             this.game.music.mute = !this.game.music.mute;
         }
 
+        this.player.character.inputRight = false;
+        this.player.character.inputLeft = false;
+        this.player.character.inputUp = false;
+        this.player.character.inputDown = false;
+
         if (this.game.input.mousePointer.isDown) {
-            this.player.character.inputRight = false;
-            this.player.character.inputLeft = false;
-            this.player.character.inputUp = false;
-            this.player.character.inputDown = false;
-
-            //  400 is the speed it will move towards the mouse
-            //this.game.physics.arcade.moveToPointer(this.player.character.sprite, DEFAULT_PLAYER_SPEED);
-
-            // top = -1.25
-            // bottom = 1
-            // left = 2.5
-            // right = 0
-            // http://phaser.io/examples/v2/arcade-physics/angle-to-pointer
-            var angle = this.game.physics.arcade.angleToPointer(this.player.character.sprite) * (180/Math.PI);
-
-            // right
-            if (Math.abs(angle) > 0 && Math.abs(angle) <= 45) {
-                this.player.character.inputRight = true;
-            }
-            // left
-            if (Math.abs(angle) > 135 && Math.abs(angle) <= 180) {
-                this.player.character.inputLeft = true;
-            }
-            // up
-            if (Math.abs(angle) > 45 && Math.abs(angle) <= 135 && angle < 0) {
-                this.player.character.inputUp = true;
-            }
-            // down
-            if (Math.abs(angle) > 45 && Math.abs(angle) <= 135 && angle > 0) {
-                this.player.character.inputDown = true;
-            }
-
-            //  if it's overlapping the mouse, don't move any more
-            // if (Phaser.Rectangle.contains(this.player.character.sprite.body, this.game.input.x, this.game.input.y)) {
-            //     this.player.character.sprite.body.velocity.x = 0;
-            //     this.player.character.sprite.body.velocity.y = 0;
-            // }
+            this.followMouse();
         }
         else {
-            this.player.character.inputRight = false;
-            this.player.character.inputLeft = false;
-            this.player.character.inputUp = false;
-            this.player.character.inputDown = false;
         }
 
         var collideEnemyHandler = () => {
@@ -579,6 +579,7 @@ Hackatron.Game.prototype = {
 
         document.getElementById('game').style['width'] = Hackatron.getWidthRatioScale() * 100 + '%';
         document.getElementById('game').style['height'] = Hackatron.getHeightRatioScale() * 100 + '%';
+        document.getElementById('ui').style['transform'] = 'none';
     },
     shutdown: function() {
         this.socket.removeAllListeners('events');
