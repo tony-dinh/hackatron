@@ -843,7 +843,7 @@ Hackatron.Game.prototype = {
             var fireball = this.game.add.sprite(event.info.x, event.info.y, 'gfx/buffs');
             fireball.owner = event.info.id;
             fireball.anchor.setTo(0.5);
-            fireball.animations.add('fireball', ['42'], 1, true, true);
+            fireball.animations.add('fireball', ['buffs/blast-attack/1', 'buffs/blast-attack/2', 'buffs/blast-attack/3'], 60, true, true);
             fireball.animations.play('fireball');
 
             this.game.physics.arcade.enable(fireball, Phaser.Physics.ARCADE);

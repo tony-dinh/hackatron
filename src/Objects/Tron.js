@@ -25,7 +25,7 @@ class Tron extends Character {
             var fireball = self.game.add.sprite(self.sprite.x, self.sprite.y, 'gfx/buffs');
             fireball.owner = self.id;
             fireball.anchor.setTo(0.5);
-            fireball.animations.add('fireball', ['42'], 1, true, true);
+            fireball.animations.add('fireball', ['buffs/blast-attack/1', 'buffs/blast-attack/2', 'buffs/blast-attack/3'], 60, true, true);
             fireball.animations.play('fireball');
 
             self.game.physics.arcade.enable(fireball, Phaser.Physics.ARCADE);
@@ -37,20 +37,20 @@ class Tron extends Character {
 
             var FIREBALL_SPEED = self.speed * 2;
             switch (self.direction) {
-            case "walkUp":
+            case 'walkUp':
                 fireball.body.velocity.y = -FIREBALL_SPEED;
                 fireball.angle = -90;
                 break;
-            case "walkDown":
+            case 'walkDown':
                 fireball.body.velocity.y = FIREBALL_SPEED;
                 fireball.angle = 90;
 
                 break;
-            case "walkLeft":
+            case 'walkLeft':
                 fireball.body.velocity.x = -FIREBALL_SPEED;
                 fireball.angle = 180;
                 break;
-            case "walkRight":
+            case 'walkRight':
                 fireball.body.velocity.x = FIREBALL_SPEED;
                 break;
             default:
