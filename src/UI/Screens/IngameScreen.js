@@ -2,7 +2,7 @@ window.IngameState = {
     show: true,
     showOthers: false,
     currentCharacter: 'tron',
-    allCharacters: ['tron', 'ghost'],
+    allCharacters: ['tron', 'ghost', 'frosty', 'one'],
 };
 
 window.IngameScreen = React.createClass({
@@ -10,39 +10,39 @@ window.IngameScreen = React.createClass({
         window.UI_IngameController = this;
         return window.IngameState;
     },
-  _clickCharacter: function() {
-    this.setState({showOthers: !this.state.showOthers});
-  },
-  _changeCharacter: function(key) {
-    this.setState({currentCharacter: key});
-    Hackatron.game.player.character.changeSkin(key);
-  },
-  render: function() {
-    var otherElements = null;
+    _clickCharacter: function() {
+        this.setState({showOthers: !this.state.showOthers});
+    },
+    _changeCharacter: function(key) {
+        this.setState({currentCharacter: key});
+        Hackatron.game.player.character.changeSkin(key);
+    },
+    render: function() {
+        var otherElements = null;
 
-    if (!this.state.show) {
-      return <div></div>;
+        if (!this.state.show) {
+            return <div></div>;
+        }
+
+        if (this.state.showOthers) {
+            var otherCharacters = this.state.allCharacters.slice(0);
+            var index = otherCharacters.indexOf(this.state.currentCharacter);
+            otherCharacters.splice(index, 1);
+
+            otherElements = <div style={styles.otherCharacterChooser}>
+                {otherCharacters.map((key) => {
+                    return <div style={{width: 32, height: 32, marginBottom: 10, background: 'transparent url(assets/gfx/characters/' + key + '/walkDown-0002.png) no-repeat 0 0'}} onClick={()=>this._changeCharacter(key)}></div>;
+                })}
+            </div>
+        }
+
+        return (
+            <div style={styles.characterChooser}>
+                <div style={{width: 32, height: 32, background: '#01242C url(assets/gfx/characters/' + this.state.currentCharacter + '/walkDown-0002.png) no-repeat 0 0'}} onClick={this._clickCharacter}></div>
+                {this.state.showOthers && otherElements}
+          </div>
+        );
     }
-
-    if (this.state.showOthers) {
-        var otherCharacters = this.state.allCharacters.slice(0);
-        var index = otherCharacters.indexOf(this.state.currentCharacter);
-        otherCharacters.splice(index, 1);
-
-        otherElements = <div style={styles.otherCharacterChooser}>
-            {otherCharacters.map((key) => {
-                return <div style={{width: 32, height: 32, marginBottom: 10, background: 'transparent url(assets/gfx/characters/' + key + '/walkDown-0002.png) no-repeat 0 0'}} onClick={()=>this._changeCharacter(key)}></div>;
-            })}
-        </div>
-    }
-
-    return (
-      <div style={styles.characterChooser}>
-        <div style={{width: 32, height: 32, background: '#01242C url(assets/gfx/characters/' + this.state.currentCharacter + '/walkDown-0002.png) no-repeat 0 0'}} onClick={this._clickCharacter}></div>
-        {this.state.showOthers && otherElements}
-      </div>
-    );
-  }
 });
 
 var styles = {
