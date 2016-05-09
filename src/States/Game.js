@@ -383,6 +383,21 @@ Hackatron.Game.prototype = {
         //     this.player.character.sprite.body.velocity.y = 0;
         // }
     },
+    constrainVelocity: function(sprite, maxVelocity) {
+        if (!sprite || !sprite.body) { return; }
+        var body = sprite.body;
+        var angle, currVelocitySqr, vx, vy;
+        vx = body.velocity.x;
+        vy = body.velocity.y;
+        currVelocitySqr = vx * vx + vy * vy;
+        if (currVelocitySqr > maxVelocity * maxVelocity) {
+            angle = Math.atan2(vy, vx);
+            vx = Math.cos(angle) * maxVelocity;
+            vy = Math.sin(angle) * maxVelocity;
+            body.velocity.x = vx;
+            body.velocity.y = vy;
+        }
+    },
     update: function() {
         if (this.musicKey.isDown) {
             this.game.music.mute = !this.game.music.mute;
@@ -501,25 +516,31 @@ Hackatron.Game.prototype = {
             }
         };
 
+        if (this.enemy) {
+            this.constrainVelocity(this.enemy.character.sprite, 10);
+        }
+
         if (this.player.character.collisionEnabled) {
             this.map.collideTiles.forEach((tile) => {
                 // TODO: Throttle collideWallHandler
                 this.game.physics.arcade.collide(this.player.character.sprite, tile, collideWallHandler); // tile is an object of Phaser.Sprite
+                if (this.enemy) {
+                    this.enemy.character.sprite.body.immovable = false;
+                    this.game.physics.arcade.collide(this.enemy.character.sprite, tile, () => {
+                        // Stop enemy from moving. TODO: doesn't work
+                        this.enemy.character.sprite.body.immovable = true;
+                        this.enemy.character.sprite.body.velocity.x = 0;
+                        this.enemy.character.sprite.body.velocity.y = 0;
+                    });
+                }
             });
         }
 
 
         if (this.enemy) {
-            // this.game.physics.arcade.collide(this.enemy.character.sprite, this.map.tilemap.layer);
-
-            // this.map.collideTiles.forEach((tile) => {
-            //     this.game.physics.arcade.collide(this.enemy.character.sprite, tile);
-            // });
-
             if (this.player.character.collisionEnabled) {
                 this.game.physics.arcade.overlap(this.enemy.character.sprite, this.player.character.sprite, collideEnemyHandler);
             }
-
         }
 
         this.powerups.forEach((row) => {
@@ -547,26 +568,27 @@ Hackatron.Game.prototype = {
             }
 
             if (this.enemy) {
-                this.game.physics.arcade.collide(this.enemy.character.sprite, block);
+                this.game.physics.arcade.collide(this.enemy.character.sprite, block, () => {
+
+                });
             }
         });
 
         this.fireballs.forEach((fireball, index) => {
             if (fireball.owner !== this.player.id) {
-                var playerBlocked = this.player.character.sprite.body.blocked;
-                if (!(playerBlocked.right && playerBlocked.left) &&
-                    !(playerBlocked.up && playerBlocked.down)) {
-                        this.game.physics.arcade.collide(this.player.character.sprite, fireball, function() {
-                            collideFireballHandler(index);
-                        });
-                }
+                this.game.physics.arcade.collide(this.player.character.sprite, fireball, () => {
+                    collideFireballHandler(index);
+                    // Disable fireball physics. TODO: doesn't work
+                    // fireball.body.moves = false;
+                    // fireball.body.immovable = false;
+                });
             }
             if (this.enemy) {
-                var enemyBlocked = this.enemy.character.sprite.body.blocked;
-                if (!(enemyBlocked.right && enemyBlocked.left) &&
-                    !(enemyBlocked.up && enemyBlocked.down)) {
-                        this.game.physics.arcade.collide(this.enemy.character.sprite, fireball);
-                }
+                this.game.physics.arcade.collide(this.enemy.character.sprite, fireball, () => {
+                    // Disable fireball physics. TODO: doesn't work
+                    // fireball.body.moves = false;
+                    // fireball.body.immovable = false;
+                });
             }
         });
 

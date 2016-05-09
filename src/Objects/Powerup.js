@@ -5,14 +5,13 @@ class Powerup extends GameObject {
         return {
             'Saiyan': SaiyanHandler,
             //'Ghost': GhostHandler,
-            'Invincible': InvincibleHandler,
-            //'Reverse': ReverseHandler,
-            'Rage': RageHandler,
-            'Teleport': TeleportHandler,
-            'Portal': PortalHandler,
-            'Freeze': FreezeHandler,
-            'BlockUp': BlockUpHandler,
-            'SpeedBoost': SpeedBoostHandler
+            // 'Invincible': InvincibleHandler,
+            // 'Rage': RageHandler,
+            // 'Teleport': TeleportHandler,
+            // 'Portal': PortalHandler,
+            // 'Freeze': FreezeHandler,
+            // 'BlockUp': BlockUpHandler,
+            // 'SpeedBoost': SpeedBoostHandler
             // TODO: Mode that leaves a train of blocks behind you
         }
     }
