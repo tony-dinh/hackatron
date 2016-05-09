@@ -210,6 +210,7 @@ Hackatron.Game.prototype = {
             name: this.getRandomName(),
             speed: DEFAULT_PLAYER_SPEED,
             worldPosition: worldPosition,
+            points: 1000,
             keys: {
                 up: Phaser.Keyboard.UP,
                 down: Phaser.Keyboard.DOWN,
@@ -263,9 +264,15 @@ Hackatron.Game.prototype = {
         this.enemy.character.worldPosition = this.getValidPosition();
         this.enemy.character.frozen = true;
 
-        var death = new Gameover();
-        death.init(this.game);
-        death.start();
+        // var death = new Gameover();
+        // death.init(this.game);
+        // death.start();
+
+        this.player.removePoints(100);
+
+        for(var id in this.players) {
+            this.players[id].this.player.addPoints(100 / this.players.length);
+        }
 
         this.newGameKey = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
         this.newGameKey.onDown.add(() => {
@@ -275,7 +282,8 @@ Hackatron.Game.prototype = {
         });
 
         setTimeout(() => {
-            death.sprite.destroy();
+            //death.sprite.destroy();
+            this.player.character.worldPosition = this.getValidPosition();
             this.player.character.revive();
 
             setTimeout(() => {
@@ -651,7 +659,10 @@ Hackatron.Game.prototype = {
 
         // We probably don't need physics for other players - they are telling us where they are already
         //this.game.physics.arcade.collide(player.character.sprite, this.map.layer);
-        this.game.physics.arcade.collide(player.character.sprite, this.player.character.sprite, null, null, this.game);
+        this.game.physics.arcade.collide(player.character.sprite, this.player.character.sprite, () => {
+            this.player.removePoints(5);
+            player.removePoints(5);
+        }, null, this.game);
 
         return player;
     },
@@ -665,7 +676,8 @@ Hackatron.Game.prototype = {
             players.push({
                 id: player.id,
                 name: player.name,
-                position: player.character.position
+                position: player.character.position,
+                points: player.points
             });
         }
 
@@ -673,7 +685,8 @@ Hackatron.Game.prototype = {
         players.push({
             id: this.player.id,
             name: this.player.name,
-            position: this.player.character.position
+            position: this.player.character.position,
+            points: this.player.points
         });
 
         // Add powerups
@@ -761,6 +774,7 @@ Hackatron.Game.prototype = {
                     if (playerInfo.position) {
                         player.character.position = playerInfo.position;
                     }
+                    player.points = playerInfo.points;
 
                     this.players[player.id] = player;
                 });
@@ -786,12 +800,14 @@ Hackatron.Game.prototype = {
         // Method for handling received deaths of other clients
         } else if (event.key === 'playerKilled') {
             var player = this.players[event.info.player.id];
-            // this.enemy.addPoints(player.points);
+
             if (player) {
                 player.kill();
             }
+
+            this.player.addPoints(100 / this.players.length);
         // Method for handling player leaves
-      } else if (event.key === 'playerLeave') {
+        } else if (event.key === 'playerLeave') {
             if (this.players[event.info.player.id]) {
                 var player = this.players[event.info.player.id];
                 player.kill();

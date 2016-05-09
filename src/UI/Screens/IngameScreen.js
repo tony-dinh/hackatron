@@ -36,16 +36,44 @@ window.IngameScreen = React.createClass({
             </div>
         }
 
+        var players = [];
+
+        players.push({name: Hackatron.game.player.name, points: Hackatron.game.player.points});
+        for (var id in Hackatron.game.players) {
+            var player = Hackatron.game.players[id];
+            players.push({name: player.name, points: '?'});
+        }
+
         return (
-            <div style={styles.characterChooser}>
-                <div style={{width: 32, height: 32, background: '#01242C url(assets/gfx/characters/' + this.state.currentCharacter + '/walkDown-0002.png) no-repeat 0 0'}} onClick={this._clickCharacter}></div>
-                {this.state.showOthers && otherElements}
-          </div>
+            <div>
+                <div style={styles.characterChooser}>
+                    <div style={{width: 32, height: 32, background: '#01242C url(assets/gfx/characters/' + this.state.currentCharacter + '/walkDown-0002.png) no-repeat 0 0'}} onClick={this._clickCharacter}></div>
+                    {this.state.showOthers && otherElements}
+                </div>
+                <div style={styles.scoreboard}>
+                    {players.map(function(item) {
+                      return <div>{item.name}: {item.points}</div>;
+                    })}
+                </div>
+            </div>
         );
     }
 });
 
 var styles = {
+  scoreboard: {
+    position: 'absolute',
+    top: 20,
+    left: 800,
+    width: 150,
+    height: 100,
+    padding: 5,
+    opacity: 0.9,
+    background: '#01242C',
+    border: '3px solid #fff',
+    color: '#fff',
+    fontFamily: 'Press Start 2P'
+  },
   characterChooser: {
     position: 'absolute',
     top: 20,
@@ -54,16 +82,13 @@ var styles = {
     padding: 5,
     opacity: 0.9,
     background: '#01242C',
-    'backgroundSize': '285% auto',
-    border: '2px solid #fff',
-    borderRadius: '4px',
+    border: '3px solid #fff',
     color: '#fff',
     fontFamily: 'Press Start 2P'
   },
   otherCharacterChooser: {
-    'backgroundSize': '285% auto',
     color: '#fff',
-    padding: '15px 0 0 0',
+    padding: '15px 0 0 5px',
     fontFamily: 'Press Start 2P'
   }
 };

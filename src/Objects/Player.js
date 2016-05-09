@@ -13,7 +13,8 @@ Player.prototype.init = function(params) {
     this.game = params.game;
     this.name = params.name;
     this.keys = params.keys;
-    this.points = 0;
+    this.points = params.points || 0;
+
     this.setupKeys();
 };
 
@@ -33,7 +34,7 @@ Player.prototype.setupKeys = function() {
     }
 };
 
-Player.prototype.removePoints = function() {
+Player.prototype.removePoints = function(points) {
     this.points -= points;
 
     if (this.points < 0) {
