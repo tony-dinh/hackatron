@@ -64,7 +64,7 @@ var styles = {
   scoreboard: {
     position: 'absolute',
     top: 20,
-    left: 800,
+    left: 700,
     width: 150,
     height: 100,
     padding: 5,

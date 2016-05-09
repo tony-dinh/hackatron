@@ -44,7 +44,7 @@ class Character extends GameObject {
         emitter.start(false, 250, 1);
         this.sprite.emitter = emitter;
 
-        // this.aura = this.game.add.sprite(this.position.x, this.position.y, 'gfx/buffs/aura-1');
+        // this.aura = this.game.add.sprite(this.position.x, this.position.y, 'gfx/buffs');
         // this.aura.scale.x = 0.8;
         // this.aura.scale.y = 0.8;
         //

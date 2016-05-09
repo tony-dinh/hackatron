@@ -273,6 +273,7 @@ Hackatron.Game.prototype = {
         for(var id in this.players) {
             this.players[id].this.player.addPoints(100 / this.players.length);
         }
+        window.UI_IngameController.setState(window.IngameState);
 
         this.newGameKey = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
         this.newGameKey.onDown.add(() => {
@@ -554,11 +555,16 @@ Hackatron.Game.prototype = {
         var collideFireballHandler = (index) => {
             // We don't want to destroy fireballs on contact
             this.player.character.dirty = true;
-            // TODO: dedect pts here
+
+            this.player.removePoints(10);
+            window.UI_IngameController.setState(window.IngameState);
+
         };
 
         var collideBlockHandler = () => {
             this.player.character.dirty = true;
+            this.player.removePoints(2);
+            window.UI_IngameController.setState(window.IngameState);
         };
 
         this.blocks.forEach((block) => {
@@ -828,6 +834,7 @@ Hackatron.Game.prototype = {
             }
 
             this.player.addPoints(100 / this.players.length);
+            window.UI_IngameController.setState(window.IngameState);
         // Method for handling player leaves
         } else if (event.key === 'playerLeave') {
             if (this.players[event.info.player.id]) {
