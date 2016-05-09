@@ -169,9 +169,9 @@ class SaiyanHandler extends PowerupHandler {
         super(params);
         this.name = 'Super Saiyan!';
         this.spriteMode = 'key';
-        this.spriteKey = 'gfx/buffs/super-saiyan-icon';
+        this.spriteKey = 'gfx/buffs';
         this.durationTime = 10000;
-        this.spriteLoop = [0,1,2,3,4,5,6];
+        this.spriteLoop = ['buffs/super-saiyan-icon/01','buffs/super-saiyan-icon/02','buffs/super-saiyan-icon/03','buffs/super-saiyan-icon/04','buffs/super-saiyan-icon/05','buffs/super-saiyan-icon/06','buffs/super-saiyan-icon/07'];
     }
 
     onStarted() {
@@ -208,8 +208,8 @@ class SpeedBoostHandler extends PowerupHandler {
         super(params);
         this.name = 'Madness!';
         this.spriteMode = 'key';
-        this.spriteKey = 'gfx/buffs/speed-boost-icon';
-        this.spriteLoop = [0,1,2,3,4,5];
+        this.spriteKey = 'gfx/buffs';
+        this.spriteLoop = ['buffs/speed-boost-icon/01','buffs/speed-boost-icon/02','buffs/speed-boost-icon/03','buffs/speed-boost-icon/04','buffs/speed-boost-icon/05','buffs/speed-boost-icon/06'];
     }
 
     onStarted() {
