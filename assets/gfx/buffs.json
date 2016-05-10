@@ -2,7 +2,7 @@
 
 "buffs/aura-1/01":
 {
-	"frame": {"x":1,"y":404,"w":32,"h":14},
+	"frame": {"x":183,"y":368,"w":32,"h":14},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":14},
@@ -10,7 +10,7 @@
 },
 "buffs/aura-1/02":
 {
-	"frame": {"x":195,"y":236,"w":32,"h":14},
+	"frame": {"x":181,"y":384,"w":32,"h":14},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":14},
@@ -18,7 +18,7 @@
 },
 "buffs/aura-1/03":
 {
-	"frame": {"x":336,"y":119,"w":32,"h":14},
+	"frame": {"x":374,"y":138,"w":32,"h":14},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":14},
@@ -26,7 +26,7 @@
 },
 "buffs/aura-1/04":
 {
-	"frame": {"x":195,"y":236,"w":32,"h":14},
+	"frame": {"x":181,"y":384,"w":32,"h":14},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":14},
@@ -34,7 +34,7 @@
 },
 "buffs/aura-1/05":
 {
-	"frame": {"x":370,"y":125,"w":32,"h":14},
+	"frame": {"x":265,"y":232,"w":32,"h":14},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":14},
@@ -42,7 +42,7 @@
 },
 "buffs/aura-1/06":
 {
-	"frame": {"x":318,"y":135,"w":32,"h":14},
+	"frame": {"x":316,"y":139,"w":32,"h":14},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":14},
@@ -74,7 +74,7 @@
 },
 "buffs/general/01":
 {
-	"frame": {"x":153,"y":356,"w":17,"h":17},
+	"frame": {"x":289,"y":186,"w":17,"h":17},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":17},
@@ -82,7 +82,7 @@
 },
 "buffs/general/02":
 {
-	"frame": {"x":140,"y":401,"w":17,"h":17},
+	"frame": {"x":350,"y":139,"w":17,"h":17},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":17},
@@ -90,7 +90,7 @@
 },
 "buffs/general/03":
 {
-	"frame": {"x":407,"y":59,"w":11,"h":16},
+	"frame": {"x":315,"y":205,"w":11,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":11,"h":16},
@@ -98,7 +98,7 @@
 },
 "buffs/general/04":
 {
-	"frame": {"x":159,"y":401,"w":17,"h":17},
+	"frame": {"x":308,"y":186,"w":17,"h":17},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":17},
@@ -106,7 +106,7 @@
 },
 "buffs/general/05":
 {
-	"frame": {"x":178,"y":401,"w":17,"h":17},
+	"frame": {"x":237,"y":293,"w":17,"h":17},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":17},
@@ -114,7 +114,7 @@
 },
 "buffs/general/06":
 {
-	"frame": {"x":56,"y":388,"w":60,"h":19},
+	"frame": {"x":197,"y":75,"w":60,"h":19},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":60,"h":19},
@@ -130,7 +130,7 @@
 },
 "buffs/general/08":
 {
-	"frame": {"x":118,"y":399,"w":20,"h":19},
+	"frame": {"x":408,"y":142,"w":20,"h":19},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":19},
@@ -138,7 +138,7 @@
 },
 "buffs/general/09":
 {
-	"frame": {"x":204,"y":362,"w":13,"h":12},
+	"frame": {"x":407,"y":65,"w":13,"h":12},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":12},
@@ -154,7 +154,7 @@
 },
 "buffs/general/11":
 {
-	"frame": {"x":361,"y":153,"w":5,"h":4},
+	"frame": {"x":256,"y":306,"w":5,"h":4},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":5,"h":4},
@@ -162,7 +162,7 @@
 },
 "buffs/general/12":
 {
-	"frame": {"x":247,"y":340,"w":20,"h":20},
+	"frame": {"x":408,"y":120,"w":20,"h":20},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":20},
@@ -170,7 +170,7 @@
 },
 "buffs/general/13":
 {
-	"frame": {"x":197,"y":399,"w":17,"h":16},
+	"frame": {"x":210,"y":400,"w":17,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":16},
@@ -178,7 +178,7 @@
 },
 "buffs/general/14":
 {
-	"frame": {"x":172,"y":362,"w":30,"h":12},
+	"frame": {"x":176,"y":418,"w":30,"h":12},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":12},
@@ -186,7 +186,7 @@
 },
 "buffs/general/15":
 {
-	"frame": {"x":203,"y":252,"w":24,"h":24},
+	"frame": {"x":348,"y":113,"w":24,"h":24},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":24},
@@ -194,7 +194,7 @@
 },
 "buffs/general/16":
 {
-	"frame": {"x":176,"y":291,"w":32,"h":29},
+	"frame": {"x":193,"y":179,"w":32,"h":29},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":29},
@@ -202,7 +202,7 @@
 },
 "buffs/general/17":
 {
-	"frame": {"x":210,"y":291,"w":19,"h":24},
+	"frame": {"x":162,"y":353,"w":19,"h":24},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":19,"h":24},
@@ -210,7 +210,7 @@
 },
 "buffs/general/18":
 {
-	"frame": {"x":376,"y":79,"w":26,"h":30},
+	"frame": {"x":237,"y":210,"w":26,"h":30},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":26,"h":30},
@@ -218,7 +218,7 @@
 },
 "buffs/general/19":
 {
-	"frame": {"x":193,"y":156,"w":33,"h":27},
+	"frame": {"x":227,"y":181,"w":33,"h":27},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":33,"h":27},
@@ -226,7 +226,7 @@
 },
 "buffs/general/20":
 {
-	"frame": {"x":195,"y":209,"w":25,"h":25},
+	"frame": {"x":176,"y":291,"w":25,"h":25},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":25},
@@ -234,7 +234,7 @@
 },
 "buffs/general/21":
 {
-	"frame": {"x":291,"y":117,"w":25,"h":24},
+	"frame": {"x":262,"y":181,"w":25,"h":24},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":24},
@@ -242,7 +242,7 @@
 },
 "buffs/general/22":
 {
-	"frame": {"x":213,"y":317,"w":25,"h":24},
+	"frame": {"x":321,"y":113,"w":25,"h":24},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":24},
@@ -258,7 +258,7 @@
 },
 "buffs/general/24":
 {
-	"frame": {"x":173,"y":322,"w":38,"h":38},
+	"frame": {"x":56,"y":392,"w":38,"h":38},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
@@ -266,7 +266,7 @@
 },
 "buffs/general/25":
 {
-	"frame": {"x":336,"y":79,"w":38,"h":38},
+	"frame": {"x":96,"y":392,"w":38,"h":38},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
@@ -282,7 +282,7 @@
 },
 "buffs/general/27":
 {
-	"frame": {"x":192,"y":116,"w":38,"h":38},
+	"frame": {"x":136,"y":392,"w":38,"h":38},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
@@ -290,7 +290,7 @@
 },
 "buffs/general/28":
 {
-	"frame": {"x":203,"y":278,"w":17,"h":11},
+	"frame": {"x":162,"y":379,"w":17,"h":11},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":11},
@@ -298,7 +298,7 @@
 },
 "buffs/general/29":
 {
-	"frame": {"x":254,"y":155,"w":15,"h":15},
+	"frame": {"x":409,"y":348,"w":15,"h":15},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":15},
@@ -306,7 +306,7 @@
 },
 "buffs/general/30":
 {
-	"frame": {"x":407,"y":40,"w":11,"h":17},
+	"frame": {"x":41,"y":404,"w":11,"h":17},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":11,"h":17},
@@ -314,7 +314,7 @@
 },
 "buffs/general/31":
 {
-	"frame": {"x":216,"y":407,"w":17,"h":11},
+	"frame": {"x":233,"y":348,"w":17,"h":11},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":11},
@@ -338,7 +338,7 @@
 },
 "buffs/general/34":
 {
-	"frame": {"x":376,"y":111,"w":26,"h":12},
+	"frame": {"x":208,"y":418,"w":26,"h":12},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":26,"h":12},
@@ -354,7 +354,7 @@
 },
 "buffs/general/36":
 {
-	"frame": {"x":254,"y":172,"w":15,"h":15},
+	"frame": {"x":411,"y":365,"w":15,"h":15},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":15},
@@ -362,7 +362,7 @@
 },
 "buffs/general/37":
 {
-	"frame": {"x":56,"y":357,"w":60,"h":29},
+	"frame": {"x":119,"y":322,"w":60,"h":29},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":60,"h":29},
@@ -378,7 +378,7 @@
 },
 "buffs/general/39":
 {
-	"frame": {"x":197,"y":75,"w":47,"h":39},
+	"frame": {"x":193,"y":138,"w":47,"h":39},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":47,"h":39},
@@ -386,7 +386,7 @@
 },
 "buffs/general/40":
 {
-	"frame": {"x":119,"y":322,"w":52,"h":32},
+	"frame": {"x":247,"y":106,"w":52,"h":32},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":52,"h":32},
@@ -394,7 +394,7 @@
 },
 "buffs/general/41":
 {
-	"frame": {"x":246,"y":75,"w":46,"h":39},
+	"frame": {"x":375,"y":79,"w":46,"h":39},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":46,"h":39},
@@ -410,7 +410,7 @@
 },
 "buffs/general/43":
 {
-	"frame": {"x":294,"y":75,"w":40,"h":40},
+	"frame": {"x":195,"y":210,"w":40,"h":40},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":40,"h":40},
@@ -418,7 +418,7 @@
 },
 "buffs/general/44":
 {
-	"frame": {"x":53,"y":409,"w":14,"h":9},
+	"frame": {"x":382,"y":307,"w":14,"h":9},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":9},
@@ -426,7 +426,7 @@
 },
 "buffs/general/45":
 {
-	"frame": {"x":318,"y":404,"w":9,"h":13},
+	"frame": {"x":418,"y":181,"w":9,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":9,"h":13},
@@ -434,7 +434,7 @@
 },
 "buffs/general/46":
 {
-	"frame": {"x":307,"y":404,"w":9,"h":14},
+	"frame": {"x":287,"y":261,"w":9,"h":14},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":9,"h":14},
@@ -442,7 +442,7 @@
 },
 "buffs/general/47":
 {
-	"frame": {"x":69,"y":409,"w":14,"h":9},
+	"frame": {"x":410,"y":416,"w":14,"h":9},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":9},
@@ -466,7 +466,7 @@
 },
 "buffs/general/50":
 {
-	"frame": {"x":193,"y":185,"w":38,"h":22},
+	"frame": {"x":1,"y":404,"w":38,"h":22},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":22},
@@ -474,7 +474,7 @@
 },
 "buffs/general/51":
 {
-	"frame": {"x":271,"y":116,"w":18,"h":30},
+	"frame": {"x":301,"y":106,"w":18,"h":30},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":30},
@@ -490,7 +490,7 @@
 },
 "buffs/general/53":
 {
-	"frame": {"x":232,"y":116,"w":37,"h":37},
+	"frame": {"x":123,"y":353,"w":37,"h":37},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":37,"h":37},
@@ -520,9 +520,17 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":59,"h":154},
 	"sourceSize": {"w":59,"h":154}
 },
+"buffs/general/57":
+{
+	"frame": {"x":418,"y":196,"w":9,"h":11},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":9,"h":11},
+	"sourceSize": {"w":9,"h":11}
+},
 "buffs/glow-star/21":
 {
-	"frame": {"x":291,"y":117,"w":25,"h":24},
+	"frame": {"x":262,"y":181,"w":25,"h":24},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":24},
@@ -530,7 +538,7 @@
 },
 "buffs/glow-star/22":
 {
-	"frame": {"x":213,"y":317,"w":25,"h":24},
+	"frame": {"x":321,"y":113,"w":25,"h":24},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":24},
@@ -538,7 +546,7 @@
 },
 "buffs/icons/0001":
 {
-	"frame": {"x":318,"y":117,"w":16,"h":16},
+	"frame": {"x":232,"y":312,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -546,7 +554,7 @@
 },
 "buffs/icons/0002":
 {
-	"frame": {"x":352,"y":135,"w":16,"h":16},
+	"frame": {"x":299,"y":228,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -554,7 +562,7 @@
 },
 "buffs/icons/0003":
 {
-	"frame": {"x":244,"y":362,"w":16,"h":16},
+	"frame": {"x":229,"y":400,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -562,7 +570,7 @@
 },
 "buffs/icons/0004":
 {
-	"frame": {"x":244,"y":380,"w":16,"h":16},
+	"frame": {"x":233,"y":330,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -570,7 +578,7 @@
 },
 "buffs/icons/0005":
 {
-	"frame": {"x":271,"y":148,"w":16,"h":16},
+	"frame": {"x":217,"y":361,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -578,7 +586,7 @@
 },
 "buffs/icons/0006":
 {
-	"frame": {"x":262,"y":362,"w":16,"h":16},
+	"frame": {"x":235,"y":361,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -586,7 +594,7 @@
 },
 "buffs/icons/0007":
 {
-	"frame": {"x":254,"y":189,"w":15,"h":15},
+	"frame": {"x":411,"y":382,"w":15,"h":15},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":15},
@@ -594,7 +602,7 @@
 },
 "buffs/icons/0008":
 {
-	"frame": {"x":262,"y":380,"w":16,"h":16},
+	"frame": {"x":233,"y":379,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -602,7 +610,7 @@
 },
 "buffs/icons/0009":
 {
-	"frame": {"x":253,"y":398,"w":16,"h":16},
+	"frame": {"x":250,"y":312,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -610,7 +618,7 @@
 },
 "buffs/icons/0010":
 {
-	"frame": {"x":271,"y":398,"w":16,"h":16},
+	"frame": {"x":251,"y":330,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -618,7 +626,7 @@
 },
 "buffs/icons/0011":
 {
-	"frame": {"x":271,"y":166,"w":16,"h":16},
+	"frame": {"x":253,"y":361,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -626,7 +634,7 @@
 },
 "buffs/icons/0012":
 {
-	"frame": {"x":291,"y":143,"w":16,"h":16},
+	"frame": {"x":251,"y":379,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -634,7 +642,7 @@
 },
 "buffs/icons/0013":
 {
-	"frame": {"x":289,"y":161,"w":16,"h":16},
+	"frame": {"x":247,"y":397,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -642,7 +650,7 @@
 },
 "buffs/icons/0014":
 {
-	"frame": {"x":280,"y":384,"w":11,"h":11},
+	"frame": {"x":418,"y":209,"w":11,"h":11},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":11,"h":11},
@@ -650,7 +658,7 @@
 },
 "buffs/icons/0015":
 {
-	"frame": {"x":370,"y":119,"w":4,"h":4},
+	"frame": {"x":263,"y":306,"w":4,"h":4},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":4,"h":4},
@@ -658,7 +666,7 @@
 },
 "buffs/icons/0016":
 {
-	"frame": {"x":329,"y":404,"w":11,"h":11},
+	"frame": {"x":327,"y":178,"w":11,"h":11},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":11,"h":11},
@@ -666,7 +674,7 @@
 },
 "buffs/icons/0017":
 {
-	"frame": {"x":319,"y":197,"w":4,"h":4},
+	"frame": {"x":426,"y":163,"w":4,"h":4},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":4,"h":4},
@@ -674,7 +682,7 @@
 },
 "buffs/icons/0018":
 {
-	"frame": {"x":307,"y":161,"w":16,"h":16},
+	"frame": {"x":265,"y":397,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -682,7 +690,7 @@
 },
 "buffs/icons/0019":
 {
-	"frame": {"x":325,"y":151,"w":16,"h":16},
+	"frame": {"x":269,"y":379,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -690,7 +698,7 @@
 },
 "buffs/icons/0020":
 {
-	"frame": {"x":325,"y":169,"w":16,"h":16},
+	"frame": {"x":283,"y":397,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -698,7 +706,7 @@
 },
 "buffs/icons/0021":
 {
-	"frame": {"x":343,"y":153,"w":16,"h":16},
+	"frame": {"x":317,"y":223,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -706,7 +714,7 @@
 },
 "buffs/icons/0022":
 {
-	"frame": {"x":343,"y":171,"w":16,"h":16},
+	"frame": {"x":317,"y":241,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -714,7 +722,7 @@
 },
 "buffs/icons/0023":
 {
-	"frame": {"x":361,"y":159,"w":16,"h":16},
+	"frame": {"x":299,"y":246,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -722,7 +730,7 @@
 },
 "buffs/icons/0024":
 {
-	"frame": {"x":379,"y":159,"w":16,"h":16},
+	"frame": {"x":269,"y":248,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -730,7 +738,7 @@
 },
 "buffs/icons/0025":
 {
-	"frame": {"x":35,"y":404,"w":16,"h":14},
+	"frame": {"x":215,"y":384,"w":16,"h":14},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":14},
@@ -738,7 +746,7 @@
 },
 "buffs/icons/0026":
 {
-	"frame": {"x":361,"y":177,"w":16,"h":16},
+	"frame": {"x":251,"y":252,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -746,7 +754,7 @@
 },
 "buffs/icons/0027":
 {
-	"frame": {"x":397,"y":187,"w":16,"h":15},
+	"frame": {"x":250,"y":415,"w":16,"h":15},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":15},
@@ -754,7 +762,7 @@
 },
 "buffs/icons/0028":
 {
-	"frame": {"x":379,"y":177,"w":16,"h":16},
+	"frame": {"x":251,"y":270,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -762,7 +770,7 @@
 },
 "buffs/icons/0029":
 {
-	"frame": {"x":397,"y":169,"w":16,"h":16},
+	"frame": {"x":269,"y":266,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -770,7 +778,7 @@
 },
 "buffs/icons/0030":
 {
-	"frame": {"x":271,"y":184,"w":16,"h":16},
+	"frame": {"x":298,"y":264,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -778,7 +786,7 @@
 },
 "buffs/icons/0031":
 {
-	"frame": {"x":289,"y":179,"w":16,"h":16},
+	"frame": {"x":256,"y":288,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -786,7 +794,7 @@
 },
 "buffs/icons/0032":
 {
-	"frame": {"x":307,"y":179,"w":16,"h":16},
+	"frame": {"x":274,"y":284,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -794,7 +802,7 @@
 },
 "buffs/icons/0033":
 {
-	"frame": {"x":325,"y":187,"w":16,"h":16},
+	"frame": {"x":292,"y":282,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -802,7 +810,7 @@
 },
 "buffs/icons/0034":
 {
-	"frame": {"x":343,"y":189,"w":16,"h":15},
+	"frame": {"x":268,"y":415,"w":16,"h":15},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":15},
@@ -810,7 +818,7 @@
 },
 "buffs/icons/0035":
 {
-	"frame": {"x":247,"y":206,"w":16,"h":16},
+	"frame": {"x":310,"y":282,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -818,7 +826,7 @@
 },
 "buffs/icons/0036":
 {
-	"frame": {"x":361,"y":195,"w":16,"h":16},
+	"frame": {"x":316,"y":264,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -826,7 +834,7 @@
 },
 "buffs/icons/0037":
 {
-	"frame": {"x":379,"y":195,"w":16,"h":16},
+	"frame": {"x":328,"y":282,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -834,7 +842,7 @@
 },
 "buffs/icons/0038":
 {
-	"frame": {"x":404,"y":79,"w":14,"h":16},
+	"frame": {"x":366,"y":158,"w":14,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":16},
@@ -842,7 +850,7 @@
 },
 "buffs/icons/0039":
 {
-	"frame": {"x":397,"y":204,"w":16,"h":16},
+	"frame": {"x":274,"y":302,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -850,7 +858,7 @@
 },
 "buffs/icons/0040":
 {
-	"frame": {"x":265,"y":206,"w":16,"h":16},
+	"frame": {"x":292,"y":300,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -858,7 +866,7 @@
 },
 "buffs/icons/0041":
 {
-	"frame": {"x":254,"y":224,"w":16,"h":16},
+	"frame": {"x":310,"y":300,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -866,7 +874,7 @@
 },
 "buffs/icons/0042":
 {
-	"frame": {"x":254,"y":242,"w":16,"h":16},
+	"frame": {"x":328,"y":300,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -874,7 +882,7 @@
 },
 "buffs/icons/0043":
 {
-	"frame": {"x":254,"y":260,"w":16,"h":16},
+	"frame": {"x":382,"y":154,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -882,7 +890,7 @@
 },
 "buffs/icons/0044":
 {
-	"frame": {"x":256,"y":278,"w":16,"h":16},
+	"frame": {"x":408,"y":163,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -890,7 +898,7 @@
 },
 "buffs/icons/0045":
 {
-	"frame": {"x":404,"y":97,"w":14,"h":16},
+	"frame": {"x":366,"y":176,"w":14,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":16},
@@ -898,7 +906,7 @@
 },
 "buffs/icons/0046":
 {
-	"frame": {"x":272,"y":224,"w":16,"h":16},
+	"frame": {"x":382,"y":172,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -906,7 +914,7 @@
 },
 "buffs/icons/0047":
 {
-	"frame": {"x":274,"y":278,"w":15,"h":16},
+	"frame": {"x":270,"y":338,"w":15,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":16},
@@ -914,7 +922,7 @@
 },
 "buffs/icons/0048":
 {
-	"frame": {"x":256,"y":296,"w":16,"h":15},
+	"frame": {"x":286,"y":415,"w":16,"h":15},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":15},
@@ -922,7 +930,7 @@
 },
 "buffs/icons/0049":
 {
-	"frame": {"x":272,"y":242,"w":16,"h":16},
+	"frame": {"x":382,"y":190,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -930,7 +938,7 @@
 },
 "buffs/icons/0050":
 {
-	"frame": {"x":272,"y":260,"w":16,"h":16},
+	"frame": {"x":400,"y":181,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -938,7 +946,7 @@
 },
 "buffs/icons/0051":
 {
-	"frame": {"x":404,"y":115,"w":14,"h":16},
+	"frame": {"x":271,"y":356,"w":14,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":16},
@@ -946,7 +954,7 @@
 },
 "buffs/icons/0052":
 {
-	"frame": {"x":404,"y":133,"w":14,"h":16},
+	"frame": {"x":287,"y":320,"w":14,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":16},
@@ -954,7 +962,7 @@
 },
 "buffs/icons/0053":
 {
-	"frame": {"x":274,"y":296,"w":16,"h":16},
+	"frame": {"x":400,"y":199,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -962,7 +970,7 @@
 },
 "buffs/icons/0054":
 {
-	"frame": {"x":283,"y":206,"w":16,"h":16},
+	"frame": {"x":269,"y":320,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -970,7 +978,7 @@
 },
 "buffs/icons/0055":
 {
-	"frame": {"x":290,"y":224,"w":16,"h":16},
+	"frame": {"x":287,"y":338,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -978,7 +986,7 @@
 },
 "buffs/icons/0056":
 {
-	"frame": {"x":290,"y":242,"w":16,"h":16},
+	"frame": {"x":287,"y":356,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -986,7 +994,7 @@
 },
 "buffs/icons/0057":
 {
-	"frame": {"x":290,"y":260,"w":16,"h":16},
+	"frame": {"x":303,"y":318,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -994,7 +1002,7 @@
 },
 "buffs/icons/0058":
 {
-	"frame": {"x":404,"y":151,"w":14,"h":16},
+	"frame": {"x":323,"y":336,"w":14,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":16},
@@ -1002,7 +1010,7 @@
 },
 "buffs/icons/0059":
 {
-	"frame": {"x":233,"y":195,"w":12,"h":12},
+	"frame": {"x":236,"y":418,"w":12,"h":12},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":12,"h":12},
@@ -1010,7 +1018,7 @@
 },
 "buffs/icons/0060":
 {
-	"frame": {"x":291,"y":278,"w":16,"h":16},
+	"frame": {"x":321,"y":318,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1018,7 +1026,7 @@
 },
 "buffs/icons/0061":
 {
-	"frame": {"x":213,"y":343,"w":32,"h":16},
+	"frame": {"x":203,"y":293,"w":32,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":16},
@@ -1026,7 +1034,7 @@
 },
 "buffs/icons/0062":
 {
-	"frame": {"x":370,"y":141,"w":32,"h":16},
+	"frame": {"x":374,"y":120,"w":32,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":16},
@@ -1034,7 +1042,7 @@
 },
 "buffs/icons/0063":
 {
-	"frame": {"x":292,"y":296,"w":16,"h":16},
+	"frame": {"x":305,"y":336,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1042,7 +1050,7 @@
 },
 "buffs/icons/0064":
 {
-	"frame": {"x":301,"y":197,"w":16,"h":16},
+	"frame": {"x":305,"y":354,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1050,7 +1058,7 @@
 },
 "buffs/icons/0065":
 {
-	"frame": {"x":287,"y":332,"w":14,"h":16},
+	"frame": {"x":323,"y":354,"w":14,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":16},
@@ -1058,7 +1066,7 @@
 },
 "buffs/icons/0066":
 {
-	"frame": {"x":301,"y":314,"w":14,"h":16},
+	"frame": {"x":323,"y":372,"w":14,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":16},
@@ -1066,7 +1074,7 @@
 },
 "buffs/icons/0067":
 {
-	"frame": {"x":281,"y":350,"w":16,"h":14},
+	"frame": {"x":305,"y":390,"w":16,"h":14},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":14},
@@ -1074,7 +1082,7 @@
 },
 "buffs/icons/0068":
 {
-	"frame": {"x":231,"y":307,"w":16,"h":8},
+	"frame": {"x":237,"y":242,"w":16,"h":8},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":8},
@@ -1082,7 +1090,7 @@
 },
 "buffs/icons/0069":
 {
-	"frame": {"x":303,"y":332,"w":14,"h":16},
+	"frame": {"x":339,"y":318,"w":14,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":16},
@@ -1090,7 +1098,7 @@
 },
 "buffs/icons/0070":
 {
-	"frame": {"x":311,"y":386,"w":14,"h":16},
+	"frame": {"x":339,"y":336,"w":14,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":16},
@@ -1098,7 +1106,7 @@
 },
 "buffs/icons/0071":
 {
-	"frame": {"x":316,"y":368,"w":14,"h":16},
+	"frame": {"x":339,"y":354,"w":14,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":16},
@@ -1106,7 +1114,7 @@
 },
 "buffs/icons/0072":
 {
-	"frame": {"x":397,"y":159,"w":5,"h":5},
+	"frame": {"x":208,"y":361,"w":5,"h":5},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":5,"h":5},
@@ -1114,7 +1122,7 @@
 },
 "buffs/icons/0073":
 {
-	"frame": {"x":192,"y":81,"w":3,"h":3},
+	"frame": {"x":251,"y":288,"w":3,"h":3},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
@@ -1122,7 +1130,7 @@
 },
 "buffs/icons/0074":
 {
-	"frame": {"x":265,"y":314,"w":16,"h":16},
+	"frame": {"x":287,"y":374,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1130,7 +1138,7 @@
 },
 "buffs/icons/0075":
 {
-	"frame": {"x":283,"y":314,"w":16,"h":16},
+	"frame": {"x":305,"y":372,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1138,7 +1146,7 @@
 },
 "buffs/icons/0076":
 {
-	"frame": {"x":269,"y":332,"w":16,"h":16},
+	"frame": {"x":339,"y":372,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1146,7 +1154,7 @@
 },
 "buffs/icons/0077":
 {
-	"frame": {"x":280,"y":366,"w":16,"h":16},
+	"frame": {"x":323,"y":390,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1154,7 +1162,7 @@
 },
 "buffs/icons/0078":
 {
-	"frame": {"x":299,"y":350,"w":16,"h":16},
+	"frame": {"x":341,"y":390,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1162,7 +1170,7 @@
 },
 "buffs/icons/0079":
 {
-	"frame": {"x":317,"y":350,"w":14,"h":16},
+	"frame": {"x":358,"y":408,"w":14,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":16},
@@ -1170,7 +1178,7 @@
 },
 "buffs/icons/0080":
 {
-	"frame": {"x":342,"y":404,"w":10,"h":11},
+	"frame": {"x":287,"y":248,"w":10,"h":11},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":11},
@@ -1178,7 +1186,7 @@
 },
 "buffs/icons/0081":
 {
-	"frame": {"x":355,"y":206,"w":4,"h":4},
+	"frame": {"x":426,"y":169,"w":4,"h":4},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":4,"h":4},
@@ -1186,7 +1194,7 @@
 },
 "buffs/icons/0082":
 {
-	"frame": {"x":298,"y":368,"w":16,"h":16},
+	"frame": {"x":304,"y":406,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1194,7 +1202,7 @@
 },
 "buffs/icons/0083":
 {
-	"frame": {"x":293,"y":386,"w":16,"h":16},
+	"frame": {"x":322,"y":408,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1202,7 +1210,7 @@
 },
 "buffs/icons/0084":
 {
-	"frame": {"x":327,"y":386,"w":16,"h":16},
+	"frame": {"x":340,"y":408,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1210,7 +1218,7 @@
 },
 "buffs/icons/0085":
 {
-	"frame": {"x":332,"y":368,"w":16,"h":16},
+	"frame": {"x":340,"y":181,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1218,7 +1226,7 @@
 },
 "buffs/icons/0086":
 {
-	"frame": {"x":289,"y":404,"w":16,"h":14},
+	"frame": {"x":360,"y":212,"w":16,"h":14},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":14},
@@ -1226,7 +1234,7 @@
 },
 "buffs/icons/0087":
 {
-	"frame": {"x":345,"y":386,"w":14,"h":16},
+	"frame": {"x":328,"y":203,"w":14,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":16},
@@ -1234,7 +1242,7 @@
 },
 "buffs/icons/0088":
 {
-	"frame": {"x":228,"y":156,"w":14,"h":16},
+	"frame": {"x":344,"y":199,"w":14,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":16},
@@ -1242,7 +1250,7 @@
 },
 "buffs/icons/0089":
 {
-	"frame": {"x":319,"y":205,"w":16,"h":16},
+	"frame": {"x":335,"y":221,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1250,7 +1258,7 @@
 },
 "buffs/icons/0090":
 {
-	"frame": {"x":337,"y":206,"w":16,"h":16},
+	"frame": {"x":335,"y":239,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1258,7 +1266,7 @@
 },
 "buffs/icons/0091":
 {
-	"frame": {"x":308,"y":223,"w":16,"h":16},
+	"frame": {"x":360,"y":194,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1266,7 +1274,7 @@
 },
 "buffs/icons/0092":
 {
-	"frame": {"x":308,"y":241,"w":16,"h":16},
+	"frame": {"x":378,"y":208,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1274,7 +1282,7 @@
 },
 "buffs/icons/0093":
 {
-	"frame": {"x":317,"y":313,"w":14,"h":16},
+	"frame": {"x":334,"y":264,"w":14,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":16},
@@ -1282,7 +1290,7 @@
 },
 "buffs/icons/0094":
 {
-	"frame": {"x":319,"y":331,"w":14,"h":16},
+	"frame": {"x":355,"y":318,"w":14,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":16},
@@ -1290,7 +1298,7 @@
 },
 "buffs/icons/0095":
 {
-	"frame": {"x":327,"y":277,"w":14,"h":16},
+	"frame": {"x":355,"y":336,"w":14,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":16},
@@ -1298,7 +1306,7 @@
 },
 "buffs/icons/0096":
 {
-	"frame": {"x":308,"y":259,"w":16,"h":16},
+	"frame": {"x":353,"y":228,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1306,7 +1314,7 @@
 },
 "buffs/icons/0097":
 {
-	"frame": {"x":309,"y":277,"w":16,"h":16},
+	"frame": {"x":353,"y":246,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1314,7 +1322,7 @@
 },
 "buffs/icons/0098":
 {
-	"frame": {"x":310,"y":295,"w":16,"h":16},
+	"frame": {"x":350,"y":264,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1322,7 +1330,7 @@
 },
 "buffs/icons/0099":
 {
-	"frame": {"x":326,"y":224,"w":16,"h":16},
+	"frame": {"x":346,"y":282,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1330,7 +1338,7 @@
 },
 "buffs/icons/0100":
 {
-	"frame": {"x":326,"y":242,"w":16,"h":16},
+	"frame": {"x":346,"y":300,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1338,7 +1346,7 @@
 },
 "buffs/icons/0101":
 {
-	"frame": {"x":269,"y":350,"w":10,"h":10},
+	"frame": {"x":327,"y":191,"w":10,"h":10},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":10},
@@ -1346,7 +1354,7 @@
 },
 "buffs/icons/0102":
 {
-	"frame": {"x":309,"y":143,"w":6,"h":16},
+	"frame": {"x":400,"y":154,"w":6,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":6,"h":16},
@@ -1354,7 +1362,7 @@
 },
 "buffs/icons/0103":
 {
-	"frame": {"x":317,"y":151,"w":6,"h":6},
+	"frame": {"x":316,"y":178,"w":6,"h":6},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":6,"h":6},
@@ -1362,7 +1370,7 @@
 },
 "buffs/icons/0104":
 {
-	"frame": {"x":328,"y":295,"w":16,"h":16},
+	"frame": {"x":355,"y":354,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1370,7 +1378,7 @@
 },
 "buffs/icons/0105":
 {
-	"frame": {"x":333,"y":313,"w":16,"h":16},
+	"frame": {"x":357,"y":372,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1378,7 +1386,7 @@
 },
 "buffs/icons/0106":
 {
-	"frame": {"x":335,"y":331,"w":16,"h":16},
+	"frame": {"x":359,"y":390,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1386,7 +1394,7 @@
 },
 "buffs/icons/0107":
 {
-	"frame": {"x":333,"y":349,"w":16,"h":16},
+	"frame": {"x":371,"y":228,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1394,7 +1402,7 @@
 },
 "buffs/icons/0108":
 {
-	"frame": {"x":344,"y":224,"w":16,"h":16},
+	"frame": {"x":371,"y":246,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1402,7 +1410,7 @@
 },
 "buffs/icons/0109":
 {
-	"frame": {"x":344,"y":242,"w":16,"h":16},
+	"frame": {"x":368,"y":264,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1410,7 +1418,7 @@
 },
 "buffs/icons/0110":
 {
-	"frame": {"x":343,"y":260,"w":16,"h":16},
+	"frame": {"x":364,"y":282,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1418,7 +1426,7 @@
 },
 "buffs/icons/0111":
 {
-	"frame": {"x":362,"y":213,"w":16,"h":16},
+	"frame": {"x":364,"y":300,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1426,7 +1434,7 @@
 },
 "buffs/icons/0112":
 {
-	"frame": {"x":362,"y":231,"w":16,"h":16},
+	"frame": {"x":371,"y":318,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1434,7 +1442,7 @@
 },
 "buffs/icons/0113":
 {
-	"frame": {"x":380,"y":231,"w":16,"h":16},
+	"frame": {"x":371,"y":336,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1442,7 +1450,7 @@
 },
 "buffs/icons/0114":
 {
-	"frame": {"x":362,"y":249,"w":16,"h":16},
+	"frame": {"x":373,"y":354,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1450,7 +1458,7 @@
 },
 "buffs/icons/0115":
 {
-	"frame": {"x":235,"y":407,"w":16,"h":11},
+	"frame": {"x":252,"y":348,"w":16,"h":11},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":11},
@@ -1458,7 +1466,7 @@
 },
 "buffs/icons/0116":
 {
-	"frame": {"x":351,"y":349,"w":12,"h":16},
+	"frame": {"x":418,"y":1,"w":12,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":12,"h":16},
@@ -1466,7 +1474,7 @@
 },
 "buffs/icons/0117":
 {
-	"frame": {"x":361,"y":385,"w":12,"h":16},
+	"frame": {"x":418,"y":19,"w":12,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":12,"h":16},
@@ -1474,7 +1482,7 @@
 },
 "buffs/icons/0118":
 {
-	"frame": {"x":380,"y":249,"w":16,"h":16},
+	"frame": {"x":375,"y":372,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1482,7 +1490,7 @@
 },
 "buffs/icons/0119":
 {
-	"frame": {"x":361,"y":267,"w":16,"h":16},
+	"frame": {"x":377,"y":390,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1490,7 +1498,7 @@
 },
 "buffs/icons/0120":
 {
-	"frame": {"x":379,"y":267,"w":16,"h":16},
+	"frame": {"x":374,"y":408,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1498,7 +1506,7 @@
 },
 "buffs/icons/0121":
 {
-	"frame": {"x":398,"y":222,"w":16,"h":16},
+	"frame": {"x":396,"y":217,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1506,7 +1514,7 @@
 },
 "buffs/icons/0122":
 {
-	"frame": {"x":398,"y":240,"w":16,"h":16},
+	"frame": {"x":414,"y":222,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1514,7 +1522,7 @@
 },
 "buffs/icons/0123":
 {
-	"frame": {"x":380,"y":213,"w":14,"h":16},
+	"frame": {"x":389,"y":318,"w":14,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":16},
@@ -1522,7 +1530,7 @@
 },
 "buffs/icons/0124":
 {
-	"frame": {"x":326,"y":260,"w":15,"h":15},
+	"frame": {"x":411,"y":399,"w":15,"h":15},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":15},
@@ -1530,7 +1538,7 @@
 },
 "buffs/icons/0125":
 {
-	"frame": {"x":398,"y":258,"w":16,"h":16},
+	"frame": {"x":389,"y":235,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1538,7 +1546,7 @@
 },
 "buffs/icons/0126":
 {
-	"frame": {"x":397,"y":276,"w":16,"h":16},
+	"frame": {"x":389,"y":253,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1546,7 +1554,7 @@
 },
 "buffs/icons/0127":
 {
-	"frame": {"x":350,"y":367,"w":16,"h":16},
+	"frame": {"x":407,"y":240,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1554,7 +1562,7 @@
 },
 "buffs/icons/0128":
 {
-	"frame": {"x":233,"y":174,"w":16,"h":16},
+	"frame": {"x":407,"y":258,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1562,7 +1570,7 @@
 },
 "buffs/icons/0129":
 {
-	"frame": {"x":365,"y":285,"w":16,"h":16},
+	"frame": {"x":386,"y":271,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1570,7 +1578,7 @@
 },
 "buffs/icons/0130":
 {
-	"frame": {"x":365,"y":303,"w":16,"h":16},
+	"frame": {"x":382,"y":289,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1578,7 +1586,7 @@
 },
 "buffs/icons/0131":
 {
-	"frame": {"x":401,"y":294,"w":14,"h":16},
+	"frame": {"x":389,"y":336,"w":14,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":16},
@@ -1586,7 +1594,7 @@
 },
 "buffs/icons/0132":
 {
-	"frame": {"x":383,"y":294,"w":16,"h":16},
+	"frame": {"x":404,"y":276,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1594,7 +1602,7 @@
 },
 "buffs/icons/0133":
 {
-	"frame": {"x":119,"y":356,"w":32,"h":16},
+	"frame": {"x":176,"y":400,"w":32,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":16},
@@ -1602,7 +1610,7 @@
 },
 "buffs/icons/0134":
 {
-	"frame": {"x":383,"y":312,"w":16,"h":16},
+	"frame": {"x":391,"y":354,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1610,7 +1618,7 @@
 },
 "buffs/icons/0135":
 {
-	"frame": {"x":401,"y":312,"w":16,"h":16},
+	"frame": {"x":393,"y":372,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1618,7 +1626,7 @@
 },
 "buffs/icons/0136":
 {
-	"frame": {"x":365,"y":339,"w":14,"h":16},
+	"frame": {"x":395,"y":390,"w":14,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":16},
@@ -1626,7 +1634,7 @@
 },
 "buffs/icons/0137":
 {
-	"frame": {"x":365,"y":321,"w":16,"h":16},
+	"frame": {"x":392,"y":408,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1634,7 +1642,7 @@
 },
 "buffs/icons/0138":
 {
-	"frame": {"x":383,"y":330,"w":16,"h":16},
+	"frame": {"x":400,"y":294,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
@@ -1642,7 +1650,7 @@
 },
 "buffs/icons/0139":
 {
-	"frame": {"x":381,"y":348,"w":14,"h":16},
+	"frame": {"x":405,"y":312,"w":14,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":16},
@@ -1650,55 +1658,55 @@
 },
 "buffs/icons/0140":
 {
-	"frame": {"x":401,"y":330,"w":16,"h":16},
+	"frame": {"x":405,"y":330,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
 	"sourceSize": {"w":16,"h":16}
 },
-"buffs/lightning-attack/35":
+"buffs/lightning-attack/1":
 {
-	"frame": {"x":52,"y":322,"w":65,"h":33},
+	"frame": {"x":56,"y":357,"w":65,"h":33},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":65,"h":33},
 	"sourceSize": {"w":65,"h":33}
 },
-"buffs/lightning-attack/37":
+"buffs/lightning-attack/2":
 {
-	"frame": {"x":56,"y":357,"w":60,"h":29},
+	"frame": {"x":259,"y":75,"w":60,"h":29},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":60,"h":29},
 	"sourceSize": {"w":60,"h":29}
 },
-"buffs/lightning-attack/38":
+"buffs/lightning-attack/3":
 {
-	"frame": {"x":1,"y":362,"w":53,"h":40},
+	"frame": {"x":192,"y":96,"w":53,"h":40},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":53,"h":40},
 	"sourceSize": {"w":53,"h":40}
 },
-"buffs/lightning-attack/39":
+"buffs/lightning-attack/4":
 {
-	"frame": {"x":197,"y":75,"w":47,"h":39},
+	"frame": {"x":242,"y":140,"w":47,"h":39},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":47,"h":39},
 	"sourceSize": {"w":47,"h":39}
 },
-"buffs/lightning-attack/40":
+"buffs/lightning-attack/5":
 {
-	"frame": {"x":119,"y":322,"w":52,"h":32},
+	"frame": {"x":321,"y":79,"w":52,"h":32},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":52,"h":32},
 	"sourceSize": {"w":52,"h":32}
 },
-"buffs/lightning-attack/41":
+"buffs/lightning-attack/6":
 {
-	"frame": {"x":246,"y":75,"w":46,"h":39},
+	"frame": {"x":203,"y":252,"w":46,"h":39},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":46,"h":39},
@@ -1706,7 +1714,7 @@
 },
 "buffs/speed-boost-icon/01":
 {
-	"frame": {"x":229,"y":259,"w":23,"h":21},
+	"frame": {"x":291,"y":140,"w":23,"h":21},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":21},
@@ -1714,7 +1722,7 @@
 },
 "buffs/speed-boost-icon/02":
 {
-	"frame": {"x":194,"y":376,"w":23,"h":21},
+	"frame": {"x":291,"y":163,"w":23,"h":21},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":21},
@@ -1722,7 +1730,7 @@
 },
 "buffs/speed-boost-icon/03":
 {
-	"frame": {"x":219,"y":361,"w":23,"h":21},
+	"frame": {"x":316,"y":155,"w":23,"h":21},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":21},
@@ -1730,7 +1738,7 @@
 },
 "buffs/speed-boost-icon/04":
 {
-	"frame": {"x":219,"y":384,"w":23,"h":21},
+	"frame": {"x":290,"y":205,"w":23,"h":21},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":21},
@@ -1738,7 +1746,7 @@
 },
 "buffs/speed-boost-icon/05":
 {
-	"frame": {"x":240,"y":317,"w":23,"h":21},
+	"frame": {"x":341,"y":158,"w":23,"h":21},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":21},
@@ -1746,7 +1754,7 @@
 },
 "buffs/speed-boost-icon/06":
 {
-	"frame": {"x":229,"y":259,"w":23,"h":21},
+	"frame": {"x":291,"y":140,"w":23,"h":21},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":21},
@@ -1754,7 +1762,7 @@
 },
 "buffs/super-saiyan-icon/01":
 {
-	"frame": {"x":222,"y":209,"w":23,"h":23},
+	"frame": {"x":407,"y":40,"w":23,"h":23},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":23},
@@ -1762,7 +1770,7 @@
 },
 "buffs/super-saiyan-icon/02":
 {
-	"frame": {"x":222,"y":209,"w":23,"h":23},
+	"frame": {"x":407,"y":40,"w":23,"h":23},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":23},
@@ -1770,7 +1778,7 @@
 },
 "buffs/super-saiyan-icon/03":
 {
-	"frame": {"x":229,"y":234,"w":23,"h":23},
+	"frame": {"x":265,"y":207,"w":23,"h":23},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":23},
@@ -1778,7 +1786,7 @@
 },
 "buffs/super-saiyan-icon/04":
 {
-	"frame": {"x":231,"y":282,"w":23,"h":23},
+	"frame": {"x":181,"y":318,"w":23,"h":23},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":23},
@@ -1786,7 +1794,7 @@
 },
 "buffs/super-saiyan-icon/05":
 {
-	"frame": {"x":144,"y":375,"w":23,"h":23},
+	"frame": {"x":183,"y":343,"w":23,"h":23},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":23},
@@ -1794,7 +1802,7 @@
 },
 "buffs/super-saiyan-icon/06":
 {
-	"frame": {"x":169,"y":376,"w":23,"h":23},
+	"frame": {"x":208,"y":336,"w":23,"h":23},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":23},
@@ -1802,7 +1810,7 @@
 },
 "buffs/super-saiyan-icon/07":
 {
-	"frame": {"x":118,"y":374,"w":24,"h":23},
+	"frame": {"x":206,"y":311,"w":24,"h":23},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":23},
@@ -1813,8 +1821,8 @@
 	"version": "1.0",
 	"image": "buffs.png",
 	"format": "INDEXED",
-	"size": {"w":419,"h":419},
+	"size": {"w":431,"h":431},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:1b481c320379a8634357b8cedae03dae:c8e81a482c9671da0a7b651bb227559f:5305de19eb73adef7b64c9f7a201c7d9$"
+	"smartupdate": "$TexturePacker:SmartUpdate:409b59a0987b536994a9363801dc18dc:9a0d30eca5865363e79926aa98e80e8e:5305de19eb73adef7b64c9f7a201c7d9$"
 }
 }

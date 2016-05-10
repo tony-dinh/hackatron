@@ -21,18 +21,32 @@ class Tron extends Character {
         var self = this;
         if (!self.isAlive) { return null; }
 
-        if (self.characterKey == "super-saiyan") {
+        if (self.characterKey === 'super-saiyan'
+        || self.characterKey === 'one') {
             var fireball = self.game.add.sprite(self.sprite.x, self.sprite.y, 'gfx/buffs');
             fireball.owner = self.id;
             fireball.anchor.setTo(0.5);
-            fireball.animations.add('fireball', ['buffs/blast-attack/1', 'buffs/blast-attack/2', 'buffs/blast-attack/3'], 60, true, true);
-            fireball.animations.play('fireball');
+
+            if (self.characterKey === 'super-saiyan') {
+                fireball.animations.add('fireball', ['buffs/blast-attack/1', 'buffs/blast-attack/2', 'buffs/blast-attack/3'], 60, true, true);
+                fireball.scale.x = 0.5;
+                fireball.scale.y = 0.5;
+                // makes block fade away within a 0.2 seconds
+                var FIRE_BALL_DURATION = 200;
+            } else if (self.characterKey === 'one') {
+                fireball.animations.add('fireball', ['buffs/lightning-attack/1', 'buffs/lightning-attack/2', 'buffs/lightning-attack/3', 'buffs/lightning-attack/4', 'buffs/lightning-attack/5', 'buffs/lightning-attack/6'], 90, true, true);
+                fireball.scale.x = 0.5;
+                fireball.scale.y = 0.5;
+                // makes block fade away within a 0.4 seconds
+                var FIRE_BALL_DURATION = 600;
+            }
 
             self.game.physics.arcade.enable(fireball, Phaser.Physics.ARCADE);
             fireball.body.collideWorldBounds = false;
             fireball.body.immovable = true;
-            fireball.scale.x = 0.5;
-            fireball.scale.y = 0.5;
+
+            fireball.animations.play('fireball');
+
             Hackatron.game.fireballs.push(fireball);
 
             var FIREBALL_SPEED = self.speed * 2;
@@ -57,8 +71,6 @@ class Tron extends Character {
                 break;
             }
 
-            // makes block fade away within a 0.2 seconds
-            var FIRE_BALL_DURATION = 200;
             var tween = self.game.add.tween(fireball).to( { alpha: 0 }, FIRE_BALL_DURATION, 'Linear', true);
             tween.onComplete.add(function() {
                 tween.stop();

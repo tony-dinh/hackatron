@@ -3,7 +3,8 @@ class Powerup extends GameObject {
 
     static get handlers() {
         return {
-            'Saiyan': SaiyanHandler,
+            'Kaihan': KaihanHandler,
+            //'Saiyan': SaiyanHandler,
             //'Ghost': GhostHandler,
             // 'Invincible': InvincibleHandler,
             // 'Rage': RageHandler,
@@ -161,6 +162,47 @@ class PowerupHandler {
 }
 
 // Handlers
+
+class KaihanHandler extends PowerupHandler {
+
+    constructor(params) {
+        super(params);
+        this.name = 'Kaihan!';
+        this.spriteMode = 'key';
+        this.spriteKey = 'gfx/buffs';
+        this.durationTime = 10000;
+        this.spriteLoop = ['buffs/general/57'];
+        this.spriteScale = 1.8;
+    }
+
+    onStarted() {
+        this.player.character.invincible = true;
+        this.oldSkinKey = this.player.character.characterKey;
+        this.player.character.changeSkin('one');
+        if (this.player.character.speed < DEFAULT_PLAYER_SPEED*Math.pow(1.5, 3)) {
+            this.player.character.speed *= 1.5;
+        }
+
+        window.IngameState.show = false;
+        window.UI_IngameController.setState(window.IngameState);
+    }
+
+    onStopped() {
+        this.player.character.invincible = false;
+        this.player.character.changeSkin(this.oldSkinKey);
+        this.player.character.characterKey = this.oldSkinKey;
+        this.oldSkinKey = undefined;
+        var updatedSpeed = this.player.character.speed / 1.5;
+        if (updatedSpeed < DEFAULT_PLAYER_SPEED) {
+            this.player.character.speed = DEFAULT_PLAYER_SPEED;
+        } else {
+            this.player.character.speed = updatedSpeed;
+        }
+
+        window.IngameState.show = true;
+        window.UI_IngameController.setState(window.IngameState);
+    }
+}
 
 class SaiyanHandler extends PowerupHandler {
 
