@@ -609,9 +609,16 @@ Hackatron.Game.prototype = {
 
         if (this.isGameOver) {
         } else {
+            var pers = 1500 - ((500 / 32) * this.player.character.worldPosition.y);
+            var xDeg = 15;
+            var yDeg = 0;
+            var zDeg = 0;
+            var rDeg = -3;
+            var xSkew = (1 - ((2 / 32) * this.player.character.worldPosition.x));
+
             this.game.canvas.style['width'] = '90%';
             this.game.canvas.style['height'] = '90%';
-            this.game.canvas.style['transform'] = 'perspective(900px) rotateX(15deg) rotate(-3deg)';
+            this.game.canvas.style['transform'] = 'perspective(' + pers + 'px) skew(' + xSkew + 'deg, 0deg) rotateX(' + xDeg + 'deg) rotateY(' + yDeg + 'deg) rotate(' + rDeg + 'deg)';
         }
 
         document.getElementById('game').style['width'] = Hackatron.getWidthRatioScale() * 100 + '%';
