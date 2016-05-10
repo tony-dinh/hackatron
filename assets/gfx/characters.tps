@@ -194,42 +194,66 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">ghost/walkDown-0001.png</key>
-            <key type="filename">ghost/walkDown-0002.png</key>
-            <key type="filename">ghost/walkDown-0003.png</key>
-            <key type="filename">ghost/walkLeft-0001.png</key>
-            <key type="filename">ghost/walkLeft-0002.png</key>
-            <key type="filename">ghost/walkLeft-0003.png</key>
-            <key type="filename">ghost/walkRight-0001.png</key>
-            <key type="filename">ghost/walkRight-0002.png</key>
-            <key type="filename">ghost/walkRight-0003.png</key>
-            <key type="filename">ghost/walkUp-0001.png</key>
-            <key type="filename">ghost/walkUp-0002.png</key>
-            <key type="filename">ghost/walkUp-0003.png</key>
-            <key type="filename">super-saiyan/walkDown-0001.png</key>
-            <key type="filename">super-saiyan/walkDown-0002.png</key>
-            <key type="filename">super-saiyan/walkDown-0003.png</key>
-            <key type="filename">super-saiyan/walkLeft-0001.png</key>
-            <key type="filename">super-saiyan/walkLeft-0002.png</key>
-            <key type="filename">super-saiyan/walkLeft-0003.png</key>
-            <key type="filename">super-saiyan/walkRight-0001.png</key>
-            <key type="filename">super-saiyan/walkRight-0002.png</key>
-            <key type="filename">super-saiyan/walkRight-0003.png</key>
-            <key type="filename">super-saiyan/walkUp-0001.png</key>
-            <key type="filename">super-saiyan/walkUp-0002.png</key>
-            <key type="filename">super-saiyan/walkUp-0003.png</key>
-            <key type="filename">tron/walkDown-0001.png</key>
-            <key type="filename">tron/walkDown-0002.png</key>
-            <key type="filename">tron/walkDown-0003.png</key>
-            <key type="filename">tron/walkLeft-0001.png</key>
-            <key type="filename">tron/walkLeft-0002.png</key>
-            <key type="filename">tron/walkLeft-0003.png</key>
-            <key type="filename">tron/walkRight-0001.png</key>
-            <key type="filename">tron/walkRight-0002.png</key>
-            <key type="filename">tron/walkRight-0003.png</key>
-            <key type="filename">tron/walkUp-0001.png</key>
-            <key type="filename">tron/walkUp-0002.png</key>
-            <key type="filename">tron/walkUp-0003.png</key>
+            <key type="filename">characters/frosty/walkDown-0001.png</key>
+            <key type="filename">characters/frosty/walkDown-0002.png</key>
+            <key type="filename">characters/frosty/walkDown-0003.png</key>
+            <key type="filename">characters/frosty/walkLeft-0001.png</key>
+            <key type="filename">characters/frosty/walkLeft-0002.png</key>
+            <key type="filename">characters/frosty/walkLeft-0003.png</key>
+            <key type="filename">characters/frosty/walkRight-0001.png</key>
+            <key type="filename">characters/frosty/walkRight-0002.png</key>
+            <key type="filename">characters/frosty/walkRight-0003.png</key>
+            <key type="filename">characters/frosty/walkUp-0001.png</key>
+            <key type="filename">characters/frosty/walkUp-0002.png</key>
+            <key type="filename">characters/frosty/walkUp-0003.png</key>
+            <key type="filename">characters/ghost/walkDown-0001.png</key>
+            <key type="filename">characters/ghost/walkDown-0002.png</key>
+            <key type="filename">characters/ghost/walkDown-0003.png</key>
+            <key type="filename">characters/ghost/walkLeft-0001.png</key>
+            <key type="filename">characters/ghost/walkLeft-0002.png</key>
+            <key type="filename">characters/ghost/walkLeft-0003.png</key>
+            <key type="filename">characters/ghost/walkRight-0001.png</key>
+            <key type="filename">characters/ghost/walkRight-0002.png</key>
+            <key type="filename">characters/ghost/walkRight-0003.png</key>
+            <key type="filename">characters/ghost/walkUp-0001.png</key>
+            <key type="filename">characters/ghost/walkUp-0002.png</key>
+            <key type="filename">characters/ghost/walkUp-0003.png</key>
+            <key type="filename">characters/one/walkDown-0001.png</key>
+            <key type="filename">characters/one/walkDown-0002.png</key>
+            <key type="filename">characters/one/walkDown-0003.png</key>
+            <key type="filename">characters/one/walkLeft-0001.png</key>
+            <key type="filename">characters/one/walkLeft-0002.png</key>
+            <key type="filename">characters/one/walkLeft-0003.png</key>
+            <key type="filename">characters/one/walkRight-0001.png</key>
+            <key type="filename">characters/one/walkRight-0002.png</key>
+            <key type="filename">characters/one/walkRight-0003.png</key>
+            <key type="filename">characters/one/walkUp-0001.png</key>
+            <key type="filename">characters/one/walkUp-0002.png</key>
+            <key type="filename">characters/one/walkUp-0003.png</key>
+            <key type="filename">characters/super-saiyan/walkDown-0001.png</key>
+            <key type="filename">characters/super-saiyan/walkDown-0002.png</key>
+            <key type="filename">characters/super-saiyan/walkDown-0003.png</key>
+            <key type="filename">characters/super-saiyan/walkLeft-0001.png</key>
+            <key type="filename">characters/super-saiyan/walkLeft-0002.png</key>
+            <key type="filename">characters/super-saiyan/walkLeft-0003.png</key>
+            <key type="filename">characters/super-saiyan/walkRight-0001.png</key>
+            <key type="filename">characters/super-saiyan/walkRight-0002.png</key>
+            <key type="filename">characters/super-saiyan/walkRight-0003.png</key>
+            <key type="filename">characters/super-saiyan/walkUp-0001.png</key>
+            <key type="filename">characters/super-saiyan/walkUp-0002.png</key>
+            <key type="filename">characters/super-saiyan/walkUp-0003.png</key>
+            <key type="filename">characters/tron/walkDown-0001.png</key>
+            <key type="filename">characters/tron/walkDown-0002.png</key>
+            <key type="filename">characters/tron/walkDown-0003.png</key>
+            <key type="filename">characters/tron/walkLeft-0001.png</key>
+            <key type="filename">characters/tron/walkLeft-0002.png</key>
+            <key type="filename">characters/tron/walkLeft-0003.png</key>
+            <key type="filename">characters/tron/walkRight-0001.png</key>
+            <key type="filename">characters/tron/walkRight-0002.png</key>
+            <key type="filename">characters/tron/walkRight-0003.png</key>
+            <key type="filename">characters/tron/walkUp-0001.png</key>
+            <key type="filename">characters/tron/walkUp-0002.png</key>
+            <key type="filename">characters/tron/walkUp-0003.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -237,9 +261,7 @@
         </map>
         <key>fileList</key>
         <array>
-            <filename>ghost</filename>
-            <filename>super-saiyan</filename>
-            <filename>tron</filename>
+            <filename>characters</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

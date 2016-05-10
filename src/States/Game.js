@@ -76,6 +76,8 @@ Hackatron.Game.prototype = {
     create: function() {
         Hackatron.game = this;
 
+        document.body.className += ' game';
+
         this.game.plugins.cameraShake = this.game.plugins.add(Phaser.Plugin.CameraShake);
 
         this.game.plugins.cameraShake.setup({
@@ -529,9 +531,9 @@ Hackatron.Game.prototype = {
                     this.enemy.character.sprite.body.immovable = false;
                     this.game.physics.arcade.collide(this.enemy.character.sprite, tile, () => {
                         // Stop enemy from moving. TODO: doesn't work
-                        this.enemy.character.sprite.body.immovable = true;
-                        this.enemy.character.sprite.body.velocity.x = 0;
-                        this.enemy.character.sprite.body.velocity.y = 0;
+                        // this.enemy.character.sprite.body.immovable = true;
+                        // this.enemy.character.sprite.body.velocity.x = 0;
+                        // this.enemy.character.sprite.body.velocity.y = 0;
                     });
                 }
             });
@@ -558,7 +560,6 @@ Hackatron.Game.prototype = {
 
             this.player.removePoints(10);
             window.UI_IngameController.setState(window.IngameState);
-
         };
 
         var collideBlockHandler = () => {

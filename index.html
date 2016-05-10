@@ -103,7 +103,7 @@
         // Load Game
         window.onload = function () {
             Hackatron.debug = window.location.href.indexOf('localhost') !== -1;
-            Hackatron.loader = new Phaser.Game(Hackatron.GAME_WIDTH, Hackatron.GAME_HEIGHT, Phaser.AUTO, gameContainer);
+            Hackatron.loader = new Phaser.Game(Hackatron.GAME_WIDTH, Hackatron.GAME_HEIGHT, Phaser.AUTO, gameContainer, null, true);
 
             // Game Constants
             DEFAULT_PLAYER_SPEED = 200;

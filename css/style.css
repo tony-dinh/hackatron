@@ -1,15 +1,22 @@
 * { box-sizing: border-box; }
 
 body {
-  background-color: #000;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+    background: url(/assets/ui/screens/launch.png) no-repeat 0 0;
+    background-color: #000;
+    background-size: contain;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body.game {
+    background-image: url(/assets/ui/screens/game.jpg);
+    background-size: auto 100%;
 }
 
 p {
-  text-align: center;
-  color: white;
+    text-align: center;
+    color: white;
 }
 
 #ui {
