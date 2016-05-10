@@ -1,8 +1,7 @@
 * { box-sizing: border-box; }
 
 body {
-    background: url(/assets/ui/screens/launch.png) no-repeat 0 0;
-    background-color: #000;
+    background: #000 url(/assets/ui/screens/launch.png) no-repeat 0 0;
     background-size: contain;
     margin: 0;
     padding: 0;

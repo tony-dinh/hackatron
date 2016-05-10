@@ -61,34 +61,36 @@ window.IngameScreen = React.createClass({
 });
 
 var styles = {
-  scoreboard: {
-    position: 'absolute',
-    top: 20,
-    left: 700,
-    width: 150,
-    height: 100,
-    padding: 5,
-    opacity: 0.9,
-    background: '#01242C',
-    border: '3px solid #fff',
-    color: '#fff',
-    fontFamily: 'Press Start 2P'
-  },
-  characterChooser: {
-    position: 'absolute',
-    top: 20,
-    left: 20,
-    width: 50,
-    padding: 5,
-    opacity: 0.9,
-    background: '#01242C',
-    border: '3px solid #fff',
-    color: '#fff',
-    fontFamily: 'Press Start 2P'
-  },
-  otherCharacterChooser: {
-    color: '#fff',
-    padding: '15px 0 0 5px',
-    fontFamily: 'Press Start 2P'
-  }
+    scoreboard: {
+        position: 'absolute',
+        top: 20,
+        left: 450,
+        width: 200,
+        height: 100,
+        padding: 5,
+        opacity: 0.8,
+        'box-shadow': '2px 1px #000',
+        background: '#00191F',
+        border: '3px solid #1583C8',
+        color: '#fff',
+        fontFamily: 'Helvetica, sans-serif'
+    },
+    characterChooser: {
+        position: 'absolute',
+        top: 20,
+        left: 20,
+        width: 50,
+        padding: 5,
+        opacity: 0.8,
+        'box-shadow': '2px 1px #000',
+        background: '#00191F',
+        border: '3px solid #1583C8',
+        color: '#fff',
+        fontFamily: 'Helvetica, sans-serif'
+    },
+    otherCharacterChooser: {
+        color: '#fff',
+        padding: '15px 0 0 5px',
+        fontFamily: 'Helvetica, sans-serif'
+    }
 };

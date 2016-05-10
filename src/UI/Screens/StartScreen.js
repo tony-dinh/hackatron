@@ -40,8 +40,8 @@ window.StartScreen = React.createClass({
 var styles = {
     container: {
         position: 'absolute',
-        top: 320,
-        left: 570,
+        top: 270,
+        left: 400,
         width: 235,
         height: 150,
         padding: '20px 0px 0px 10px',
