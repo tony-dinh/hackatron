@@ -6,6 +6,8 @@
 ██║  ██║██║  ██║╚██████╗██║  ██╗██║  ██║   ██║   ██║  ██║╚██████╔╝██║ ╚████║
 ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
 ```
+
+Sweet: http://codepen.io/SnapToPixels/pen/rteij
 ## Overview
 Hackatron is a multiplayer game developed as a submission for nwHacks 2016.
 

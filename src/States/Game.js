@@ -609,12 +609,12 @@ Hackatron.Game.prototype = {
 
         if (this.isGameOver) {
         } else {
-            var pers = 1500 - ((500 / 32) * this.player.character.worldPosition.y);
+            var pers = 700; //1500 - ((500 / 32) * this.player.character.worldPosition.y);
             var xDeg = 15;
             var yDeg = 0;
             var zDeg = 0;
             var rDeg = -3;
-            var xSkew = (1 - ((2 / 32) * this.player.character.worldPosition.x));
+            var xSkew = 0; // (1 - ((2 / 32) * this.player.character.worldPosition.x));
 
             this.game.canvas.style['width'] = '90%';
             this.game.canvas.style['height'] = '90%';
@@ -718,6 +718,7 @@ Hackatron.Game.prototype = {
         }
 
         // Add the host
+        // TODO: Wat? Needs clarification
         players.push({
             id: this.player.id,
             name: this.player.name,
@@ -906,22 +907,23 @@ Hackatron.Game.prototype = {
             fireball.scale.x = 0.5;
             fireball.scale.y = 0.5;
             Hackatron.game.fireballs.push(fireball);
+
             var FIREBALL_SPEED = event.info.speed;
+
             switch (event.info.direction) {
-            case "walkUp":
+            case 'walkUp':
                 fireball.body.velocity.y = -FIREBALL_SPEED;
                 fireball.angle = -90;
                 break;
-            case "walkDown":
+            case 'walkDown':
                 fireball.body.velocity.y = FIREBALL_SPEED;
                 fireball.angle = 90;
-
                 break;
-            case "walkLeft":
+            case 'walkLeft':
                 fireball.body.velocity.x = -FIREBALL_SPEED;
                 fireball.angle = 180;
                 break;
-            case "walkRight":
+            case 'walkRight':
                 fireball.body.velocity.x = FIREBALL_SPEED;
                 break;
             default:
