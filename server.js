@@ -62,16 +62,12 @@ var removeClient = function(client) {
 
 // Monitor the clients to make sure they are still defined
 var monitorHost = function() {
-    if (host) {
-        //console.log('Host: ', host.player.id);
-    } else {
+    if (!host) {
         findNewHost();
     }
 
-    setTimeout(monitorHost, 100);
+    setTimeout(monitorHost, 50);
 };
-
-setTimeout(monitorHost, 100);
 
 var Hackatron = function() {
     this.events = [];
@@ -102,7 +98,6 @@ var parseEvent = function(socket, event) {
 
         hackatron.fireEvent(socket, {key: 'setHost', info: {player: host.player}});
     } else if (event.key === 'findNewHost') {
-
         console.log("Finding new host....");
         var client = findClientBySocket(socket);
         removeClient(client);
@@ -152,7 +147,15 @@ io.sockets.on('connection', function(socket) {
 });
 
 monitorHost();
+
 console.log('Open localhost:8080 on your browser.');
 console.log('Listening...');
+
+setInterval(function() {
+    if (!host) return console.log('No host');
+    if (!host) return console.log('Host has no player');
+
+    console.log('Host: ', host.player.id);
+}, 2000);
 
 server.listen(process.env.PORT || 8080);
