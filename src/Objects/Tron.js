@@ -23,81 +23,18 @@ class Tron extends Character {
 
         if (self.characterKey === 'super-saiyan'
         || self.characterKey === 'one') {
-            var fireball = self.game.add.sprite(self.sprite.x, self.sprite.y, 'gfx/buffs');
-            fireball.owner = self.id;
-            fireball.anchor.setTo(0.5);
-
-            if (self.characterKey === 'super-saiyan') {
-                fireball.animations.add('fireball', ['buffs/blast-attack/1', 'buffs/blast-attack/2', 'buffs/blast-attack/3'], 60, true, true);
-                fireball.scale.x = 0.5;
-                fireball.scale.y = 0.5;
-                // makes block fade away within a 0.2 seconds
-                var FIRE_BALL_DURATION = 200;
-            } else if (self.characterKey === 'one') {
-                fireball.animations.add('fireball', ['buffs/lightning-attack/1', 'buffs/lightning-attack/2', 'buffs/lightning-attack/3', 'buffs/lightning-attack/4', 'buffs/lightning-attack/5', 'buffs/lightning-attack/6'], 90, true, true);
-                fireball.scale.x = 0.5;
-                fireball.scale.y = 0.5;
-                // makes block fade away within a 0.4 seconds
-                var FIRE_BALL_DURATION = 600;
-            }
-
-            self.game.physics.arcade.enable(fireball, Phaser.Physics.ARCADE);
-            fireball.body.collideWorldBounds = false;
-            fireball.body.immovable = true;
-
-            fireball.animations.play('fireball');
-
-            Hackatron.game.fireballs.push(fireball);
-
-            var FIREBALL_SPEED = self.speed * 2;
-            switch (self.direction) {
-            case 'walkUp':
-                fireball.body.velocity.y = -FIREBALL_SPEED;
-                fireball.angle = -90;
-                break;
-            case 'walkDown':
-                fireball.body.velocity.y = FIREBALL_SPEED;
-                fireball.angle = 90;
-
-                break;
-            case 'walkLeft':
-                fireball.body.velocity.x = -FIREBALL_SPEED;
-                fireball.angle = 180;
-                break;
-            case 'walkRight':
-                fireball.body.velocity.x = FIREBALL_SPEED;
-                break;
-            default:
-                break;
-            }
-
-            var tween = self.game.add.tween(fireball).to( { alpha: 0 }, FIRE_BALL_DURATION, 'Linear', true);
-            tween.onComplete.add(function() {
-                tween.stop();
-            });
-
-            setTimeout(function() {
-                if (fireball) {
-                    Hackatron.game.fireballs = Hackatron.game.fireballs.filter(function(fb) {
-                        return (fb !== fireball);
-                    });
-                    fireball.destroy();
-                }
-            }, FIRE_BALL_DURATION);
-
             Hackatron.game.fireEvent({
                 key: 'fireballFired',
                 info: {
                     owner: self.id,
                     x: self.sprite.x,
                     y: self.sprite.y,
-                    speed: FIREBALL_SPEED,
-                    direction: self.direction
+                    direction: self.direction,
+                    characterKey: self.characterKey
                 }
             });
 
-
-            return fireball;
+            return;
         }
 
         if (self.blocks > 0) {

@@ -273,8 +273,9 @@ Hackatron.Game.prototype = {
         this.player.removePoints(100);
 
         for(var id in this.players) {
-            this.players[id].this.player.addPoints(100 / this.players.length);
+            this.players[id].addPoints(100 / this.players.length);
         }
+
         window.UI_IngameController.setState(window.IngameState);
 
         this.newGameKey = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
@@ -342,6 +343,10 @@ Hackatron.Game.prototype = {
     },
     fireEvent: function(event) {
         this.events.push(event);
+
+        if (event.key === 'fireballFired') {
+            this.parseEvent(event);
+        }
     },
     broadcastEvents: function() {
         if (!this.events.length) { return; }
@@ -583,6 +588,7 @@ Hackatron.Game.prototype = {
 
         this.fireballs.forEach((fireball, index) => {
             if (fireball.owner !== this.player.id) {
+                console.log(fireball);
                 this.game.physics.arcade.collide(this.player.character.sprite, fireball, () => {
                     collideFireballHandler(index);
                     // Disable fireball physics. TODO: doesn't work
@@ -895,20 +901,34 @@ Hackatron.Game.prototype = {
                 block.destroy();
             },  BLOCK_DURATION);
         } else if (event.key === 'fireballFired') {
+            var FIREBALL_SPEED = 400;
+            var FIREBALL_DURATION = 0;
+
             var fireball = this.game.add.sprite(event.info.x, event.info.y, 'gfx/buffs');
-            fireball.owner = event.info.id;
+            fireball.owner = event.info.owner;
             fireball.anchor.setTo(0.5);
-            fireball.animations.add('fireball', ['buffs/blast-attack/1', 'buffs/blast-attack/2', 'buffs/blast-attack/3'], 60, true, true);
-            fireball.animations.play('fireball');
+
+            if (event.info.characterKey === 'super-saiyan') {
+                fireball.animations.add('fireball', ['buffs/blast-attack/1', 'buffs/blast-attack/2', 'buffs/blast-attack/3'], 60, true, true);
+                fireball.scale.x = 0.5;
+                fireball.scale.y = 0.5;
+                // makes block fade away within a 0.2 seconds
+                FIREBALL_DURATION = 200;
+            } else if (event.info.characterKey === 'one') {
+                fireball.animations.add('fireball', ['buffs/lightning-attack/1', 'buffs/lightning-attack/2', 'buffs/lightning-attack/3', 'buffs/lightning-attack/4', 'buffs/lightning-attack/5', 'buffs/lightning-attack/6'], 90, true, true);
+                fireball.scale.x = 0.5;
+                fireball.scale.y = 0.5;
+                // makes block fade away within a 0.4 seconds
+                FIREBALL_DURATION = 600;
+            }
 
             this.game.physics.arcade.enable(fireball, Phaser.Physics.ARCADE);
             fireball.body.collideWorldBounds = false;
             fireball.body.mass = .9;
-            fireball.scale.x = 0.5;
-            fireball.scale.y = 0.5;
-            Hackatron.game.fireballs.push(fireball);
+            fireball.body.immovable = true;
 
-            var FIREBALL_SPEED = event.info.speed;
+            fireball.animations.play('fireball');
+            this.fireballs.push(fireball);
 
             switch (event.info.direction) {
             case 'walkUp':
@@ -929,9 +949,8 @@ Hackatron.Game.prototype = {
             default:
                 break;
             }
-            // fade out in 200ms
-            var FIRE_BALL_DURATION = 200;
-            var tween = this.game.add.tween(fireball).to( { alpha: 0 }, FIRE_BALL_DURATION, 'Linear', true);
+
+            var tween = this.game.add.tween(fireball).to( { alpha: 0 }, FIREBALL_DURATION, 'Linear', true);
             tween.onComplete.add(function() {
                 tween.stop();
             });
@@ -943,7 +962,7 @@ Hackatron.Game.prototype = {
                     });
                     fireball.destroy();
                 }
-            }, FIRE_BALL_DURATION);
+            }, FIREBALL_DURATION);
         } else if (event.key === 'setHost') {
             // Check if we already know this is the host,
             // And if it's this player, we don't need to set ourselves up again
