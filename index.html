@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html> <!--<![endif]-->
   <head>
     <title>Hackatron</title>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="App/Assets/Other/Styles/Application.css" rel="stylesheet" type="text/css" />
     <script src="/socket.io/socket.io.js"></script>
 
     <script type="text/javascript">
@@ -26,41 +26,41 @@
     <div id="game"></div>
     <div id="ui"></div>
 
-    <script src="vendor/react.js"></script>
-    <script src="vendor/react-dom.js"></script>
+    <script src="App/Assets/Vendor/react.js"></script>
+    <script src="App/Assets/Vendor/react-dom.js"></script>
 
-    <script src="vendor/easystar-0.1.7.min.js"></script>
-    <script src="vendor/pixi.js"></script>
-    <script src="vendor/phaser-arcade-physics.js"></script>
-    <script src="vendor/phaser-tiled.js"></script>
-    <script src="vendor/phaser-debug.js"></script>
-    <script src="vendor/phaser-camera-shake.js"></script>
-    <script src="vendor/babel-browser.js"></script>
+    <script src="App/Assets/Vendor/easystar-0.1.7.min.js"></script>
+    <script src="App/Assets/Vendor/pixi.js"></script>
+    <script src="App/Assets/Vendor/phaser-arcade-physics.js"></script>
+    <script src="App/Assets/Vendor/phaser-tiled.js"></script>
+    <script src="App/Assets/Vendor/phaser-debug.js"></script>
+    <script src="App/Assets/Vendor/phaser-camera-shake.js"></script>
+    <script src="App/Assets/Vendor/babel-browser.js"></script>
 
-    <script src="src/Core/Utils.js"></script>
-    <script src="src/Core/GameObject.js"></script>
-    <script src="src/Core/GamePlugin.js"></script>
-    <script src="src/Core/AI.js"></script>
+    <script src="App/Game/Core/Utils.js"></script>
+    <script src="App/Game/Core/GameObject.js"></script>
+    <script src="App/Game/Core/GamePlugin.js"></script>
+    <script src="App/Game/Core/AI.js"></script>
 
-    <script src="src/Objects/Map2D.js"></script>
-    <script src="src/Objects/Powerup.js"></script>
-    <script src="src/Objects/Character.js"></script>
-    <script src="src/Objects/Countdown.js"></script>
-    <script src="src/Objects/Gameover.js"></script>
-    <script src="src/Objects/Ghost.js"></script>
-    <script src="src/Objects/Pellet.js"></script>
-    <script src="src/Objects/Tron.js"></script>
-    <script src="src/Objects/Player.js"></script>
-    <script src="src/Objects/Enemy.js"></script>
+    <script src="App/Game/Objects/Map2D.js"></script>
+    <script src="App/Game/Objects/Powerup.js"></script>
+    <script src="App/Game/Objects/Character.js"></script>
+    <script src="App/Game/Objects/Countdown.js"></script>
+    <script src="App/Game/Objects/Gameover.js"></script>
+    <script src="App/Game/Objects/Ghost.js"></script>
+    <script src="App/Game/Objects/Pellet.js"></script>
+    <script src="App/Game/Objects/Tron.js"></script>
+    <script src="App/Game/Objects/Player.js"></script>
+    <script src="App/Game/Objects/Enemy.js"></script>
 
-    <script src='src/States/Boot.js'></script>
-    <script src='src/States/Preload.js'></script>
-    <script src="src/States/Menu.js"></script>
-    <script src="src/States/Game.js"></script>
+    <script src='App/Game/States/Boot.js'></script>
+    <script src='App/Game/States/Preload.js'></script>
+    <script src="App/Game/States/Menu.js"></script>
+    <script src="App/Game/States/Game.js"></script>
 
-    <script src="src/UI/UI.js" type="text/babel"></script>
-    <script src="src/UI/Screens/StartScreen.js" type="text/babel"></script>
-    <script src="src/UI/Screens/IngameScreen.js" type="text/babel"></script>
+    <script src="App/UI/UI.js" type="text/babel"></script>
+    <script src="App/UI/Screens/StartScreen.js" type="text/babel"></script>
+    <script src="App/UI/Screens/IngameScreen.js" type="text/babel"></script>
 
     <script type="text/babel">
         ReactDOM.render(<UI />, document.getElementById('ui'));

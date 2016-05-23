@@ -16,8 +16,8 @@ Hackatron.Boot.prototype = {
         this.game.renderer.renderSession.roundPixels = true;
         Phaser.Canvas.setImageRenderingCrisp(this.game.canvas);
 
-        var assetsPath = 'assets/';
-        this.load.image('gfx/overlays/preloader',  assetsPath + 'gfx/overlays/preloader.gif');
+        var assetsPath = 'App/Assets/';
+        this.load.image('gfx/overlays/preloader',  assetsPath + 'GFX/overlays/preloader.gif');
     },
 
     create: function() {

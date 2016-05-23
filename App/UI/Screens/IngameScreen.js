@@ -31,7 +31,7 @@ window.IngameScreen = React.createClass({
 
             otherElements = <div style={styles.otherCharacterChooser}>
                 {otherCharacters.map((key) => {
-                    return <div style={{width: 32, height: 32, marginBottom: 10, background: 'transparent url(assets/gfx/characters/' + key + '/walkDown-0002.png) no-repeat 0 0'}} onClick={()=>this._changeCharacter(key)}></div>;
+                    return <div style={{width: 32, height: 32, marginBottom: 10, background: 'transparent url(App/Assets/GFX/characters/' + key + '/walkDown-0002.png) no-repeat 0 0'}} onClick={()=>this._changeCharacter(key)}></div>;
                 })}
             </div>
         }
@@ -47,12 +47,12 @@ window.IngameScreen = React.createClass({
         return (
             <div>
                 <div style={styles.characterChooser}>
-                    <div style={{width: 32, height: 32, background: '#01242C url(assets/gfx/characters/' + this.state.currentCharacter + '/walkDown-0002.png) no-repeat 0 0'}} onClick={this._clickCharacter}></div>
+                    <div style={{width: 32, height: 32, background: '#01242C url(App/Assets/GFX/characters/' + this.state.currentCharacter + '/walkDown-0002.png) no-repeat 0 0'}} onClick={this._clickCharacter}></div>
                     {this.state.showOthers && otherElements}
                 </div>
                 <div style={styles.scoreboard}>
                     {players.map(function(item) {
-                      return <div>{item.name}: {item.points}</div>;
+                      return <div key={item.name}>{item.name}: {item.points}</div>;
                     })}
                 </div>
             </div>

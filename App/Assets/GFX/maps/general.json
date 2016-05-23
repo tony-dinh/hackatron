@@ -11,7 +11,7 @@
             "subtype": "tileset",
             "key": "map_tileset_redmap",
             "name": "redmap",
-            "url": "assets/gfx/maps/tron/redmap.png",
+            "url": "App/Assets/GFX/maps/tron/redmap.png",
             "overwrite": false
         },
         {
@@ -19,13 +19,13 @@
             "subtype": "tileset",
             "key": "map_tileset_general",
             "name": "general",
-            "url": "assets/gfx/maps/tron/map.png",
+            "url": "App/Assets/GFX/maps/tron/map.png",
             "overwrite": false
         },
         {
             "type": "tiledmap",
             "key": "map_tiledmap",
-            "url": "assets/gfx/maps/tron/map.json",
+            "url": "App/Assets/GFX/maps/tron/map.json",
             "format": "TILED_JSON"
         }
     ]

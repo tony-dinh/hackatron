@@ -1,7 +1,7 @@
 * { box-sizing: border-box; }
 
 body {
-    background: #000 url(/assets/ui/screens/launch.png) no-repeat 0 0;
+    background: #000 url(/App/Assets/UI/Screens/launch.png) no-repeat 0 0;
     background-size: contain;
     margin: 0;
     padding: 0;
@@ -9,7 +9,7 @@ body {
 }
 
 body.game {
-    background-image: url(/assets/ui/screens/game.jpg);
+    background-image: url(/App/Assets/UI/Screens/game.jpg);
     background-size: auto 100%;
 }
 
