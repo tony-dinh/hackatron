@@ -36,9 +36,9 @@ Checkout the [Game Design Document](GDD.md)!
 ### Credits
 
 Core Game Programmers:
-[**@ericmuyser**](https://github.com/ericmuyser)
 [**@tony-dinh**](https://github.com/tony-dinh)
 [**@mingchia-andy-liu**](https://github.com/mingchia-andy-liu)
+[**@ericmuyser**](https://github.com/ericmuyser)
 
 Original Prototype:
 [**@wesleytsai**](https://github.com/wesleytsai)
@@ -47,3 +47,4 @@ Original Prototype:
 [**@angiecho**](https://github.com/angiecho)
 [**@mingchia-andy-liu**](https://github.com/mingchia-andy-liu)
 [**@tony-dinh**](https://github.com/tony-dinh)
+[**@ericmuyser**](https://github.com/ericmuyser)
